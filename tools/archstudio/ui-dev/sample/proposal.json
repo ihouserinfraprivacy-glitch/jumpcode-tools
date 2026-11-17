@@ -1,0 +1,58 @@
+{
+	"title": "Cupons de desconto",
+	"summary": "Um serviço novo, cupons, com tabela própria no PostgreSQL; pedidos valida o cupom antes de cobrar; o gateway ganha a rota /cupons para o painel.",
+	"nodes": [
+		{
+			"op": "add",
+			"id": "v:plataforma/servicos/cupons",
+			"level": "service",
+			"parent": "s:plataforma",
+			"name": "cupons",
+			"kind": "backend",
+			"tech": "Go",
+			"summary": "valida e aplica descontos"
+		},
+		{
+			"op": "change",
+			"id": "v:plataforma/servicos/pedidos",
+			"note": "3 arquivos mudam"
+		},
+		{
+			"op": "change",
+			"id": "v:plataforma/servicos/api-gateway",
+			"note": "+1 rota: /cupons"
+		},
+		{
+			"op": "change",
+			"id": "d:postgresql",
+			"note": "+ tabela cupons"
+		}
+	],
+	"links": [
+		{
+			"op": "add",
+			"from": "v:plataforma/servicos/pedidos",
+			"to": "v:plataforma/servicos/cupons",
+			"label": "valida cupom"
+		},
+		{
+			"op": "add",
+			"from": "v:plataforma/servicos/cupons",
+			"to": "d:postgresql",
+			"label": "tabela cupons"
+		},
+		{
+			"op": "add",
+			"from": "v:plataforma/servicos/api-gateway",
+			"to": "v:plataforma/servicos/cupons",
+			"label": "/cupons · novo",
+			"async": true
+		},
+		{
+			"op": "remove",
+			"from": "v:plataforma/servicos/pedidos",
+			"to": "v:plataforma/servicos/notificacoes",
+			"label": "chamada direta · sai"
+		}
+	]
+}

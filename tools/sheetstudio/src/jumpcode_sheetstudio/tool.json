@@ -1,0 +1,111 @@
+{
+	"id": "sheetstudio",
+	"name": "SheetStudio",
+	"description": "Abre planilhas CSV e Excel do projeto no seu computador: você pergunta no chat e os números e gráficos aparecem no Studio, com o cálculo explicado e o arquivo original intacto.",
+	"version": "1.0.1",
+	"icon": "graph",
+	"studio": {
+		"title": "SheetStudio",
+		"description": "Planilhas e gráficos",
+		"ui": true
+	},
+	"details": {
+		"about": "O SheetStudio lê planilhas CSV, TSV, XLSX, XLS e ODS da pasta do projeto, inteiramente no seu computador. O Studio mostra a planilha com o tipo de cada coluna e as abas, e os gráficos que o agente faz quando você pergunta no chat, sempre com o que foi calculado: colunas, filtro, linhas usadas e linhas deixadas de fora. Datas e valores escritos como texto, linhas repetidas e erros de fórmula aparecem como problemas com correções propostas, que viram passos que dá para desfazer. O arquivo original nunca é alterado: o que sai é sempre um arquivo novo.",
+		"features": [
+			"CSV e TSV com separador, decimal e codificação reconhecidos (inclusive ; e vírgula decimal), XLSX, XLS e ODS com abas",
+			"Tipo de cada coluna reconhecido no jeito brasileiro: R$ 1.234,56, 12,5%, dd/mm/aaaa",
+			"Gráficos de barras, linhas, colunas empilhadas, mapa de calor, tabela dinâmica e painel, com o cálculo explicado",
+			"Agrupar datas por mês, dia da semana, hora, trimestre ou ano",
+			"Problemas nos dados com correções que viram passos desfazíveis e colunas calculadas",
+			"Exporta CSV, XLSX novo com os números de cada gráfico e o gráfico em SVG, sem tocar no original"
+		],
+		"limitations": [
+			"Planilhas com senha para abrir não são lidas; salve uma cópia sem senha",
+			"Fórmulas não são recalculadas: vale o último valor que o Excel salvou",
+			"Gráficos dentro do Excel, macros, tabelas dinâmicas do Excel e formatação não são lidos",
+			"A exportação de gráficos é em SVG; PNG e gráficos dentro do XLSX ainda não",
+			"Arquivos muito grandes levam alguns segundos por milhão de linhas para abrir"
+		],
+		"examples": [
+			"Abra a planilha de vendas e faça um gráfico do faturamento por mês",
+			"Qual serviço mais fatura?",
+			"Tem algo errado nos dados?",
+			"Monte um painel com o principal"
+		],
+		"author": "JumpCode",
+		"updatedAt": "2026-11-14",
+		"execution": "local",
+		"access": {
+			"suppliedText": true,
+			"projectFiles": true,
+			"network": false
+		}
+	},
+	"instructions": "SheetStudio reads the project's spreadsheets (CSV, TSV, XLSX, XLS, ODS) on this computer and shows the sheet and the charts in the Studio beside the chat. Use it when the user asks about a spreadsheet's data or wants a chart. 1) files lists the spreadsheets; open with path (such as dados/vendas.xlsx; sheet for another tab) reads one; the original file is never changed. status tells what is open and its columns. 2) To answer with numbers or show a chart, call chart with x (the column for the groups; for a date column add by: month, weekday, hour, day, quarter or year), y (the number column) and agg (sum, count, avg, min, max, unique, median; without y it counts rows), and when useful group (a second column, one series per value), filter (text like status = concluído, or valor > 50), kind (bar, hbar, line, stacked, stacked100, grouped, heatmap), top, title and question (the user's words). The result carries the numbers: quote them. pivot (rows, columns, value, agg) makes a summary table; profile describes every column; rows shows rows in the Studio (filter, sort such as -valor); query runs one SELECT on the table dados when chart cannot answer. 3) problems finds dates and numbers written as text, repeated rows, extra spaces, spellings and formula errors and changes nothing: tell the user and call fix (which: all or the ids) only after they agree; undo removes a step (last, all or an id); step does kind replace (column, old, new), fill (column, value) or remove_rows (filter); column adds a calculated column (name with from and part, such as part weekday, or expression such as valor * 0.4). 4) panel shows headline numbers (numbers: [{title, y, agg, filter}]) and charts (ids); chart with panel true adds a chart to it. export writes new files into the project (what: data, chart or all; format: csv, xlsx or svg). focus points the Studio (view: sheet, charts, panel, cleanup, history, profile, settings, files; select a chart id). After the last call, always answer the user in one to three short sentences in the user's language, quoting the numbers.",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"action": {
+				"type": "string",
+				"enum": ["status", "files", "open", "sheet", "close", "rows", "profile", "chart", "pivot", "query", "panel", "remove", "problems", "fix", "undo", "step", "column", "export", "settings", "focus"],
+				"description": "files, open, sheet, close and status for the files; chart, pivot, profile, rows and query to answer; problems, fix, undo, step and column to clean; panel, remove, export, settings and focus for the Studio."
+			},
+			"question": {"type": "string", "maxLength": 300, "description": "The user's question in their words, kept in the Studio's history."},
+			"path": {"type": "string", "maxLength": 400, "description": "open: the spreadsheet inside the project, such as dados/vendas.xlsx."},
+			"sheet": {"type": "string", "maxLength": 120, "description": "open, sheet: the tab of a workbook."},
+			"header": {"type": "boolean", "description": "open: whether the first row has the column names (detected when left out)."},
+			"separator": {"type": "string", "maxLength": 3, "description": "open: CSV separator when the detection is wrong (; , tab or |)."},
+			"encoding": {"type": "string", "maxLength": 20, "description": "open: CSV text encoding when the detection is wrong (utf-8, cp1252)."},
+			"decimal": {"type": "string", "enum": ["auto", "comma", "dot"], "description": "open, settings: decimal mark of numbers written as text."},
+			"date_order": {"type": "string", "enum": ["auto", "dmy", "mdy"], "description": "open, settings: day/month order of dates written as text."},
+			"x": {"type": "string", "maxLength": 120, "description": "chart: the column for the groups (bars, points)."},
+			"by": {"type": "string", "maxLength": 20, "description": "chart: group a date or time column by month, weekday, hour, day, week, quarter or year."},
+			"y": {"type": "string", "maxLength": 120, "description": "chart: the number column to aggregate (leave out to count rows)."},
+			"agg": {"type": "string", "maxLength": 20, "description": "chart, pivot: sum, count, avg, min, max, unique or median."},
+			"group": {"type": "string", "maxLength": 120, "description": "chart: a second column; one series per value."},
+			"group_by": {"type": "string", "maxLength": 20, "description": "chart: like by, for group."},
+			"filter": {"description": "Which rows count: text like status = concluído e valor > 50 (operators = != > >= < <= in contains empty not_empty), or a list of {column, op, value}."},
+			"kind": {"type": "string", "maxLength": 30, "description": "chart: bar, hbar, line, stacked, stacked100, grouped, heatmap (chosen when left out); step: replace, fill or remove_rows."},
+			"top": {"type": "integer", "minimum": 1, "maximum": 200, "description": "chart, pivot: keep the largest groups; the rest becomes Outros."},
+			"sort": {"type": "string", "maxLength": 130, "description": "chart: value, asc or label; rows: a column name, with - for descending."},
+			"title": {"type": "string", "maxLength": 120, "description": "chart, pivot, query, panel: the title shown."},
+			"panel": {"type": "boolean", "description": "chart: also put it on the panel."},
+			"rows": {"type": "string", "maxLength": 120, "description": "pivot: the column for the rows."},
+			"rows_by": {"type": "string", "maxLength": 20, "description": "pivot: group the rows column by month, weekday..."},
+			"columns": {"type": "string", "maxLength": 120, "description": "pivot: the column for the columns."},
+			"columns_by": {"type": "string", "maxLength": 20, "description": "pivot: group the columns column by month, weekday..."},
+			"value": {"description": "pivot: the number column; step fill: the value to put in empty cells."},
+			"sql": {"type": "string", "maxLength": 4000, "description": "query: one SELECT on the table dados, whose columns are the sheet's column names (and linha, the original row)."},
+			"limit": {"type": "integer", "minimum": 1, "maximum": 2000, "description": "rows, query: how many rows."},
+			"offset": {"type": "integer", "minimum": 0, "maximum": 100000000, "description": "rows: skip this many rows."},
+			"highlight": {"type": "string", "maxLength": 120, "description": "rows: a column to highlight."},
+			"column": {"type": "string", "maxLength": 120, "description": "profile: one column; step: the column to change."},
+			"charts": {"description": "panel: the chart ids to show, such as [\"g1\", \"g3\"]."},
+			"numbers": {
+				"type": "array",
+				"maxItems": 6,
+				"items": {"type": "object", "properties": {"title": {"type": "string", "maxLength": 60}, "y": {"type": "string", "maxLength": 120}, "agg": {"type": "string", "maxLength": 20}, "filter": {}, "note": {"type": "string", "maxLength": 120}}},
+				"description": "panel: headline numbers, such as [{\"title\": \"Faturamento\", \"y\": \"valor\", \"agg\": \"sum\", \"filter\": \"status = concluído\"}]."
+			},
+			"chart": {"type": "string", "maxLength": 20, "description": "remove, export: a chart id such as g3 (remove also takes last or all)."},
+			"which": {"description": "fix: all, or problem ids from problems (such as duplicates or text-date:data)."},
+			"step": {"type": "string", "maxLength": 120, "description": "undo: last, all or a step id such as p2."},
+			"old": {"description": "step replace: the value to change."},
+			"new": {"description": "step replace: the new value."},
+			"name": {"type": "string", "maxLength": 80, "description": "column: the new column's name."},
+			"from": {"type": "string", "maxLength": 120, "description": "column: the date or time column to take a part from."},
+			"part": {"type": "string", "maxLength": 20, "description": "column: weekday, month, year, day, hour, week or quarter."},
+			"expression": {"type": "string", "maxLength": 400, "description": "column: a formula with column names, numbers, + - * / and round, abs, iif, such as valor * 0.4. In function calls use decimal dots and commas between arguments, e.g. iif(valor>15,10,20)."},
+			"type": {"type": "string", "enum": ["text", "category", "integer", "number", "currency", "percent", "date", "datetime", "time", "bool"], "description": "column: the result type (guessed when left out)."},
+			"what": {"type": "string", "enum": ["data", "chart", "all"], "description": "export: the clean data, one chart, or the data with every chart."},
+			"format": {"type": "string", "enum": ["csv", "xlsx", "svg"], "description": "export: csv, xlsx or svg (charts)."},
+			"folder": {"type": "string", "maxLength": 300, "description": "export, settings: the project folder for exports (default: saida next to the file)."},
+			"style": {"type": "string", "enum": ["br", "plain"], "description": "export, settings: CSV with ; and decimal comma (br) or , and dot (plain)."},
+			"view": {"type": "string", "enum": ["sheet", "charts", "panel", "cleanup", "history", "profile", "settings", "files"], "description": "focus: what the Studio shows."},
+			"select": {"type": "string", "maxLength": 120, "description": "focus: a chart id or a column."},
+			"note": {"type": "string", "maxLength": 200, "description": "focus, rows: a short caption."}
+		},
+		"required": ["action"],
+		"additionalProperties": false
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"select": "v:plataforma/servicos/rastreamento",
+	"highlight": [
+		"v:plataforma/servicos/rastreamento",
+		"q:mqtt"
+	],
+	"level": "service",
+	"scope": "s:plataforma",
+	"mode": "map",
+	"note": "Posição a cada 5 s",
+	"revision": 1
+}

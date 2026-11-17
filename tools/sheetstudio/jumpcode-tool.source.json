@@ -1,0 +1,54 @@
+{
+	"format": 1,
+	"id": "sheetstudio",
+	"publisher": "jumpcode",
+	"version": "1.0.1",
+	"contract": 1,
+	"compatibility": {
+		"python": {
+			"minimum": "3.13"
+		},
+		"platforms": [
+			"win32-x64"
+		]
+	},
+	"entry": {
+		"kind": "python",
+		"root": "code",
+		"module": "jumpcode_sheetstudio"
+	},
+	"isolation": "process",
+	"capabilities": {
+		"suppliedText": true,
+		"projectFiles": true,
+		"network": false
+	},
+	"tool": "src/jumpcode_sheetstudio/tool.json",
+	"studio": {
+		"ui": {
+			"scripts": [
+				"code/jumpcode_sheetstudio/ui/app.js"
+			],
+			"styles": [
+				"code/jumpcode_sheetstudio/ui/app.css"
+			]
+		},
+		"data": {
+			"format": 1,
+			"reads": [
+				1
+			]
+		}
+	},
+	"assets": {
+		"mark": "code/jumpcode_sheetstudio/assets/mark.svg",
+		"cover": "code/jumpcode_sheetstudio/assets/cover.png"
+	},
+	"dependencies": [],
+	"include": [
+		{
+			"from": "src/jumpcode_sheetstudio",
+			"to": "code/jumpcode_sheetstudio"
+		}
+	]
+}

@@ -1,0 +1,75 @@
+{
+	"id": "generator3d",
+	"name": "3D Generator",
+	"description": "Transforma a imagem de um personagem num modelo 3D com ossos e animações, neste computador: você pede no chat e o modelo aparece no Studio, pronto para o jogo em GLB.",
+	"version": "1.0.1",
+	"icon": "package",
+	"studio": {
+		"title": "3D Generator",
+		"description": "Imagem vira modelo 3D",
+		"ui": true
+	},
+	"details": {
+		"about": "O 3D Generator transforma uma imagem de personagem num modelo 3D com 66 ossos e animações prontas, inteiramente no seu computador. Ele tira o fundo, gera a forma 3D com o TripoSR, acha 17 pontos do corpo na imagem, coloca o esqueleto com as medidas do personagem e copia animações como andar, correr, acenar e pular. O resultado é um arquivo GLB na pasta do projeto, que three.js, Godot, Unity e Blender abrem. O Studio mostra a imagem verificada, o modelo girando, o esqueleto, o que cada osso move e as animações tocando. A imagem original nunca é alterada.",
+		"features": [
+			"Uma imagem de corpo inteiro vira modelo 3D com 66 ossos e animações, em 7 a 20 segundos com placa de vídeo",
+			"Verifica a imagem antes: corpo inteiro, personagem humanoide, os 17 pontos do corpo e quais estão duvidosos",
+			"24 animações prontas (andar, correr, acenar, pular, dançar, comemorar...) escolhidas no chat",
+			"Textura que copia as cores da imagem, ou cores nos vértices para gerar mais rápido",
+			"Várias imagens numa fila, com o motor carregado entre uma e outra",
+			"Busto, animal ou objeto saem como modelo 3D sem ossos, com o motivo explicado"
+		],
+		"limitations": [
+			"Precisa do motor foto-para-rig instalado neste computador (cerca de 1,1 GB com os modelos)",
+			"Ossos só para personagens humanoides de corpo inteiro; animais saem sem ossos",
+			"As costas e os lados são deduzidos a partir de uma imagem só",
+			"Rosto coberto por chapéu ou óculos pode deixar a cabeça torta nas animações",
+			"Partes encostadas na imagem, como a mão no corpo, saem grudadas no modelo"
+		],
+		"examples": [
+			"Transforme o desenho do personagem em 3D com animação de andar",
+			"Quais imagens do projeto dá para usar?",
+			"Coloque também correr e comemorar",
+			"Gere todos os personagens da pasta arte"
+		],
+		"author": "JumpCode",
+		"updatedAt": "2026-11-14",
+		"execution": "local",
+		"access": {
+			"suppliedText": true,
+			"projectFiles": true,
+			"network": false
+		}
+	},
+	"instructions": "3D Generator turns an image of a character into a 3D model (GLB) with a 66-bone skeleton and animations, on this computer, and shows it in the Studio beside the chat. 1) images lists the project's images; open (path, such as arte/heroi.png) checks one: background, the 17 body points and whether a skeleton fits; tell the user the verdict and wait for them to ask for the model. status tells whether the 3D engine is installed; if not, tell the user what it says and stop. 2) generate makes the model: path (one image) or paths (several, made one after another), optional name, folder (default modelos), animations (a list of names from the animations action, such as ['walk', 'greeting']; only these go in the file), height in metres, and only when the user asks: texture (1024 copies the image's colours; 0 is faster with vertex colours), rig false for a model without bones (busts and animals already come out without bones), device (auto, gpu, cpu). It takes 7 to 20 seconds per image with a graphics card and up to a minute on the processor; it never replaces an existing file: when the result says the file exists, ask the user and only then repeat with overwrite true or another name (a request that already says the user agrees to replace, such as 'pode substituir', is that consent). To change an existing model's animations or options, call generate with model (its .glb path) and the full new animations list (or add for extra ones only); that replaces that model. Busts, animals and objects come out as a model without bones and the result says why; say it to the user. 3) show points the Studio (model, view: image, model, skeleton, animations, models, settings; animation to play; camera: front, side, back, top; bone to show what it moves). models lists the generated models; animations lists the 24 animations; settings changes the defaults (height, texture, faces, device, folder, animations). After the last call, answer the user in one to three short sentences in the user's language, with the file path, the time it took and any warning.",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"action": {
+				"type": "string",
+				"enum": ["status", "images", "open", "generate", "animations", "models", "show", "settings"],
+				"description": "images and open to choose the image; generate to make the model; status, animations, models, show and settings for the Studio."
+			},
+			"question": {"type": "string", "maxLength": 300, "description": "The user's request in their words."},
+			"path": {"type": "string", "maxLength": 400, "description": "open, generate: the image inside the project, such as arte/heroi.png."},
+			"paths": {"type": "array", "maxItems": 20, "items": {"type": "string", "maxLength": 400}, "description": "generate: several images, made one after another."},
+			"model": {"type": "string", "maxLength": 400, "description": "generate: an existing model (.glb) to make again with new options; show: the model to show."},
+			"name": {"type": "string", "maxLength": 80, "description": "generate: the model's file name without .glb (the image's name when left out)."},
+			"folder": {"type": "string", "maxLength": 200, "description": "generate, settings: the project folder for the models (default modelos)."},
+			"animations": {"type": ["array", "string"], "maxItems": 24, "items": {"type": "string", "maxLength": 40}, "description": "generate, settings: animation names, such as walk, greeting, jump-2 (call animations for all 24); [] for none."},
+			"add": {"type": ["array", "string"], "maxItems": 24, "items": {"type": "string", "maxLength": 40}, "description": "generate with model: animations to add to the ones it has."},
+			"height": {"type": "number", "minimum": 0.2, "maximum": 10, "description": "generate, settings: the character's height in metres (default 1.7)."},
+			"texture": {"type": "integer", "enum": [0, 512, 1024, 2048], "description": "generate, settings, only when the user asks: texture size; 0 uses vertex colours (faster)."},
+			"faces": {"type": "integer", "minimum": 2000, "maximum": 100000, "description": "generate, settings: triangles after simplifying (default 20000)."},
+			"rig": {"type": "boolean", "description": "generate: false makes only the 3D model, without bones."},
+			"device": {"type": "string", "enum": ["auto", "dml", "cpu"], "description": "generate, settings: auto, dml (graphics card) or cpu."},
+			"overwrite": {"type": "boolean", "description": "generate: replace an existing file; only after the user agreed."},
+			"view": {"type": "string", "enum": ["start", "image", "model", "skeleton", "animations", "models", "settings"], "description": "show: the Studio view."},
+			"animation": {"type": "string", "maxLength": 40, "description": "show only: the animation to play (for generate use animations)."},
+			"camera": {"type": "string", "enum": ["front", "side", "back", "top"], "description": "show: the viewing angle."},
+			"bone": {"type": "string", "maxLength": 40, "description": "show: a bone (such as upperarm_l) to show what it moves."}
+		},
+		"required": ["action"],
+		"additionalProperties": false
+	}
+}

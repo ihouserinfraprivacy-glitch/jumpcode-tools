@@ -1,0 +1,86 @@
+{
+ "schema": 1,
+ "revision": 2,
+ "plan": 2,
+ "base": 1,
+ "baseRevision": 24,
+ "states": {
+  "3": "done",
+  "5": "done",
+  "6": "paused",
+  "9": "failed",
+  "10": "todo",
+  "8": "todo"
+ },
+ "cause": {
+  "task": "3",
+  "text": "Na verdade, cada agendamento pode ter mais de um serviço"
+ },
+ "summary": "A mudança atinge 7 tarefas: 2 concluídas serão refeitas, 1 em execução ajustada, 2 mudam antes de começar, 1 tarefa nova e 1 sai do plano.",
+ "extra": 60,
+ "changes": [
+  {
+   "task": "3",
+   "kind": "refazer",
+   "note": "Nova tabela agendamento_servicos; a coluna servico_id sai de agendamentos.",
+   "why": "sua mudança",
+   "summary": "Vários serviços por agendamento",
+   "detail": "Criar as tabelas servicos, barbeiros, clientes e agendamentos, e a tabela agendamento_servicos para que um agendamento tenha vários serviços; migração e índices por barbeiro e data."
+  },
+  {
+   "task": "5",
+   "kind": "refazer",
+   "note": "A duração do horário passa a ser a soma dos serviços escolhidos.",
+   "why": "usa #3"
+  },
+  {
+   "task": "6",
+   "kind": "ajustar",
+   "note": "Permitir escolher mais de um serviço.",
+   "why": "pausada"
+  },
+  {
+   "task": "9",
+   "kind": "alterar",
+   "note": "O painel mostra todos os serviços de cada horário.",
+   "why": "usa #5"
+  },
+  {
+   "task": "10",
+   "kind": "alterar",
+   "note": "Testar agendamentos com vários serviços.",
+   "why": "usa #6",
+   "criteria": [
+    {
+     "text": "Fluxo completo passa nos testes",
+     "done": false
+    },
+    {
+     "text": "Agendamento com dois serviços",
+     "done": false
+    }
+   ]
+  },
+  {
+   "task": "12",
+   "kind": "nova",
+   "note": "Combos aparecem na tela de agendamento.",
+   "why": "usa #3",
+   "title": "Combos de serviços",
+   "summary": "Pacotes com preço especial, como corte + barba",
+   "detail": "Cadastrar combos de serviços com preço próprio e oferecê-los na tela de agendamento.",
+   "area": "Banco",
+   "estimate": 20,
+   "deps": [
+    "3"
+   ]
+  },
+  {
+   "task": "8",
+   "kind": "remover",
+   "note": "O lembrete sai deste plano.",
+   "why": "usa #6"
+  }
+ ],
+ "createdAt": "2026-11-13T14:35:20Z"
+}

@@ -1,0 +1,4055 @@
+{
+	"version": 1,
+	"name": "Rota Certa",
+	"source": "rota-certa",
+	"scannedAt": "2026-11-13T13:33:12.181Z",
+	"stats": {
+		"systems": 6,
+		"services": 53,
+		"files": 156,
+		"links": 8,
+		"lines": 19136
+	},
+	"nodes": [
+		{
+			"id": "s:apps/cliente",
+			"level": "system",
+			"parent": null,
+			"name": "App do Cliente",
+			"kind": "mobile",
+			"tech": "React Native",
+			"path": "apps/cliente",
+			"summary": "App de pedidos e pagamentos para quem compra.",
+			"files": 11,
+			"lines": 1485
+		},
+		{
+			"id": "s:apps/entregador",
+			"level": "system",
+			"parent": null,
+			"name": "App do Entregador",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador",
+			"summary": "App de rotas e comprovantes para quem entrega; funciona sem internet.",
+			"files": 24,
+			"lines": 2720
+		},
+		{
+			"id": "s:web/painel",
+			"level": "system",
+			"parent": null,
+			"name": "Painel Web",
+			"kind": "web",
+			"tech": "Next.js",
+			"path": "web/painel",
+			"summary": "Painel de operação, cadastros e relatórios.",
+			"files": 9,
+			"lines": 1490
+		},
+		{
+			"id": "s:plataforma",
+			"level": "system",
+			"parent": null,
+			"name": "Plataforma",
+			"kind": "backend",
+			"tech": "Go",
+			"path": "plataforma",
+			"summary": "Serviços que recebem pedidos, cobram, calculam rotas e avisam clientes.",
+			"files": 82,
+			"lines": 10106
+		},
+		{
+			"id": "s:firmware/rastreador",
+			"level": "system",
+			"parent": null,
+			"name": "Rastreador",
+			"kind": "embedded",
+			"tech": "C · ESP32-S3",
+			"path": "firmware/rastreador",
+			"summary": "Firmware FreeRTOS que lê o GPS e envia a posição por MQTT.",
+			"files": 21,
+			"lines": 2210
+		},
+		{
+			"id": "s:dados",
+			"level": "system",
+			"parent": null,
+			"name": "Dados e Relatórios",
+			"kind": "data",
+			"tech": "BigQuery",
+			"path": "dados",
+			"summary": "Carga diária de eventos e painéis de negócio.",
+			"files": 9,
+			"lines": 1125
+		},
+		{
+			"id": "d:postgresql",
+			"level": "data",
+			"parent": null,
+			"name": "PostgreSQL",
+			"kind": "data",
+			"tech": "PostgreSQL 16",
+			"summary": "Banco principal: pedidos, pagamentos e cadastros."
+		},
+		{
+			"id": "d:redis",
+			"level": "data",
+			"parent": null,
+			"name": "Redis",
+			"kind": "data",
+			"tech": "Redis 7",
+			"summary": "Cache e sessões."
+		},
+		{
+			"id": "q:rabbitmq",
+			"level": "queue",
+			"parent": null,
+			"name": "RabbitMQ",
+			"kind": "queue",
+			"tech": "AMQP",
+			"summary": "Eventos entre serviços."
+		},
+		{
+			"id": "q:emqx",
+			"level": "queue",
+			"parent": null,
+			"name": "EMQX",
+			"kind": "queue",
+			"tech": "MQTT",
+			"summary": "Mensagens dos rastreadores."
+		},
+		{
+			"id": "x:gateway-pix",
+			"level": "external",
+			"parent": null,
+			"name": "Gateway Pix",
+			"kind": "external",
+			"tech": "Externo",
+			"summary": "Cobranças e confirmações"
+		},
+		{
+			"id": "x:google-maps",
+			"level": "external",
+			"parent": null,
+			"name": "Google Maps",
+			"kind": "external",
+			"tech": "Externo",
+			"summary": "Rotas e distâncias"
+		},
+		{
+			"id": "x:whatsapp",
+			"level": "external",
+			"parent": null,
+			"name": "WhatsApp Business",
+			"kind": "external",
+			"tech": "Externo",
+			"summary": "Avisos ao cliente"
+		},
+		{
+			"id": "v:apps/cliente/src/telas/pedido",
+			"level": "service",
+			"parent": "s:apps/cliente",
+			"name": "Pedido",
+			"kind": "mobile",
+			"tech": "React Native",
+			"path": "apps/cliente/src/telas/pedido",
+			"role": "screen",
+			"summary": "monta o carrinho e envia o pedido",
+			"files": 4,
+			"lines": 670
+		},
+		{
+			"id": "v:apps/cliente/src/telas/conta",
+			"level": "service",
+			"parent": "s:apps/cliente",
+			"name": "Conta",
+			"kind": "mobile",
+			"tech": "React Native",
+			"path": "apps/cliente/src/telas/conta",
+			"role": "screen",
+			"summary": "perfil e endereços",
+			"files": 2,
+			"lines": 270
+		},
+		{
+			"id": "v:apps/cliente/src/estado/pedidos",
+			"level": "service",
+			"parent": "s:apps/cliente",
+			"name": "pedidosStore",
+			"kind": "mobile",
+			"tech": "React Native",
+			"path": "apps/cliente/src/estado/pedidos",
+			"role": "state",
+			"summary": "estado do carrinho e do pedido",
+			"files": 2,
+			"lines": 225
+		},
+		{
+			"id": "v:apps/cliente/src/repositorios/pedidos",
+			"level": "service",
+			"parent": "s:apps/cliente",
+			"name": "PedidosRepo",
+			"kind": "mobile",
+			"tech": "React Native",
+			"path": "apps/cliente/src/repositorios/pedidos",
+			"role": "repository",
+			"summary": "pedidos e pagamentos",
+			"files": 1,
+			"lines": 110
+		},
+		{
+			"id": "v:apps/cliente/src/api",
+			"level": "service",
+			"parent": "s:apps/cliente",
+			"name": "apiClient",
+			"kind": "mobile",
+			"tech": "React Native",
+			"path": "apps/cliente/src/api",
+			"role": "source",
+			"summary": "HTTPS → Plataforma",
+			"files": 2,
+			"lines": 210
+		},
+		{
+			"id": "f:apps/cliente/src/telas/pedido/PedidoTela.tsx",
+			"level": "file",
+			"parent": "v:apps/cliente/src/telas/pedido",
+			"name": "PedidoTela.tsx",
+			"kind": "file",
+			"path": "apps/cliente/src/telas/pedido/PedidoTela.tsx",
+			"lines": 240,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/cliente/src/telas/pedido/Carrinho.tsx",
+			"level": "file",
+			"parent": "v:apps/cliente/src/telas/pedido",
+			"name": "Carrinho.tsx",
+			"kind": "file",
+			"path": "apps/cliente/src/telas/pedido/Carrinho.tsx",
+			"lines": 180,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/cliente/src/telas/pedido/PagarPix.tsx",
+			"level": "file",
+			"parent": "v:apps/cliente/src/telas/pedido",
+			"name": "PagarPix.tsx",
+			"kind": "file",
+			"path": "apps/cliente/src/telas/pedido/PagarPix.tsx",
+			"lines": 160,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/cliente/src/telas/pedido/Avisos.tsx",
+			"level": "file",
+			"parent": "v:apps/cliente/src/telas/pedido",
+			"name": "Avisos.tsx",
+			"kind": "file",
+			"path": "apps/cliente/src/telas/pedido/Avisos.tsx",
+			"lines": 90,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/cliente/src/telas/conta/ContaTela.tsx",
+			"level": "file",
+			"parent": "v:apps/cliente/src/telas/conta",
+			"name": "ContaTela.tsx",
+			"kind": "file",
+			"path": "apps/cliente/src/telas/conta/ContaTela.tsx",
+			"lines": 150,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/cliente/src/telas/conta/Enderecos.tsx",
+			"level": "file",
+			"parent": "v:apps/cliente/src/telas/conta",
+			"name": "Enderecos.tsx",
+			"kind": "file",
+			"path": "apps/cliente/src/telas/conta/Enderecos.tsx",
+			"lines": 120,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/cliente/src/estado/pedidos/pedidosStore.ts",
+			"level": "file",
+			"parent": "v:apps/cliente/src/estado/pedidos",
+			"name": "pedidosStore.ts",
+			"kind": "file",
+			"path": "apps/cliente/src/estado/pedidos/pedidosStore.ts",
+			"lines": 130,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/cliente/src/estado/pedidos/carrinho.ts",
+			"level": "file",
+			"parent": "v:apps/cliente/src/estado/pedidos",
+			"name": "carrinho.ts",
+			"kind": "file",
+			"path": "apps/cliente/src/estado/pedidos/carrinho.ts",
+			"lines": 95,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/cliente/src/repositorios/pedidos/PedidosRepo.ts",
+			"level": "file",
+			"parent": "v:apps/cliente/src/repositorios/pedidos",
+			"name": "PedidosRepo.ts",
+			"kind": "file",
+			"path": "apps/cliente/src/repositorios/pedidos/PedidosRepo.ts",
+			"lines": 110,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/cliente/src/api/apiClient.ts",
+			"level": "file",
+			"parent": "v:apps/cliente/src/api",
+			"name": "apiClient.ts",
+			"kind": "file",
+			"path": "apps/cliente/src/api/apiClient.ts",
+			"lines": 140,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/cliente/src/api/auth.ts",
+			"level": "file",
+			"parent": "v:apps/cliente/src/api",
+			"name": "auth.ts",
+			"kind": "file",
+			"path": "apps/cliente/src/api/auth.ts",
+			"lines": 70,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "v:apps/entregador/lib/telas/login",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "Login",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/telas/login",
+			"role": "screen",
+			"summary": "tela",
+			"files": 2,
+			"lines": 200
+		},
+		{
+			"id": "v:apps/entregador/lib/telas/entregas",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "Entregas do dia",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/telas/entregas",
+			"role": "screen",
+			"summary": "tela",
+			"files": 2,
+			"lines": 300
+		},
+		{
+			"id": "v:apps/entregador/lib/telas/rota",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "Rota no mapa",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/telas/rota",
+			"role": "screen",
+			"summary": "tela",
+			"files": 2,
+			"lines": 320
+		},
+		{
+			"id": "v:apps/entregador/lib/telas/comprovante",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "Comprovante",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/telas/comprovante",
+			"role": "screen",
+			"summary": "foto e assinatura",
+			"files": 2,
+			"lines": 270
+		},
+		{
+			"id": "v:apps/entregador/lib/telas/perfil",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "Perfil",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/telas/perfil",
+			"role": "screen",
+			"summary": "tela",
+			"files": 1,
+			"lines": 100
+		},
+		{
+			"id": "v:apps/entregador/lib/estado/auth",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "AuthBloc",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/estado/auth",
+			"role": "state",
+			"summary": "estado",
+			"files": 1,
+			"lines": 90
+		},
+		{
+			"id": "v:apps/entregador/lib/estado/entregas",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "EntregasBloc",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/estado/entregas",
+			"role": "state",
+			"summary": "estado",
+			"files": 2,
+			"lines": 210
+		},
+		{
+			"id": "v:apps/entregador/lib/estado/rota",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "RotaBloc",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/estado/rota",
+			"role": "state",
+			"summary": "estado",
+			"files": 1,
+			"lines": 120
+		},
+		{
+			"id": "v:apps/entregador/lib/estado/comprovante",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "ComprovanteBloc",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/estado/comprovante",
+			"role": "state",
+			"summary": "estado",
+			"files": 1,
+			"lines": 110
+		},
+		{
+			"id": "v:apps/entregador/lib/repositorios/auth",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "AuthRepository",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/repositorios/auth",
+			"role": "repository",
+			"summary": "repositório",
+			"files": 1,
+			"lines": 80
+		},
+		{
+			"id": "v:apps/entregador/lib/repositorios/entregas",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "EntregasRepository",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/repositorios/entregas",
+			"role": "repository",
+			"summary": "repositório",
+			"files": 1,
+			"lines": 170
+		},
+		{
+			"id": "v:apps/entregador/lib/repositorios/rota",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "RotaRepository",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/repositorios/rota",
+			"role": "repository",
+			"summary": "repositório",
+			"files": 1,
+			"lines": 90
+		},
+		{
+			"id": "v:apps/entregador/lib/fontes/api",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "ApiCliente",
+			"kind": "mobile",
+			"tech": "dio",
+			"path": "apps/entregador/lib/fontes/api",
+			"role": "source",
+			"summary": "HTTPS → Plataforma",
+			"files": 2,
+			"lines": 200
+		},
+		{
+			"id": "v:apps/entregador/lib/fontes/banco",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "Banco local",
+			"kind": "mobile",
+			"tech": "SQLite",
+			"path": "apps/entregador/lib/fontes/banco",
+			"role": "source",
+			"summary": "Drift · SQLite",
+			"files": 2,
+			"lines": 200
+		},
+		{
+			"id": "v:apps/entregador/lib/fontes/sync",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "Sincronização",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/fontes/sync",
+			"role": "source",
+			"summary": "envia quando volta a internet",
+			"files": 1,
+			"lines": 130
+		},
+		{
+			"id": "v:apps/entregador/lib/fontes/gps",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "GPS",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/fontes/gps",
+			"role": "source",
+			"summary": "geolocator",
+			"files": 1,
+			"lines": 70
+		},
+		{
+			"id": "v:apps/entregador/lib/fontes/camera",
+			"level": "service",
+			"parent": "s:apps/entregador",
+			"name": "Câmera",
+			"kind": "mobile",
+			"tech": "Flutter",
+			"path": "apps/entregador/lib/fontes/camera",
+			"role": "source",
+			"summary": "foto do comprovante",
+			"files": 1,
+			"lines": 60
+		},
+		{
+			"id": "f:apps/entregador/lib/telas/login/login_tela.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/telas/login",
+			"name": "login_tela.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/telas/login/login_tela.dart",
+			"lines": 120,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/telas/login/login_form.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/telas/login",
+			"name": "login_form.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/telas/login/login_form.dart",
+			"lines": 80,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/telas/entregas/entregas_tela.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/telas/entregas",
+			"name": "entregas_tela.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/telas/entregas/entregas_tela.dart",
+			"lines": 210,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/telas/entregas/entrega_card.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/telas/entregas",
+			"name": "entrega_card.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/telas/entregas/entrega_card.dart",
+			"lines": 90,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/telas/rota/rota_tela.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/telas/rota",
+			"name": "rota_tela.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/telas/rota/rota_tela.dart",
+			"lines": 180,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/telas/rota/mapa_widget.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/telas/rota",
+			"name": "mapa_widget.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/telas/rota/mapa_widget.dart",
+			"lines": 140,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/telas/comprovante/comprovante_tela.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/telas/comprovante",
+			"name": "comprovante_tela.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/telas/comprovante/comprovante_tela.dart",
+			"lines": 160,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/telas/comprovante/assinatura.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/telas/comprovante",
+			"name": "assinatura.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/telas/comprovante/assinatura.dart",
+			"lines": 110,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/telas/perfil/perfil_tela.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/telas/perfil",
+			"name": "perfil_tela.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/telas/perfil/perfil_tela.dart",
+			"lines": 100,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/estado/auth/auth_bloc.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/estado/auth",
+			"name": "auth_bloc.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/estado/auth/auth_bloc.dart",
+			"lines": 90,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/estado/entregas/entregas_bloc.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/estado/entregas",
+			"name": "entregas_bloc.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/estado/entregas/entregas_bloc.dart",
+			"lines": 150,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/estado/entregas/entregas_state.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/estado/entregas",
+			"name": "entregas_state.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/estado/entregas/entregas_state.dart",
+			"lines": 60,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/estado/rota/rota_bloc.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/estado/rota",
+			"name": "rota_bloc.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/estado/rota/rota_bloc.dart",
+			"lines": 120,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/estado/comprovante/comprovante_bloc.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/estado/comprovante",
+			"name": "comprovante_bloc.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/estado/comprovante/comprovante_bloc.dart",
+			"lines": 110,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/repositorios/auth/auth_repository.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/repositorios/auth",
+			"name": "auth_repository.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/repositorios/auth/auth_repository.dart",
+			"lines": 80,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/repositorios/entregas/entregas_repository.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/repositorios/entregas",
+			"name": "entregas_repository.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/repositorios/entregas/entregas_repository.dart",
+			"lines": 170,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/repositorios/rota/rota_repository.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/repositorios/rota",
+			"name": "rota_repository.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/repositorios/rota/rota_repository.dart",
+			"lines": 90,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/fontes/api/api_cliente.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/fontes/api",
+			"name": "api_cliente.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/fontes/api/api_cliente.dart",
+			"lines": 140,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/fontes/api/interceptors.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/fontes/api",
+			"name": "interceptors.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/fontes/api/interceptors.dart",
+			"lines": 60,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/fontes/banco/banco.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/fontes/banco",
+			"name": "banco.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/fontes/banco/banco.dart",
+			"lines": 120,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/fontes/banco/tabelas.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/fontes/banco",
+			"name": "tabelas.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/fontes/banco/tabelas.dart",
+			"lines": 80,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/fontes/sync/sincronizacao.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/fontes/sync",
+			"name": "sincronizacao.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/fontes/sync/sincronizacao.dart",
+			"lines": 130,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/fontes/gps/gps.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/fontes/gps",
+			"name": "gps.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/fontes/gps/gps.dart",
+			"lines": 70,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "f:apps/entregador/lib/fontes/camera/camera.dart",
+			"level": "file",
+			"parent": "v:apps/entregador/lib/fontes/camera",
+			"name": "camera.dart",
+			"kind": "file",
+			"path": "apps/entregador/lib/fontes/camera/camera.dart",
+			"lines": 60,
+			"lang": "dart",
+			"folder": ""
+		},
+		{
+			"id": "v:web/painel/app/operacao",
+			"level": "service",
+			"parent": "s:web/painel",
+			"name": "operação",
+			"kind": "web",
+			"tech": "Next.js",
+			"path": "web/painel/app/operacao",
+			"role": "screen",
+			"summary": "pedidos ao vivo e entregadores",
+			"files": 3,
+			"lines": 540
+		},
+		{
+			"id": "v:web/painel/app/relatorios",
+			"level": "service",
+			"parent": "s:web/painel",
+			"name": "relatórios",
+			"kind": "web",
+			"tech": "Next.js",
+			"path": "web/painel/app/relatorios",
+			"role": "screen",
+			"summary": "vendas e prazos",
+			"files": 2,
+			"lines": 360
+		},
+		{
+			"id": "v:web/painel/app/cadastros",
+			"level": "service",
+			"parent": "s:web/painel",
+			"name": "cadastros",
+			"kind": "web",
+			"tech": "Next.js",
+			"path": "web/painel/app/cadastros",
+			"role": "screen",
+			"summary": "lojas, produtos e cupons",
+			"files": 2,
+			"lines": 340
+		},
+		{
+			"id": "v:web/painel/lib/graphql",
+			"level": "service",
+			"parent": "s:web/painel",
+			"name": "graphqlClient",
+			"kind": "web",
+			"tech": "Next.js",
+			"path": "web/painel/lib/graphql",
+			"role": "source",
+			"summary": "GraphQL → Plataforma",
+			"files": 2,
+			"lines": 250
+		},
+		{
+			"id": "f:web/painel/app/operacao/page.tsx",
+			"level": "file",
+			"parent": "v:web/painel/app/operacao",
+			"name": "page.tsx",
+			"kind": "file",
+			"path": "web/painel/app/operacao/page.tsx",
+			"lines": 220,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:web/painel/app/operacao/mapa.tsx",
+			"level": "file",
+			"parent": "v:web/painel/app/operacao",
+			"name": "mapa.tsx",
+			"kind": "file",
+			"path": "web/painel/app/operacao/mapa.tsx",
+			"lines": 180,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:web/painel/app/operacao/fila.tsx",
+			"level": "file",
+			"parent": "v:web/painel/app/operacao",
+			"name": "fila.tsx",
+			"kind": "file",
+			"path": "web/painel/app/operacao/fila.tsx",
+			"lines": 140,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:web/painel/app/relatorios/page.tsx",
+			"level": "file",
+			"parent": "v:web/painel/app/relatorios",
+			"name": "page.tsx",
+			"kind": "file",
+			"path": "web/painel/app/relatorios/page.tsx",
+			"lines": 160,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:web/painel/app/relatorios/graficos.tsx",
+			"level": "file",
+			"parent": "v:web/painel/app/relatorios",
+			"name": "graficos.tsx",
+			"kind": "file",
+			"path": "web/painel/app/relatorios/graficos.tsx",
+			"lines": 200,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:web/painel/app/cadastros/page.tsx",
+			"level": "file",
+			"parent": "v:web/painel/app/cadastros",
+			"name": "page.tsx",
+			"kind": "file",
+			"path": "web/painel/app/cadastros/page.tsx",
+			"lines": 150,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:web/painel/app/cadastros/formulario.tsx",
+			"level": "file",
+			"parent": "v:web/painel/app/cadastros",
+			"name": "formulario.tsx",
+			"kind": "file",
+			"path": "web/painel/app/cadastros/formulario.tsx",
+			"lines": 190,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:web/painel/lib/graphql/client.ts",
+			"level": "file",
+			"parent": "v:web/painel/lib/graphql",
+			"name": "client.ts",
+			"kind": "file",
+			"path": "web/painel/lib/graphql/client.ts",
+			"lines": 90,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "f:web/painel/lib/graphql/queries.ts",
+			"level": "file",
+			"parent": "v:web/painel/lib/graphql",
+			"name": "queries.ts",
+			"kind": "file",
+			"path": "web/painel/lib/graphql/queries.ts",
+			"lines": 160,
+			"lang": "ts",
+			"folder": ""
+		},
+		{
+			"id": "v:plataforma/servicos/api-gateway",
+			"level": "service",
+			"parent": "s:plataforma",
+			"name": "api-gateway",
+			"kind": "backend",
+			"tech": "Go 1.22",
+			"path": "plataforma/servicos/api-gateway",
+			"role": "service",
+			"summary": "entrada de tudo",
+			"files": 11,
+			"lines": 1159
+		},
+		{
+			"id": "v:plataforma/servicos/auth",
+			"level": "service",
+			"parent": "s:plataforma",
+			"name": "auth",
+			"kind": "backend",
+			"tech": "Go 1.22",
+			"path": "plataforma/servicos/auth",
+			"role": "service",
+			"summary": "login e tokens",
+			"files": 9,
+			"lines": 1335
+		},
+		{
+			"id": "v:plataforma/servicos/pedidos",
+			"level": "service",
+			"parent": "s:plataforma",
+			"name": "pedidos",
+			"kind": "backend",
+			"tech": "Go 1.22",
+			"path": "plataforma/servicos/pedidos",
+			"role": "service",
+			"summary": "Recebe pedidos pelo gateway, cobra em pagamentos e avisa os outros pela fila.",
+			"endpoints": [
+				{
+					"method": "POST",
+					"path": "/pedidos",
+					"file": "plataforma/servicos/pedidos/internal/http/handlers.go",
+					"line": 41
+				},
+				{
+					"method": "GET",
+					"path": "/pedidos/{id}",
+					"file": "plataforma/servicos/pedidos/internal/http/handlers.go",
+					"line": 88
+				},
+				{
+					"method": "PATCH",
+					"path": "/pedidos/{id}/status",
+					"file": "plataforma/servicos/pedidos/internal/dominio/status.go",
+					"line": 22
+				}
+			],
+			"publishes": [
+				"pedido.criado",
+				"pedido.cancelado"
+			],
+			"consumes": [
+				"pagamento.confirmado"
+			],
+			"files": 24,
+			"lines": 1848
+		},
+		{
+			"id": "v:plataforma/servicos/pagamentos",
+			"level": "service",
+			"parent": "s:plataforma",
+			"name": "pagamentos",
+			"kind": "backend",
+			"tech": "Go 1.22",
+			"path": "plataforma/servicos/pagamentos",
+			"role": "service",
+			"summary": "Pix e estornos",
+			"publishes": [
+				"pagamento.confirmado"
+			],
+			"endpoints": [
+				{
+					"method": "RPC",
+					"path": "Cobrar",
+					"file": "plataforma/servicos/pagamentos/internal/grpc/servidor.go",
+					"line": 30
+				},
+				{
+					"method": "RPC",
+					"path": "Estornar",
+					"file": "plataforma/servicos/pagamentos/internal/grpc/servidor.go",
+					"line": 58
+				}
+			],
+			"files": 12,
+			"lines": 1885
+		},
+		{
+			"id": "v:plataforma/servicos/rotas",
+			"level": "service",
+			"parent": "s:plataforma",
+			"name": "rotas",
+			"kind": "backend",
+			"tech": "Go 1.22",
+			"path": "plataforma/servicos/rotas",
+			"role": "service",
+			"summary": "frete e trajeto",
+			"files": 10,
+			"lines": 1342
+		},
+		{
+			"id": "v:plataforma/servicos/notificacoes",
+			"level": "service",
+			"parent": "s:plataforma",
+			"name": "notificações",
+			"kind": "backend",
+			"tech": "Go 1.22",
+			"path": "plataforma/servicos/notificacoes",
+			"role": "service",
+			"summary": "WhatsApp e push",
+			"consumes": [
+				"pedido.criado",
+				"pagamento.confirmado"
+			],
+			"files": 7,
+			"lines": 1337
+		},
+		{
+			"id": "v:plataforma/servicos/rastreamento",
+			"level": "service",
+			"parent": "s:plataforma",
+			"name": "rastreamento",
+			"kind": "backend",
+			"tech": "Go 1.22",
+			"path": "plataforma/servicos/rastreamento",
+			"role": "service",
+			"summary": "posição dos veículos",
+			"consumes": [
+				"rastreador/+/posicao"
+			],
+			"files": 9,
+			"lines": 1200
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/cmd/pedidos/main.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "main.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/cmd/pedidos/main.go",
+			"lines": 48,
+			"lang": "go",
+			"folder": "cmd/pedidos",
+			"summary": "inicia o servidor"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/config/pedidos.yaml",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "pedidos.yaml",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/config/pedidos.yaml",
+			"lines": 36,
+			"lang": "yaml",
+			"folder": "config",
+			"summary": "portas e filas"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/http/rotas.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "rotas.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/http/rotas.go",
+			"lines": 64,
+			"lang": "go",
+			"folder": "internal/http",
+			"summary": "6 rotas"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "handlers.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/http/handlers.go",
+			"lines": 212,
+			"lang": "go",
+			"folder": "internal/http",
+			"summary": "CriarPedido, ListarPedidos, Cancelar"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/http/middleware.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "middleware.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/http/middleware.go",
+			"lines": 77,
+			"lang": "go",
+			"folder": "internal/http",
+			"summary": "token e logs"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/http/cancelar.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "cancelar.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/http/cancelar.go",
+			"lines": 58,
+			"lang": "go",
+			"folder": "internal/http"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/http/handlers_test.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "handlers_test.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/http/handlers_test.go",
+			"lines": 160,
+			"lang": "go",
+			"folder": "internal/http"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/dominio/pedido.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "pedido.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/dominio/pedido.go",
+			"lines": 139,
+			"lang": "go",
+			"folder": "internal/dominio",
+			"summary": "regras do pedido"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/dominio/status.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "status.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/dominio/status.go",
+			"lines": 88,
+			"lang": "go",
+			"folder": "internal/dominio",
+			"summary": "7 estados"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/dominio/itens.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "itens.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/dominio/itens.go",
+			"lines": 64,
+			"lang": "go",
+			"folder": "internal/dominio"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/dominio/frete.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "frete.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/dominio/frete.go",
+			"lines": 52,
+			"lang": "go",
+			"folder": "internal/dominio"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/dominio/pedido_test.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "pedido_test.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/dominio/pedido_test.go",
+			"lines": 120,
+			"lang": "go",
+			"folder": "internal/dominio"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/repositorio/pedidos_pg.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "pedidos_pg.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/repositorio/pedidos_pg.go",
+			"lines": 186,
+			"lang": "go",
+			"folder": "internal/repositorio",
+			"summary": "consultas SQL"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/repositorio/itens_pg.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "itens_pg.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/repositorio/itens_pg.go",
+			"lines": 92,
+			"lang": "go",
+			"folder": "internal/repositorio"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "cliente_grpc.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+			"lines": 94,
+			"lang": "go",
+			"folder": "internal/pagamento",
+			"summary": "Cobrar, Estornar"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/pagamento/reprocessar.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "reprocessar.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/pagamento/reprocessar.go",
+			"lines": 41,
+			"lang": "go",
+			"folder": "internal/pagamento"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/eventos/publicador.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "publicador.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/eventos/publicador.go",
+			"lines": 71,
+			"lang": "go",
+			"folder": "internal/eventos",
+			"summary": "3 eventos"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/eventos/eventos.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "eventos.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/eventos/eventos.go",
+			"lines": 45,
+			"lang": "go",
+			"folder": "internal/eventos"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/internal/eventos/consumidor.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "consumidor.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/internal/eventos/consumidor.go",
+			"lines": 66,
+			"lang": "go",
+			"folder": "internal/eventos"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/migrations/0001_init.sql",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "0001_init.sql",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/migrations/0001_init.sql",
+			"lines": 40,
+			"lang": "sql",
+			"folder": "migrations"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/migrations/0002_itens.sql",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "0002_itens.sql",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/migrations/0002_itens.sql",
+			"lines": 28,
+			"lang": "sql",
+			"folder": "migrations"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/migrations/0003_pedidos.sql",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "0003_pedidos.sql",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/migrations/0003_pedidos.sql",
+			"lines": 33,
+			"lang": "sql",
+			"folder": "migrations",
+			"summary": "cria 3 tabelas"
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/go.mod",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "go.mod",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/go.mod",
+			"lines": 12,
+			"lang": "go",
+			"folder": ""
+		},
+		{
+			"id": "f:plataforma/servicos/pedidos/Dockerfile",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pedidos",
+			"name": "Dockerfile",
+			"kind": "file",
+			"path": "plataforma/servicos/pedidos/Dockerfile",
+			"lines": 22,
+			"lang": "docker",
+			"folder": ""
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/cmd/gateway/main.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "main.go",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/cmd/gateway/main.go",
+			"lines": 43,
+			"lang": "go",
+			"folder": "cmd/gateway"
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/internal/rotas/rotas.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "rotas.go",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/internal/rotas/rotas.go",
+			"lines": 244,
+			"lang": "go",
+			"folder": "internal/rotas"
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/internal/rotas/proxy.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "proxy.go",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/internal/rotas/proxy.go",
+			"lines": 67,
+			"lang": "go",
+			"folder": "internal/rotas"
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/internal/auth/token.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "token.go",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/internal/auth/token.go",
+			"lines": 83,
+			"lang": "go",
+			"folder": "internal/auth"
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/internal/limites/limites.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "limites.go",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/internal/limites/limites.go",
+			"lines": 91,
+			"lang": "go",
+			"folder": "internal/limites"
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/internal/sessao/redis.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "redis.go",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/internal/sessao/redis.go",
+			"lines": 33,
+			"lang": "go",
+			"folder": "internal/sessao"
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/internal/graphql/schema.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "schema.go",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/internal/graphql/schema.go",
+			"lines": 160,
+			"lang": "go",
+			"folder": "internal/graphql"
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/internal/graphql/resolvers.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "resolvers.go",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/internal/graphql/resolvers.go",
+			"lines": 94,
+			"lang": "go",
+			"folder": "internal/graphql"
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/internal/ws/websocket.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "websocket.go",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/internal/ws/websocket.go",
+			"lines": 192,
+			"lang": "go",
+			"folder": "internal/ws"
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/config/gateway.yaml",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "gateway.yaml",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/config/gateway.yaml",
+			"lines": 60,
+			"lang": "yaml",
+			"folder": "config"
+		},
+		{
+			"id": "f:plataforma/servicos/api-gateway/go.mod",
+			"level": "file",
+			"parent": "v:plataforma/servicos/api-gateway",
+			"name": "go.mod",
+			"kind": "file",
+			"path": "plataforma/servicos/api-gateway/go.mod",
+			"lines": 92,
+			"lang": "go",
+			"folder": ""
+		},
+		{
+			"id": "f:plataforma/servicos/auth/cmd/auth/main.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/auth",
+			"name": "main.go",
+			"kind": "file",
+			"path": "plataforma/servicos/auth/cmd/auth/main.go",
+			"lines": 162,
+			"lang": "go",
+			"folder": "cmd/auth"
+		},
+		{
+			"id": "f:plataforma/servicos/auth/internal/login/login.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/auth",
+			"name": "login.go",
+			"kind": "file",
+			"path": "plataforma/servicos/auth/internal/login/login.go",
+			"lines": 244,
+			"lang": "go",
+			"folder": "internal/login"
+		},
+		{
+			"id": "f:plataforma/servicos/auth/internal/login/senha.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/auth",
+			"name": "senha.go",
+			"kind": "file",
+			"path": "plataforma/servicos/auth/internal/login/senha.go",
+			"lines": 67,
+			"lang": "go",
+			"folder": "internal/login"
+		},
+		{
+			"id": "f:plataforma/servicos/auth/internal/token/jwt.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/auth",
+			"name": "jwt.go",
+			"kind": "file",
+			"path": "plataforma/servicos/auth/internal/token/jwt.go",
+			"lines": 46,
+			"lang": "go",
+			"folder": "internal/token"
+		},
+		{
+			"id": "f:plataforma/servicos/auth/internal/token/renovar.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/auth",
+			"name": "renovar.go",
+			"kind": "file",
+			"path": "plataforma/servicos/auth/internal/token/renovar.go",
+			"lines": 247,
+			"lang": "go",
+			"folder": "internal/token"
+		},
+		{
+			"id": "f:plataforma/servicos/auth/internal/repositorio/usuarios_pg.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/auth",
+			"name": "usuarios_pg.go",
+			"kind": "file",
+			"path": "plataforma/servicos/auth/internal/repositorio/usuarios_pg.go",
+			"lines": 210,
+			"lang": "go",
+			"folder": "internal/repositorio"
+		},
+		{
+			"id": "f:plataforma/servicos/auth/internal/sessao/redis.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/auth",
+			"name": "redis.go",
+			"kind": "file",
+			"path": "plataforma/servicos/auth/internal/sessao/redis.go",
+			"lines": 86,
+			"lang": "go",
+			"folder": "internal/sessao"
+		},
+		{
+			"id": "f:plataforma/servicos/auth/migrations/0001_usuarios.sql",
+			"level": "file",
+			"parent": "v:plataforma/servicos/auth",
+			"name": "0001_usuarios.sql",
+			"kind": "file",
+			"path": "plataforma/servicos/auth/migrations/0001_usuarios.sql",
+			"lines": 57,
+			"lang": "sql",
+			"folder": "migrations"
+		},
+		{
+			"id": "f:plataforma/servicos/auth/go.mod",
+			"level": "file",
+			"parent": "v:plataforma/servicos/auth",
+			"name": "go.mod",
+			"kind": "file",
+			"path": "plataforma/servicos/auth/go.mod",
+			"lines": 216,
+			"lang": "go",
+			"folder": ""
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/cmd/pagamentos/main.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "main.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/cmd/pagamentos/main.go",
+			"lines": 154,
+			"lang": "go",
+			"folder": "cmd/pagamentos"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/internal/grpc/servidor.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "servidor.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/internal/grpc/servidor.go",
+			"lines": 88,
+			"lang": "go",
+			"folder": "internal/grpc"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/internal/grpc/pagamentos.pb.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "pagamentos.pb.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/internal/grpc/pagamentos.pb.go",
+			"lines": 96,
+			"lang": "go",
+			"folder": "internal/grpc"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/internal/pix/cliente.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "cliente.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/internal/pix/cliente.go",
+			"lines": 120,
+			"lang": "go",
+			"folder": "internal/pix"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/internal/pix/webhook.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "webhook.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/internal/pix/webhook.go",
+			"lines": 173,
+			"lang": "go",
+			"folder": "internal/pix"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/internal/pix/qrcode.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "qrcode.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/internal/pix/qrcode.go",
+			"lines": 189,
+			"lang": "go",
+			"folder": "internal/pix"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/internal/estorno/estorno.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "estorno.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/internal/estorno/estorno.go",
+			"lines": 197,
+			"lang": "go",
+			"folder": "internal/estorno"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/internal/repositorio/cobrancas_pg.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "cobrancas_pg.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/internal/repositorio/cobrancas_pg.go",
+			"lines": 123,
+			"lang": "go",
+			"folder": "internal/repositorio"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/internal/eventos/publicador.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "publicador.go",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/internal/eventos/publicador.go",
+			"lines": 184,
+			"lang": "go",
+			"folder": "internal/eventos"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/migrations/0001_cobrancas.sql",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "0001_cobrancas.sql",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/migrations/0001_cobrancas.sql",
+			"lines": 200,
+			"lang": "sql",
+			"folder": "migrations"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/migrations/0002_estornos.sql",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "0002_estornos.sql",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/migrations/0002_estornos.sql",
+			"lines": 216,
+			"lang": "sql",
+			"folder": "migrations"
+		},
+		{
+			"id": "f:plataforma/servicos/pagamentos/go.mod",
+			"level": "file",
+			"parent": "v:plataforma/servicos/pagamentos",
+			"name": "go.mod",
+			"kind": "file",
+			"path": "plataforma/servicos/pagamentos/go.mod",
+			"lines": 145,
+			"lang": "go",
+			"folder": ""
+		},
+		{
+			"id": "f:plataforma/servicos/rotas/cmd/rotas/main.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rotas",
+			"name": "main.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rotas/cmd/rotas/main.go",
+			"lines": 199,
+			"lang": "go",
+			"folder": "cmd/rotas"
+		},
+		{
+			"id": "f:plataforma/servicos/rotas/internal/frete/frete.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rotas",
+			"name": "frete.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rotas/internal/frete/frete.go",
+			"lines": 244,
+			"lang": "go",
+			"folder": "internal/frete"
+		},
+		{
+			"id": "f:plataforma/servicos/rotas/internal/frete/tabela.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rotas",
+			"name": "tabela.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rotas/internal/frete/tabela.go",
+			"lines": 104,
+			"lang": "go",
+			"folder": "internal/frete"
+		},
+		{
+			"id": "f:plataforma/servicos/rotas/internal/trajeto/trajeto.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rotas",
+			"name": "trajeto.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rotas/internal/trajeto/trajeto.go",
+			"lines": 38,
+			"lang": "go",
+			"folder": "internal/trajeto"
+		},
+		{
+			"id": "f:plataforma/servicos/rotas/internal/trajeto/otimizador.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rotas",
+			"name": "otimizador.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rotas/internal/trajeto/otimizador.go",
+			"lines": 202,
+			"lang": "go",
+			"folder": "internal/trajeto"
+		},
+		{
+			"id": "f:plataforma/servicos/rotas/internal/mapas/google.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rotas",
+			"name": "google.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rotas/internal/mapas/google.go",
+			"lines": 33,
+			"lang": "go",
+			"folder": "internal/mapas"
+		},
+		{
+			"id": "f:plataforma/servicos/rotas/internal/mapas/cache.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rotas",
+			"name": "cache.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rotas/internal/mapas/cache.go",
+			"lines": 49,
+			"lang": "go",
+			"folder": "internal/mapas"
+		},
+		{
+			"id": "f:plataforma/servicos/rotas/internal/grpc/servidor.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rotas",
+			"name": "servidor.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rotas/internal/grpc/servidor.go",
+			"lines": 176,
+			"lang": "go",
+			"folder": "internal/grpc"
+		},
+		{
+			"id": "f:plataforma/servicos/rotas/internal/repositorio/zonas_pg.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rotas",
+			"name": "zonas_pg.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rotas/internal/repositorio/zonas_pg.go",
+			"lines": 258,
+			"lang": "go",
+			"folder": "internal/repositorio"
+		},
+		{
+			"id": "f:plataforma/servicos/rotas/go.mod",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rotas",
+			"name": "go.mod",
+			"kind": "file",
+			"path": "plataforma/servicos/rotas/go.mod",
+			"lines": 39,
+			"lang": "go",
+			"folder": ""
+		},
+		{
+			"id": "f:plataforma/servicos/notificacoes/cmd/notificacoes/main.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/notificacoes",
+			"name": "main.go",
+			"kind": "file",
+			"path": "plataforma/servicos/notificacoes/cmd/notificacoes/main.go",
+			"lines": 228,
+			"lang": "go",
+			"folder": "cmd/notificacoes"
+		},
+		{
+			"id": "f:plataforma/servicos/notificacoes/internal/whatsapp/cliente.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/notificacoes",
+			"name": "cliente.go",
+			"kind": "file",
+			"path": "plataforma/servicos/notificacoes/internal/whatsapp/cliente.go",
+			"lines": 199,
+			"lang": "go",
+			"folder": "internal/whatsapp"
+		},
+		{
+			"id": "f:plataforma/servicos/notificacoes/internal/whatsapp/modelos.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/notificacoes",
+			"name": "modelos.go",
+			"kind": "file",
+			"path": "plataforma/servicos/notificacoes/internal/whatsapp/modelos.go",
+			"lines": 252,
+			"lang": "go",
+			"folder": "internal/whatsapp"
+		},
+		{
+			"id": "f:plataforma/servicos/notificacoes/internal/push/fcm.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/notificacoes",
+			"name": "fcm.go",
+			"kind": "file",
+			"path": "plataforma/servicos/notificacoes/internal/push/fcm.go",
+			"lines": 239,
+			"lang": "go",
+			"folder": "internal/push"
+		},
+		{
+			"id": "f:plataforma/servicos/notificacoes/internal/eventos/consumidor.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/notificacoes",
+			"name": "consumidor.go",
+			"kind": "file",
+			"path": "plataforma/servicos/notificacoes/internal/eventos/consumidor.go",
+			"lines": 202,
+			"lang": "go",
+			"folder": "internal/eventos"
+		},
+		{
+			"id": "f:plataforma/servicos/notificacoes/internal/pedidos/status.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/notificacoes",
+			"name": "status.go",
+			"kind": "file",
+			"path": "plataforma/servicos/notificacoes/internal/pedidos/status.go",
+			"lines": 107,
+			"lang": "go",
+			"folder": "internal/pedidos"
+		},
+		{
+			"id": "f:plataforma/servicos/notificacoes/go.mod",
+			"level": "file",
+			"parent": "v:plataforma/servicos/notificacoes",
+			"name": "go.mod",
+			"kind": "file",
+			"path": "plataforma/servicos/notificacoes/go.mod",
+			"lines": 110,
+			"lang": "go",
+			"folder": ""
+		},
+		{
+			"id": "f:plataforma/servicos/rastreamento/cmd/rastreamento/main.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rastreamento",
+			"name": "main.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rastreamento/cmd/rastreamento/main.go",
+			"lines": 228,
+			"lang": "go",
+			"folder": "cmd/rastreamento"
+		},
+		{
+			"id": "f:plataforma/servicos/rastreamento/internal/mqtt/assinante.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rastreamento",
+			"name": "assinante.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rastreamento/internal/mqtt/assinante.go",
+			"lines": 125,
+			"lang": "go",
+			"folder": "internal/mqtt"
+		},
+		{
+			"id": "f:plataforma/servicos/rastreamento/internal/mqtt/mensagem.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rastreamento",
+			"name": "mensagem.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rastreamento/internal/mqtt/mensagem.go",
+			"lines": 141,
+			"lang": "go",
+			"folder": "internal/mqtt"
+		},
+		{
+			"id": "f:plataforma/servicos/rastreamento/internal/posicao/posicao.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rastreamento",
+			"name": "posicao.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rastreamento/internal/posicao/posicao.go",
+			"lines": 38,
+			"lang": "go",
+			"folder": "internal/posicao"
+		},
+		{
+			"id": "f:plataforma/servicos/rastreamento/internal/posicao/filtro.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rastreamento",
+			"name": "filtro.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rastreamento/internal/posicao/filtro.go",
+			"lines": 54,
+			"lang": "go",
+			"folder": "internal/posicao"
+		},
+		{
+			"id": "f:plataforma/servicos/rastreamento/internal/posicao/cache.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rastreamento",
+			"name": "cache.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rastreamento/internal/posicao/cache.go",
+			"lines": 70,
+			"lang": "go",
+			"folder": "internal/posicao"
+		},
+		{
+			"id": "f:plataforma/servicos/rastreamento/internal/rotas/cliente_grpc.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rastreamento",
+			"name": "cliente_grpc.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rastreamento/internal/rotas/cliente_grpc.go",
+			"lines": 78,
+			"lang": "go",
+			"folder": "internal/rotas"
+		},
+		{
+			"id": "f:plataforma/servicos/rastreamento/internal/alertas/alertas.go",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rastreamento",
+			"name": "alertas.go",
+			"kind": "file",
+			"path": "plataforma/servicos/rastreamento/internal/alertas/alertas.go",
+			"lines": 250,
+			"lang": "go",
+			"folder": "internal/alertas"
+		},
+		{
+			"id": "f:plataforma/servicos/rastreamento/go.mod",
+			"level": "file",
+			"parent": "v:plataforma/servicos/rastreamento",
+			"name": "go.mod",
+			"kind": "file",
+			"path": "plataforma/servicos/rastreamento/go.mod",
+			"lines": 216,
+			"lang": "go",
+			"folder": ""
+		},
+		{
+			"id": "v:firmware/rastreador/src/tarefas/gps",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "gps_task",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/tarefas/gps",
+			"role": "task",
+			"summary": "prioridade 3 · a cada 5 s",
+			"files": 3,
+			"lines": 360
+		},
+		{
+			"id": "v:firmware/rastreador/src/tarefas/modem",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "modem_task",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/tarefas/modem",
+			"role": "task",
+			"summary": "prioridade 4",
+			"files": 3,
+			"lines": 415
+		},
+		{
+			"id": "v:firmware/rastreador/src/tarefas/sensores",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "sensores_task",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/tarefas/sensores",
+			"role": "task",
+			"summary": "prioridade 2",
+			"files": 2,
+			"lines": 135
+		},
+		{
+			"id": "v:firmware/rastreador/src/tarefas/mqtt",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "mqtt_task",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/tarefas/mqtt",
+			"role": "task",
+			"summary": "prioridade 4",
+			"files": 2,
+			"lines": 270
+		},
+		{
+			"id": "v:firmware/rastreador/src/tarefas/ota",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "ota_task",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/tarefas/ota",
+			"role": "task",
+			"summary": "prioridade 1",
+			"files": 1,
+			"lines": 150
+		},
+		{
+			"id": "v:firmware/rastreador/src/modulos/fila_offline",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "fila_offline",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/modulos/fila_offline",
+			"role": "module",
+			"summary": "guarda sem sinal",
+			"files": 2,
+			"lines": 150
+		},
+		{
+			"id": "v:firmware/rastreador/src/modulos/protocolo",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "protocolo",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/modulos/protocolo",
+			"role": "module",
+			"summary": "CBOR",
+			"files": 2,
+			"lines": 200
+		},
+		{
+			"id": "v:firmware/rastreador/src/modulos/energia",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "energia",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/modulos/energia",
+			"role": "module",
+			"summary": "modo econômico",
+			"files": 1,
+			"lines": 90
+		},
+		{
+			"id": "v:firmware/rastreador/src/drivers/uart_gps",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "uart_gps",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/drivers/uart_gps",
+			"role": "driver",
+			"summary": "driver",
+			"files": 1,
+			"lines": 80
+		},
+		{
+			"id": "v:firmware/rastreador/src/drivers/uart_modem",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "uart_modem",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/drivers/uart_modem",
+			"role": "driver",
+			"summary": "driver",
+			"files": 1,
+			"lines": 85
+		},
+		{
+			"id": "v:firmware/rastreador/src/drivers/i2c_sensores",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "i2c_sensores",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/drivers/i2c_sensores",
+			"role": "driver",
+			"summary": "driver",
+			"files": 1,
+			"lines": 95
+		},
+		{
+			"id": "v:firmware/rastreador/src/drivers/spi_flash",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "spi_flash",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/drivers/spi_flash",
+			"role": "driver",
+			"summary": "driver",
+			"files": 1,
+			"lines": 120
+		},
+		{
+			"id": "v:firmware/rastreador/src/drivers/adc_bateria",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "adc_bateria",
+			"kind": "embedded",
+			"tech": "C",
+			"path": "firmware/rastreador/src/drivers/adc_bateria",
+			"role": "driver",
+			"summary": "driver",
+			"files": 1,
+			"lines": 60
+		},
+		{
+			"id": "v:firmware/rastreador/hw/gps",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "GPS NEO-M8N",
+			"kind": "embedded",
+			"path": "firmware/rastreador/hw/gps",
+			"role": "hardware",
+			"summary": "antena externa"
+		},
+		{
+			"id": "v:firmware/rastreador/hw/modem",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "Modem SIM7600",
+			"kind": "embedded",
+			"path": "firmware/rastreador/hw/modem",
+			"role": "hardware",
+			"summary": "LTE Cat-1"
+		},
+		{
+			"id": "v:firmware/rastreador/hw/sensores",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "Porta e temperatura",
+			"kind": "embedded",
+			"path": "firmware/rastreador/hw/sensores",
+			"role": "hardware",
+			"summary": "SHT31 · reed"
+		},
+		{
+			"id": "v:firmware/rastreador/hw/flash",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "Flash W25Q128",
+			"kind": "embedded",
+			"path": "firmware/rastreador/hw/flash",
+			"role": "hardware",
+			"summary": "16 MB"
+		},
+		{
+			"id": "v:firmware/rastreador/hw/bateria",
+			"level": "service",
+			"parent": "s:firmware/rastreador",
+			"name": "Bateria 3,7 V",
+			"kind": "embedded",
+			"path": "firmware/rastreador/hw/bateria",
+			"role": "hardware",
+			"summary": "5.000 mAh"
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/gps/gps_task.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/gps",
+			"name": "gps_task.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/gps/gps_task.c",
+			"lines": 180,
+			"lang": "c",
+			"folder": "",
+			"summary": "lê frases NMEA, filtra a posição e entrega a cada 5 s"
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/gps/nmea.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/gps",
+			"name": "nmea.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/gps/nmea.c",
+			"lines": 140,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/gps/gps.h",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/gps",
+			"name": "gps.h",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/gps/gps.h",
+			"lines": 40,
+			"lang": "h",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/modem/modem_task.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/modem",
+			"name": "modem_task.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/modem/modem_task.c",
+			"lines": 220,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/modem/at.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/modem",
+			"name": "at.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/modem/at.c",
+			"lines": 160,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/modem/modem.h",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/modem",
+			"name": "modem.h",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/modem/modem.h",
+			"lines": 35,
+			"lang": "h",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/sensores/sensores_task.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/sensores",
+			"name": "sensores_task.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/sensores/sensores_task.c",
+			"lines": 110,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/sensores/sensores.h",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/sensores",
+			"name": "sensores.h",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/sensores/sensores.h",
+			"lines": 25,
+			"lang": "h",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/mqtt/mqtt_task.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/mqtt",
+			"name": "mqtt_task.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/mqtt/mqtt_task.c",
+			"lines": 240,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/mqtt/mqtt.h",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/mqtt",
+			"name": "mqtt.h",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/mqtt/mqtt.h",
+			"lines": 30,
+			"lang": "h",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/tarefas/ota/ota_task.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/tarefas/ota",
+			"name": "ota_task.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/tarefas/ota/ota_task.c",
+			"lines": 150,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/modulos/fila_offline/fila_offline.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/modulos/fila_offline",
+			"name": "fila_offline.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/modulos/fila_offline/fila_offline.c",
+			"lines": 130,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/modulos/fila_offline/fila_offline.h",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/modulos/fila_offline",
+			"name": "fila_offline.h",
+			"kind": "file",
+			"path": "firmware/rastreador/src/modulos/fila_offline/fila_offline.h",
+			"lines": 20,
+			"lang": "h",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/modulos/protocolo/cbor.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/modulos/protocolo",
+			"name": "cbor.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/modulos/protocolo/cbor.c",
+			"lines": 170,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/modulos/protocolo/protocolo.h",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/modulos/protocolo",
+			"name": "protocolo.h",
+			"kind": "file",
+			"path": "firmware/rastreador/src/modulos/protocolo/protocolo.h",
+			"lines": 30,
+			"lang": "h",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/modulos/energia/energia.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/modulos/energia",
+			"name": "energia.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/modulos/energia/energia.c",
+			"lines": 90,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/drivers/uart_gps/uart_gps.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/drivers/uart_gps",
+			"name": "uart_gps.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/drivers/uart_gps/uart_gps.c",
+			"lines": 80,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/drivers/uart_modem/uart_modem.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/drivers/uart_modem",
+			"name": "uart_modem.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/drivers/uart_modem/uart_modem.c",
+			"lines": 85,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/drivers/i2c_sensores/i2c_sensores.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/drivers/i2c_sensores",
+			"name": "i2c_sensores.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/drivers/i2c_sensores/i2c_sensores.c",
+			"lines": 95,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/drivers/spi_flash/spi_flash.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/drivers/spi_flash",
+			"name": "spi_flash.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/drivers/spi_flash/spi_flash.c",
+			"lines": 120,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "f:firmware/rastreador/src/drivers/adc_bateria/adc_bateria.c",
+			"level": "file",
+			"parent": "v:firmware/rastreador/src/drivers/adc_bateria",
+			"name": "adc_bateria.c",
+			"kind": "file",
+			"path": "firmware/rastreador/src/drivers/adc_bateria/adc_bateria.c",
+			"lines": 60,
+			"lang": "c",
+			"folder": ""
+		},
+		{
+			"id": "v:dados/etl",
+			"level": "service",
+			"parent": "s:dados",
+			"name": "etl",
+			"kind": "data",
+			"tech": "Python",
+			"path": "dados/etl",
+			"role": "service",
+			"summary": "carga diária dos eventos",
+			"files": 6,
+			"lines": 731
+		},
+		{
+			"id": "v:dados/paineis",
+			"level": "service",
+			"parent": "s:dados",
+			"name": "painéis",
+			"kind": "data",
+			"tech": "Looker",
+			"path": "dados/paineis",
+			"role": "service",
+			"summary": "painéis de negócio",
+			"files": 3,
+			"lines": 394
+		},
+		{
+			"id": "f:dados/etl/carga.py",
+			"level": "file",
+			"parent": "v:dados/etl",
+			"name": "carga.py",
+			"kind": "file",
+			"path": "dados/etl/carga.py",
+			"lines": 96,
+			"lang": "py",
+			"folder": ""
+		},
+		{
+			"id": "f:dados/etl/transformar.py",
+			"level": "file",
+			"parent": "v:dados/etl",
+			"name": "transformar.py",
+			"kind": "file",
+			"path": "dados/etl/transformar.py",
+			"lines": 141,
+			"lang": "py",
+			"folder": ""
+		},
+		{
+			"id": "f:dados/etl/eventos.py",
+			"level": "file",
+			"parent": "v:dados/etl",
+			"name": "eventos.py",
+			"kind": "file",
+			"path": "dados/etl/eventos.py",
+			"lines": 46,
+			"lang": "py",
+			"folder": ""
+		},
+		{
+			"id": "f:dados/etl/agenda.py",
+			"level": "file",
+			"parent": "v:dados/etl",
+			"name": "agenda.py",
+			"kind": "file",
+			"path": "dados/etl/agenda.py",
+			"lines": 62,
+			"lang": "py",
+			"folder": ""
+		},
+		{
+			"id": "f:dados/etl/esquema.sql",
+			"level": "file",
+			"parent": "v:dados/etl",
+			"name": "esquema.sql",
+			"kind": "file",
+			"path": "dados/etl/esquema.sql",
+			"lines": 189,
+			"lang": "sql",
+			"folder": ""
+		},
+		{
+			"id": "f:dados/etl/requirements.txt",
+			"level": "file",
+			"parent": "v:dados/etl",
+			"name": "requirements.txt",
+			"kind": "file",
+			"path": "dados/etl/requirements.txt",
+			"lines": 197,
+			"lang": "txt",
+			"folder": ""
+		},
+		{
+			"id": "f:dados/paineis/vendas.lkml",
+			"level": "file",
+			"parent": "v:dados/paineis",
+			"name": "vendas.lkml",
+			"kind": "file",
+			"path": "dados/paineis/vendas.lkml",
+			"lines": 207,
+			"lang": "lkml",
+			"folder": ""
+		},
+		{
+			"id": "f:dados/paineis/entregas.lkml",
+			"level": "file",
+			"parent": "v:dados/paineis",
+			"name": "entregas.lkml",
+			"kind": "file",
+			"path": "dados/paineis/entregas.lkml",
+			"lines": 104,
+			"lang": "lkml",
+			"folder": ""
+		},
+		{
+			"id": "f:dados/paineis/modelo.lkml",
+			"level": "file",
+			"parent": "v:dados/paineis",
+			"name": "modelo.lkml",
+			"kind": "file",
+			"path": "dados/paineis/modelo.lkml",
+			"lines": 83,
+			"lang": "lkml",
+			"folder": ""
+		}
+	],
+	"links": [
+		{
+			"id": "l1",
+			"from": "s:apps/cliente",
+			"to": "s:plataforma",
+			"level": "system",
+			"protocol": "HTTPS",
+			"async": false,
+			"count": 14,
+			"label": "HTTPS · REST"
+		},
+		{
+			"id": "l2",
+			"from": "s:apps/entregador",
+			"to": "s:plataforma",
+			"level": "system",
+			"protocol": "HTTPS",
+			"async": false,
+			"count": 11,
+			"label": "HTTPS + WebSocket"
+		},
+		{
+			"id": "l3",
+			"from": "s:web/painel",
+			"to": "s:plataforma",
+			"level": "system",
+			"protocol": "GraphQL",
+			"async": false,
+			"count": 9,
+			"label": "GraphQL"
+		},
+		{
+			"id": "l4",
+			"from": "s:plataforma",
+			"to": "x:gateway-pix",
+			"level": "system",
+			"protocol": "HTTPS",
+			"async": false,
+			"count": 4,
+			"label": "HTTPS"
+		},
+		{
+			"id": "l5",
+			"from": "s:plataforma",
+			"to": "x:google-maps",
+			"level": "system",
+			"protocol": "HTTPS",
+			"async": false,
+			"count": 3,
+			"label": "HTTPS"
+		},
+		{
+			"id": "l6",
+			"from": "s:plataforma",
+			"to": "x:whatsapp",
+			"level": "system",
+			"protocol": "HTTPS",
+			"async": false,
+			"count": 2,
+			"label": "HTTPS"
+		},
+		{
+			"id": "l7",
+			"from": "s:plataforma",
+			"to": "s:dados",
+			"level": "system",
+			"protocol": "AMQP",
+			"async": true,
+			"count": 2,
+			"label": "eventos"
+		},
+		{
+			"id": "l-mqtt",
+			"from": "s:firmware/rastreador",
+			"to": "s:plataforma",
+			"level": "system",
+			"protocol": "MQTT",
+			"async": true,
+			"count": 3,
+			"label": "MQTT · LTE"
+		},
+		{
+			"id": "l8",
+			"from": "v:apps/cliente/src/api",
+			"to": "v:plataforma/servicos/api-gateway",
+			"level": "service",
+			"protocol": "HTTPS",
+			"async": false,
+			"count": 14,
+			"label": "HTTPS · REST"
+		},
+		{
+			"id": "l9",
+			"from": "v:apps/entregador/lib/fontes/api",
+			"to": "v:plataforma/servicos/api-gateway",
+			"level": "service",
+			"protocol": "HTTPS",
+			"async": false,
+			"count": 11,
+			"label": "HTTPS + WebSocket"
+		},
+		{
+			"id": "l10",
+			"from": "v:web/painel/lib/graphql",
+			"to": "v:plataforma/servicos/api-gateway",
+			"level": "service",
+			"protocol": "GraphQL",
+			"async": false,
+			"count": 9,
+			"label": "GraphQL"
+		},
+		{
+			"id": "l11",
+			"from": "v:firmware/rastreador/src/tarefas/mqtt",
+			"to": "q:emqx",
+			"level": "service",
+			"protocol": "MQTT",
+			"async": true,
+			"count": 3,
+			"label": "MQTT via LTE"
+		},
+		{
+			"id": "l12",
+			"from": "q:emqx",
+			"to": "v:plataforma/servicos/rastreamento",
+			"level": "service",
+			"protocol": "MQTT",
+			"async": true,
+			"count": 2,
+			"label": "posição"
+		},
+		{
+			"id": "l13",
+			"from": "v:plataforma/servicos/api-gateway",
+			"to": "v:plataforma/servicos/auth",
+			"level": "service",
+			"protocol": "HTTP",
+			"async": false,
+			"count": 4,
+			"label": "valida token",
+			"evidence": [
+				{
+					"path": "plataforma/servicos/api-gateway/internal/auth/token.go",
+					"line": 18
+				}
+			]
+		},
+		{
+			"id": "l14",
+			"from": "v:plataforma/servicos/api-gateway",
+			"to": "v:plataforma/servicos/pedidos",
+			"level": "service",
+			"protocol": "HTTP",
+			"async": false,
+			"count": 9,
+			"label": "REST",
+			"evidence": [
+				{
+					"path": "plataforma/servicos/api-gateway/internal/rotas/rotas.go",
+					"line": 33
+				}
+			]
+		},
+		{
+			"id": "l15",
+			"from": "v:plataforma/servicos/api-gateway",
+			"to": "v:plataforma/servicos/rotas",
+			"level": "service",
+			"protocol": "HTTP",
+			"async": false,
+			"count": 5,
+			"label": "REST"
+		},
+		{
+			"id": "l16",
+			"from": "v:plataforma/servicos/api-gateway",
+			"to": "v:plataforma/servicos/rastreamento",
+			"level": "service",
+			"protocol": "HTTP",
+			"async": false,
+			"count": 3,
+			"label": "REST"
+		},
+		{
+			"id": "l17",
+			"from": "v:plataforma/servicos/api-gateway",
+			"to": "d:redis",
+			"level": "service",
+			"protocol": "Redis",
+			"async": false,
+			"count": 3,
+			"label": "sessões"
+		},
+		{
+			"id": "l18",
+			"from": "v:plataforma/servicos/auth",
+			"to": "d:redis",
+			"level": "service",
+			"protocol": "Redis",
+			"async": false,
+			"count": 2,
+			"label": "tokens"
+		},
+		{
+			"id": "l19",
+			"from": "v:plataforma/servicos/auth",
+			"to": "d:postgresql",
+			"level": "service",
+			"protocol": "SQL",
+			"async": false,
+			"count": 5
+		},
+		{
+			"id": "l20",
+			"from": "v:plataforma/servicos/pedidos",
+			"to": "v:plataforma/servicos/pagamentos",
+			"level": "service",
+			"protocol": "gRPC",
+			"async": false,
+			"count": 6,
+			"label": "gRPC",
+			"evidence": [
+				{
+					"path": "plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+					"line": 24
+				},
+				{
+					"path": "plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+					"line": 41
+				},
+				{
+					"path": "plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+					"line": 58
+				},
+				{
+					"path": "plataforma/servicos/pedidos/internal/http/handlers.go",
+					"line": 45
+				},
+				{
+					"path": "plataforma/servicos/pedidos/internal/http/cancelar.go",
+					"line": 31
+				},
+				{
+					"path": "plataforma/servicos/pedidos/internal/pagamento/reprocessar.go",
+					"line": 19
+				}
+			]
+		},
+		{
+			"id": "l21",
+			"from": "v:plataforma/servicos/pedidos",
+			"to": "d:postgresql",
+			"level": "service",
+			"protocol": "SQL",
+			"async": false,
+			"count": 14,
+			"label": "lê e grava"
+		},
+		{
+			"id": "l22",
+			"from": "v:plataforma/servicos/pedidos",
+			"to": "q:rabbitmq",
+			"level": "service",
+			"protocol": "AMQP",
+			"async": true,
+			"count": 3,
+			"label": "pedido.criado"
+		},
+		{
+			"id": "l-ciclo-1",
+			"from": "v:plataforma/servicos/pedidos",
+			"to": "v:plataforma/servicos/notificacoes",
+			"level": "service",
+			"protocol": "HTTP",
+			"async": false,
+			"count": 2,
+			"label": "avisa status",
+			"evidence": [
+				{
+					"path": "plataforma/servicos/pedidos/internal/http/handlers.go",
+					"line": 52
+				},
+				{
+					"path": "plataforma/servicos/pedidos/internal/http/cancelar.go",
+					"line": 40
+				}
+			]
+		},
+		{
+			"id": "l-ciclo-2",
+			"from": "v:plataforma/servicos/notificacoes",
+			"to": "v:plataforma/servicos/pedidos",
+			"level": "service",
+			"protocol": "HTTP",
+			"async": false,
+			"count": 3,
+			"label": "lê status",
+			"evidence": [
+				{
+					"path": "plataforma/servicos/notificacoes/internal/pedidos/status.go",
+					"line": 17
+				}
+			]
+		},
+		{
+			"id": "l23",
+			"from": "v:plataforma/servicos/pagamentos",
+			"to": "d:postgresql",
+			"level": "service",
+			"protocol": "SQL",
+			"async": false,
+			"count": 8
+		},
+		{
+			"id": "l24",
+			"from": "v:plataforma/servicos/pagamentos",
+			"to": "q:rabbitmq",
+			"level": "service",
+			"protocol": "AMQP",
+			"async": true,
+			"count": 2,
+			"label": "pagamento.confirmado"
+		},
+		{
+			"id": "l25",
+			"from": "v:plataforma/servicos/pagamentos",
+			"to": "x:gateway-pix",
+			"level": "service",
+			"protocol": "HTTPS",
+			"async": false,
+			"count": 4,
+			"label": "HTTPS"
+		},
+		{
+			"id": "l26",
+			"from": "v:plataforma/servicos/rotas",
+			"to": "x:google-maps",
+			"level": "service",
+			"protocol": "HTTPS",
+			"async": false,
+			"count": 3,
+			"label": "HTTPS"
+		},
+		{
+			"id": "l27",
+			"from": "v:plataforma/servicos/rotas",
+			"to": "d:postgresql",
+			"level": "service",
+			"protocol": "SQL",
+			"async": false,
+			"count": 6
+		},
+		{
+			"id": "l28",
+			"from": "q:rabbitmq",
+			"to": "v:plataforma/servicos/notificacoes",
+			"level": "service",
+			"protocol": "AMQP",
+			"async": true,
+			"count": 4,
+			"label": "consome"
+		},
+		{
+			"id": "l29",
+			"from": "v:plataforma/servicos/notificacoes",
+			"to": "x:whatsapp",
+			"level": "service",
+			"protocol": "HTTPS",
+			"async": false,
+			"count": 2,
+			"label": "HTTPS"
+		},
+		{
+			"id": "l30",
+			"from": "v:plataforma/servicos/rastreamento",
+			"to": "v:plataforma/servicos/rotas",
+			"level": "service",
+			"protocol": "gRPC",
+			"async": false,
+			"count": 7,
+			"label": "posição"
+		},
+		{
+			"id": "l31",
+			"from": "v:plataforma/servicos/rastreamento",
+			"to": "q:rabbitmq",
+			"level": "service",
+			"protocol": "AMQP",
+			"async": true,
+			"count": 2,
+			"label": "veiculo.parado"
+		},
+		{
+			"id": "l32",
+			"from": "q:rabbitmq",
+			"to": "v:dados/etl",
+			"level": "service",
+			"protocol": "AMQP",
+			"async": true,
+			"count": 2,
+			"label": "eventos"
+		},
+		{
+			"id": "l33",
+			"from": "v:dados/etl",
+			"to": "v:dados/paineis",
+			"level": "service",
+			"protocol": "SQL",
+			"async": false,
+			"count": 3,
+			"label": "tabelas"
+		},
+		{
+			"id": "l34",
+			"from": "v:apps/entregador/lib/telas/login",
+			"to": "v:apps/entregador/lib/telas/entregas",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1,
+			"label": ""
+		},
+		{
+			"id": "l35",
+			"from": "v:apps/entregador/lib/telas/entregas",
+			"to": "v:apps/entregador/lib/telas/rota",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l36",
+			"from": "v:apps/entregador/lib/telas/rota",
+			"to": "v:apps/entregador/lib/telas/comprovante",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l37",
+			"from": "v:apps/entregador/lib/telas/login",
+			"to": "v:apps/entregador/lib/estado/auth",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l38",
+			"from": "v:apps/entregador/lib/telas/entregas",
+			"to": "v:apps/entregador/lib/estado/entregas",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l39",
+			"from": "v:apps/entregador/lib/telas/rota",
+			"to": "v:apps/entregador/lib/estado/rota",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l40",
+			"from": "v:apps/entregador/lib/telas/comprovante",
+			"to": "v:apps/entregador/lib/estado/comprovante",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l41",
+			"from": "v:apps/entregador/lib/telas/perfil",
+			"to": "v:apps/entregador/lib/estado/auth",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l42",
+			"from": "v:apps/entregador/lib/estado/auth",
+			"to": "v:apps/entregador/lib/repositorios/auth",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l43",
+			"from": "v:apps/entregador/lib/estado/entregas",
+			"to": "v:apps/entregador/lib/repositorios/entregas",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l44",
+			"from": "v:apps/entregador/lib/estado/rota",
+			"to": "v:apps/entregador/lib/repositorios/rota",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l45",
+			"from": "v:apps/entregador/lib/estado/comprovante",
+			"to": "v:apps/entregador/lib/repositorios/entregas",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l46",
+			"from": "v:apps/entregador/lib/repositorios/auth",
+			"to": "v:apps/entregador/lib/fontes/api",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l47",
+			"from": "v:apps/entregador/lib/repositorios/entregas",
+			"to": "v:apps/entregador/lib/fontes/banco",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1,
+			"label": "grava primeiro"
+		},
+		{
+			"id": "l48",
+			"from": "v:apps/entregador/lib/repositorios/entregas",
+			"to": "v:apps/entregador/lib/fontes/api",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l49",
+			"from": "v:apps/entregador/lib/fontes/banco",
+			"to": "v:apps/entregador/lib/fontes/sync",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l50",
+			"from": "v:apps/entregador/lib/fontes/sync",
+			"to": "v:apps/entregador/lib/fontes/api",
+			"level": "service",
+			"protocol": "import",
+			"async": true,
+			"count": 1,
+			"label": "com sinal"
+		},
+		{
+			"id": "l51",
+			"from": "v:apps/entregador/lib/repositorios/rota",
+			"to": "v:apps/entregador/lib/fontes/gps",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l52",
+			"from": "v:apps/entregador/lib/estado/comprovante",
+			"to": "v:apps/entregador/lib/fontes/camera",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l53",
+			"from": "v:apps/cliente/src/telas/pedido",
+			"to": "v:apps/cliente/src/estado/pedidos",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l54",
+			"from": "v:apps/cliente/src/telas/conta",
+			"to": "v:apps/cliente/src/estado/pedidos",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l55",
+			"from": "v:apps/cliente/src/estado/pedidos",
+			"to": "v:apps/cliente/src/repositorios/pedidos",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l56",
+			"from": "v:apps/cliente/src/repositorios/pedidos",
+			"to": "v:apps/cliente/src/api",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l57",
+			"from": "v:web/painel/app/operacao",
+			"to": "v:web/painel/lib/graphql",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l58",
+			"from": "v:web/painel/app/relatorios",
+			"to": "v:web/painel/lib/graphql",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l59",
+			"from": "v:web/painel/app/cadastros",
+			"to": "v:web/painel/lib/graphql",
+			"level": "service",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l60",
+			"from": "v:firmware/rastreador/src/tarefas/gps",
+			"to": "v:firmware/rastreador/src/drivers/uart_gps",
+			"level": "service",
+			"protocol": "call",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l61",
+			"from": "v:firmware/rastreador/src/tarefas/modem",
+			"to": "v:firmware/rastreador/src/drivers/uart_modem",
+			"level": "service",
+			"protocol": "call",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l62",
+			"from": "v:firmware/rastreador/src/tarefas/sensores",
+			"to": "v:firmware/rastreador/src/drivers/i2c_sensores",
+			"level": "service",
+			"protocol": "call",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l63",
+			"from": "v:firmware/rastreador/src/tarefas/gps",
+			"to": "v:firmware/rastreador/src/tarefas/mqtt",
+			"level": "service",
+			"protocol": "queue",
+			"async": true,
+			"count": 1,
+			"label": "posição"
+		},
+		{
+			"id": "l64",
+			"from": "v:firmware/rastreador/src/tarefas/mqtt",
+			"to": "v:firmware/rastreador/src/tarefas/modem",
+			"level": "service",
+			"protocol": "queue",
+			"async": false,
+			"count": 1,
+			"label": "pacotes"
+		},
+		{
+			"id": "l65",
+			"from": "v:firmware/rastreador/src/tarefas/mqtt",
+			"to": "v:firmware/rastreador/src/modulos/fila_offline",
+			"level": "service",
+			"protocol": "call",
+			"async": true,
+			"count": 1,
+			"label": "sem sinal"
+		},
+		{
+			"id": "l66",
+			"from": "v:firmware/rastreador/src/tarefas/mqtt",
+			"to": "v:firmware/rastreador/src/modulos/protocolo",
+			"level": "service",
+			"protocol": "call",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l67",
+			"from": "v:firmware/rastreador/src/tarefas/ota",
+			"to": "v:firmware/rastreador/src/tarefas/modem",
+			"level": "service",
+			"protocol": "call",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l68",
+			"from": "v:firmware/rastreador/src/modulos/fila_offline",
+			"to": "v:firmware/rastreador/src/drivers/spi_flash",
+			"level": "service",
+			"protocol": "call",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l69",
+			"from": "v:firmware/rastreador/src/modulos/energia",
+			"to": "v:firmware/rastreador/src/drivers/adc_bateria",
+			"level": "service",
+			"protocol": "call",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l70",
+			"from": "v:firmware/rastreador/src/tarefas/sensores",
+			"to": "v:firmware/rastreador/src/modulos/energia",
+			"level": "service",
+			"protocol": "call",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l71",
+			"from": "v:firmware/rastreador/src/drivers/uart_gps",
+			"to": "v:firmware/rastreador/hw/gps",
+			"level": "service",
+			"protocol": "UART",
+			"async": false,
+			"count": 1,
+			"label": "UART1 · 9600"
+		},
+		{
+			"id": "l72",
+			"from": "v:firmware/rastreador/src/drivers/uart_modem",
+			"to": "v:firmware/rastreador/hw/modem",
+			"level": "service",
+			"protocol": "UART",
+			"async": false,
+			"count": 1,
+			"label": "UART2 · AT"
+		},
+		{
+			"id": "l73",
+			"from": "v:firmware/rastreador/src/drivers/i2c_sensores",
+			"to": "v:firmware/rastreador/hw/sensores",
+			"level": "service",
+			"protocol": "I2C",
+			"async": false,
+			"count": 1,
+			"label": "I²C 0x44"
+		},
+		{
+			"id": "l74",
+			"from": "v:firmware/rastreador/src/drivers/spi_flash",
+			"to": "v:firmware/rastreador/hw/flash",
+			"level": "service",
+			"protocol": "SPI",
+			"async": false,
+			"count": 1,
+			"label": "SPI 20 MHz"
+		},
+		{
+			"id": "l75",
+			"from": "v:firmware/rastreador/src/drivers/adc_bateria",
+			"to": "v:firmware/rastreador/hw/bateria",
+			"level": "service",
+			"protocol": "ADC",
+			"async": false,
+			"count": 1,
+			"label": "ADC"
+		},
+		{
+			"id": "l76",
+			"from": "f:plataforma/servicos/pedidos/cmd/pedidos/main.go",
+			"to": "f:plataforma/servicos/pedidos/internal/http/rotas.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l77",
+			"from": "f:plataforma/servicos/pedidos/cmd/pedidos/main.go",
+			"to": "f:plataforma/servicos/pedidos/config/pedidos.yaml",
+			"level": "file",
+			"protocol": "config",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l78",
+			"from": "f:plataforma/servicos/pedidos/internal/http/rotas.go",
+			"to": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l79",
+			"from": "f:plataforma/servicos/pedidos/internal/http/rotas.go",
+			"to": "f:plataforma/servicos/pedidos/internal/http/middleware.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l80",
+			"from": "f:plataforma/servicos/pedidos/internal/http/rotas.go",
+			"to": "f:plataforma/servicos/pedidos/internal/http/cancelar.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l81",
+			"from": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"to": "f:plataforma/servicos/pedidos/internal/dominio/pedido.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1,
+			"evidence": [
+				{
+					"path": "plataforma/servicos/pedidos/internal/http/handlers.go",
+					"line": 42
+				}
+			]
+		},
+		{
+			"id": "l82",
+			"from": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"to": "f:plataforma/servicos/pedidos/internal/dominio/status.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l83",
+			"from": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"to": "f:plataforma/servicos/pedidos/internal/repositorio/pedidos_pg.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1,
+			"evidence": [
+				{
+					"path": "plataforma/servicos/pedidos/internal/http/handlers.go",
+					"line": 44
+				}
+			]
+		},
+		{
+			"id": "l84",
+			"from": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"to": "f:plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l85",
+			"from": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"to": "f:plataforma/servicos/pedidos/internal/eventos/publicador.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l86",
+			"from": "f:plataforma/servicos/pedidos/internal/http/cancelar.go",
+			"to": "f:plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l87",
+			"from": "f:plataforma/servicos/pedidos/internal/http/handlers_test.go",
+			"to": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l88",
+			"from": "f:plataforma/servicos/pedidos/internal/dominio/pedido_test.go",
+			"to": "f:plataforma/servicos/pedidos/internal/dominio/pedido.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l89",
+			"from": "f:plataforma/servicos/pedidos/internal/dominio/pedido.go",
+			"to": "f:plataforma/servicos/pedidos/internal/dominio/itens.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l90",
+			"from": "f:plataforma/servicos/pedidos/internal/dominio/pedido.go",
+			"to": "f:plataforma/servicos/pedidos/internal/dominio/frete.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l91",
+			"from": "f:plataforma/servicos/pedidos/internal/repositorio/pedidos_pg.go",
+			"to": "f:plataforma/servicos/pedidos/internal/dominio/pedido.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l92",
+			"from": "f:plataforma/servicos/pedidos/internal/repositorio/itens_pg.go",
+			"to": "f:plataforma/servicos/pedidos/internal/dominio/itens.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l93",
+			"from": "f:plataforma/servicos/pedidos/internal/pagamento/reprocessar.go",
+			"to": "f:plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l94",
+			"from": "f:plataforma/servicos/pedidos/internal/eventos/consumidor.go",
+			"to": "f:plataforma/servicos/pedidos/internal/dominio/status.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l95",
+			"from": "f:plataforma/servicos/pedidos/internal/eventos/publicador.go",
+			"to": "f:plataforma/servicos/pedidos/internal/eventos/eventos.go",
+			"level": "file",
+			"protocol": "import",
+			"async": false,
+			"count": 1
+		},
+		{
+			"id": "l96",
+			"from": "f:plataforma/servicos/pedidos/internal/repositorio/pedidos_pg.go",
+			"to": "d:postgresql",
+			"level": "file",
+			"protocol": "SQL",
+			"async": false,
+			"count": 9,
+			"label": "SQL"
+		},
+		{
+			"id": "l97",
+			"from": "f:plataforma/servicos/pedidos/internal/repositorio/itens_pg.go",
+			"to": "d:postgresql",
+			"level": "file",
+			"protocol": "SQL",
+			"async": false,
+			"count": 5,
+			"label": "SQL"
+		},
+		{
+			"id": "l98",
+			"from": "f:plataforma/servicos/pedidos/migrations/0003_pedidos.sql",
+			"to": "d:postgresql",
+			"level": "file",
+			"protocol": "SQL",
+			"async": true,
+			"count": 1,
+			"label": "migração"
+		},
+		{
+			"id": "l99",
+			"from": "f:plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+			"to": "v:plataforma/servicos/pagamentos",
+			"level": "file",
+			"protocol": "gRPC",
+			"async": false,
+			"count": 3,
+			"label": "gRPC",
+			"evidence": [
+				{
+					"path": "plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+					"line": 24
+				},
+				{
+					"path": "plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+					"line": 41
+				},
+				{
+					"path": "plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+					"line": 58
+				}
+			]
+		},
+		{
+			"id": "l100",
+			"from": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"to": "v:plataforma/servicos/pagamentos",
+			"level": "file",
+			"protocol": "gRPC",
+			"async": false,
+			"count": 1,
+			"label": "Cobrar",
+			"evidence": [
+				{
+					"path": "plataforma/servicos/pedidos/internal/http/handlers.go",
+					"line": 45
+				}
+			]
+		},
+		{
+			"id": "l101",
+			"from": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"to": "q:rabbitmq",
+			"level": "file",
+			"protocol": "AMQP",
+			"async": true,
+			"count": 1,
+			"label": "pedido.criado",
+			"evidence": [
+				{
+					"path": "plataforma/servicos/pedidos/internal/http/handlers.go",
+					"line": 47
+				}
+			]
+		},
+		{
+			"id": "l102",
+			"from": "f:plataforma/servicos/pedidos/internal/eventos/publicador.go",
+			"to": "q:rabbitmq",
+			"level": "file",
+			"protocol": "AMQP",
+			"async": true,
+			"count": 3,
+			"label": "pedido.criado"
+		},
+		{
+			"id": "l103",
+			"from": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"to": "v:plataforma/servicos/notificacoes",
+			"level": "file",
+			"protocol": "HTTP",
+			"async": false,
+			"count": 1,
+			"label": "avisa status",
+			"evidence": [
+				{
+					"path": "plataforma/servicos/pedidos/internal/http/handlers.go",
+					"line": 52
+				}
+			]
+		},
+		{
+			"id": "l104",
+			"from": "q:rabbitmq",
+			"to": "f:plataforma/servicos/pedidos/internal/eventos/consumidor.go",
+			"level": "file",
+			"protocol": "AMQP",
+			"async": true,
+			"count": 1,
+			"label": "pagamento.confirmado"
+		},
+		{
+			"id": "l105",
+			"from": "f:plataforma/servicos/notificacoes/internal/pedidos/status.go",
+			"to": "f:plataforma/servicos/pedidos/internal/http/handlers.go",
+			"level": "file",
+			"protocol": "HTTP",
+			"async": false,
+			"count": 1,
+			"label": "GET /pedidos/{id}"
+		}
+	],
+	"deploy": {
+		"zones": [
+			{
+				"id": "z:pessoas",
+				"name": "Pessoas",
+				"kind": "users",
+				"parent": null
+			},
+			{
+				"id": "z:veiculos",
+				"name": "Veículos",
+				"kind": "devices",
+				"parent": null
+			},
+			{
+				"id": "z:aws",
+				"name": "AWS · São Paulo (sa-east-1)",
+				"kind": "cloud",
+				"parent": null
+			},
+			{
+				"id": "z:k8s",
+				"name": "Cluster Kubernetes · EKS",
+				"kind": "cluster",
+				"parent": "z:aws"
+			},
+			{
+				"id": "z:externos",
+				"name": "Serviços externos",
+				"kind": "external",
+				"parent": null
+			}
+		],
+		"units": [
+			{
+				"id": "u:app-cliente",
+				"name": "App do Cliente",
+				"zone": "z:pessoas",
+				"kind": "client",
+				"node": "s:apps/cliente",
+				"image": "Android e iOS"
+			},
+			{
+				"id": "u:app-entregador",
+				"name": "App do Entregador",
+				"zone": "z:pessoas",
+				"kind": "client",
+				"node": "s:apps/entregador",
+				"image": "Android"
+			},
+			{
+				"id": "u:painel",
+				"name": "Painel Web",
+				"zone": "z:pessoas",
+				"kind": "client",
+				"node": "s:web/painel",
+				"image": "navegador · Vercel"
+			},
+			{
+				"id": "u:rastreador",
+				"name": "Rastreador",
+				"zone": "z:veiculos",
+				"kind": "device",
+				"replicas": 240,
+				"node": "s:firmware/rastreador",
+				"image": "firmware 2.4.1"
+			},
+			{
+				"id": "u:lb",
+				"name": "Load balancer",
+				"zone": "z:aws",
+				"kind": "balancer",
+				"ports": [
+					"443"
+				],
+				"image": "ALB"
+			},
+			{
+				"id": "u:gateway",
+				"name": "api-gateway",
+				"zone": "z:k8s",
+				"kind": "container",
+				"replicas": 3,
+				"image": "rota/gateway:2.0",
+				"ports": [
+					"8080"
+				],
+				"node": "v:plataforma/servicos/api-gateway"
+			},
+			{
+				"id": "u:auth",
+				"name": "auth",
+				"zone": "z:k8s",
+				"kind": "container",
+				"replicas": 2,
+				"image": "rota/auth:1.9",
+				"ports": [
+					"8080"
+				],
+				"node": "v:plataforma/servicos/auth"
+			},
+			{
+				"id": "u:pedidos",
+				"name": "pedidos",
+				"zone": "z:k8s",
+				"kind": "container",
+				"replicas": 3,
+				"image": "rota/pedidos:1.4",
+				"ports": [
+					"8080"
+				],
+				"node": "v:plataforma/servicos/pedidos"
+			},
+			{
+				"id": "u:rastreamento",
+				"name": "rastreamento",
+				"zone": "z:k8s",
+				"kind": "container",
+				"replicas": 2,
+				"image": "rota/rastreamento:1.2",
+				"node": "v:plataforma/servicos/rastreamento"
+			},
+			{
+				"id": "u:pagamentos",
+				"name": "pagamentos",
+				"zone": "z:k8s",
+				"kind": "container",
+				"replicas": 2,
+				"image": "rota/pagamentos:1.7",
+				"node": "v:plataforma/servicos/pagamentos"
+			},
+			{
+				"id": "u:rotas",
+				"name": "rotas",
+				"zone": "z:k8s",
+				"kind": "container",
+				"replicas": 2,
+				"image": "rota/rotas:1.3",
+				"node": "v:plataforma/servicos/rotas"
+			},
+			{
+				"id": "u:notificacoes",
+				"name": "notificações",
+				"zone": "z:k8s",
+				"kind": "container",
+				"replicas": 1,
+				"image": "rota/notificacoes:1.1",
+				"node": "v:plataforma/servicos/notificacoes"
+			},
+			{
+				"id": "u:etl",
+				"name": "etl",
+				"zone": "z:k8s",
+				"kind": "function",
+				"image": "diário",
+				"node": "v:dados/etl"
+			},
+			{
+				"id": "u:rds",
+				"name": "RDS PostgreSQL",
+				"zone": "z:aws",
+				"kind": "database",
+				"image": "Multi-AZ",
+				"node": "d:postgresql"
+			},
+			{
+				"id": "u:redis",
+				"name": "ElastiCache Redis",
+				"zone": "z:aws",
+				"kind": "cache",
+				"image": "2 nós",
+				"node": "d:redis"
+			},
+			{
+				"id": "u:mq",
+				"name": "Amazon MQ",
+				"zone": "z:aws",
+				"kind": "queue",
+				"image": "RabbitMQ",
+				"node": "q:rabbitmq"
+			},
+			{
+				"id": "u:emqx",
+				"name": "EMQX",
+				"zone": "z:aws",
+				"kind": "queue",
+				"image": "MQTT · EC2",
+				"ports": [
+					"8883"
+				],
+				"node": "q:emqx"
+			},
+			{
+				"id": "u:pix",
+				"name": "Gateway Pix",
+				"zone": "z:externos",
+				"kind": "external",
+				"node": "x:gateway-pix"
+			},
+			{
+				"id": "u:maps",
+				"name": "Google Maps",
+				"zone": "z:externos",
+				"kind": "external",
+				"node": "x:google-maps"
+			},
+			{
+				"id": "u:whatsapp",
+				"name": "WhatsApp",
+				"zone": "z:externos",
+				"kind": "external",
+				"node": "x:whatsapp"
+			},
+			{
+				"id": "u:bigquery",
+				"name": "BigQuery",
+				"zone": "z:externos",
+				"kind": "database",
+				"node": "s:dados"
+			}
+		],
+		"links": [
+			{
+				"from": "u:app-cliente",
+				"to": "u:lb",
+				"label": "HTTPS",
+				"async": false
+			},
+			{
+				"from": "u:app-entregador",
+				"to": "u:lb",
+				"label": "HTTPS",
+				"async": false
+			},
+			{
+				"from": "u:painel",
+				"to": "u:lb",
+				"label": "HTTPS",
+				"async": false
+			},
+			{
+				"from": "u:lb",
+				"to": "u:gateway",
+				"label": "",
+				"async": false
+			},
+			{
+				"from": "u:gateway",
+				"to": "u:auth",
+				"label": "",
+				"async": false
+			},
+			{
+				"from": "u:gateway",
+				"to": "u:pedidos",
+				"label": "",
+				"async": false
+			},
+			{
+				"from": "u:pedidos",
+				"to": "u:pagamentos",
+				"label": "gRPC",
+				"async": false
+			},
+			{
+				"from": "u:pedidos",
+				"to": "u:rds",
+				"label": "SQL",
+				"async": false
+			},
+			{
+				"from": "u:auth",
+				"to": "u:redis",
+				"label": "",
+				"async": false
+			},
+			{
+				"from": "u:pedidos",
+				"to": "u:mq",
+				"label": "eventos",
+				"async": true
+			},
+			{
+				"from": "u:mq",
+				"to": "u:notificacoes",
+				"label": "",
+				"async": true
+			},
+			{
+				"from": "u:rastreador",
+				"to": "u:emqx",
+				"label": "MQTT/TLS · 8883",
+				"async": true
+			},
+			{
+				"from": "u:emqx",
+				"to": "u:rastreamento",
+				"label": "posições",
+				"async": true
+			},
+			{
+				"from": "u:pagamentos",
+				"to": "u:pix",
+				"label": "",
+				"async": false
+			},
+			{
+				"from": "u:rotas",
+				"to": "u:maps",
+				"label": "",
+				"async": false
+			},
+			{
+				"from": "u:notificacoes",
+				"to": "u:whatsapp",
+				"label": "",
+				"async": false
+			},
+			{
+				"from": "u:etl",
+				"to": "u:bigquery",
+				"label": "carga diária",
+				"async": true
+			}
+		]
+	}
+}

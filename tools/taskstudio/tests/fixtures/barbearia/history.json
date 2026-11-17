@@ -1,0 +1,265 @@
+{
+ "schema": 1,
+ "revision": 2,
+ "versions": [
+  {
+   "plan": 1,
+   "at": "2026-11-13T14:20:00Z",
+   "reason": "Plano inicial",
+   "cause": null,
+   "changes": [],
+   "tasks": [
+    {
+     "id": "1",
+     "title": "Entender o pedido",
+     "summary": "Serviços, barbeiros, horários e regras da barbearia",
+     "state": "todo",
+     "deps": []
+    },
+    {
+     "id": "2",
+     "title": "Estrutura do projeto",
+     "summary": "Next.js com TypeScript, Prisma e SQLite",
+     "state": "todo",
+     "deps": [
+      "1"
+     ]
+    },
+    {
+     "id": "3",
+     "title": "Modelar o banco",
+     "summary": "Tabelas de serviços, barbeiros, clientes e agendamentos",
+     "state": "todo",
+     "deps": [
+      "2"
+     ]
+    },
+    {
+     "id": "4",
+     "title": "Cadastro de serviços e barbeiros",
+     "summary": "Telas simples para o dono cadastrar",
+     "state": "todo",
+     "deps": [
+      "3"
+     ]
+    },
+    {
+     "id": "5",
+     "title": "Horários disponíveis",
+     "summary": "Calcula os horários livres de cada barbeiro",
+     "state": "todo",
+     "deps": [
+      "3"
+     ]
+    },
+    {
+     "id": "6",
+     "title": "Tela de agendamento",
+     "summary": "Cliente escolhe serviço, barbeiro e horário",
+     "state": "todo",
+     "deps": [
+      "4",
+      "5"
+     ]
+    },
+    {
+     "id": "7",
+     "title": "Pagamento por Pix",
+     "summary": "QR Code Pix na confirmação do agendamento",
+     "state": "todo",
+     "deps": [
+      "6"
+     ]
+    },
+    {
+     "id": "8",
+     "title": "Lembrete por WhatsApp",
+     "summary": "Mensagem no dia anterior ao horário",
+     "state": "todo",
+     "deps": [
+      "6"
+     ]
+    },
+    {
+     "id": "9",
+     "title": "Painel do barbeiro",
+     "summary": "Agenda do dia de cada barbeiro",
+     "state": "todo",
+     "deps": [
+      "5"
+     ]
+    },
+    {
+     "id": "10",
+     "title": "Testes do fluxo completo",
+     "summary": "Do agendamento ao pagamento e ao lembrete",
+     "state": "todo",
+     "deps": [
+      "6",
+      "7",
+      "8",
+      "9"
+     ]
+    },
+    {
+     "id": "11",
+     "title": "Publicar o site",
+     "summary": "Colocar no ar com o domínio da barbearia",
+     "state": "todo",
+     "deps": [
+      "10"
+     ]
+    }
+   ]
+  },
+  {
+   "plan": 2,
+   "at": "2026-11-13T14:36:00Z",
+   "reason": "Vários serviços por agendamento",
+   "cause": {
+    "task": "3",
+    "text": "Na verdade, cada agendamento pode ter mais de um serviço"
+   },
+   "changes": [
+    {
+     "task": "3",
+     "kind": "refazer",
+     "note": "Nova tabela agendamento_servicos; a coluna servico_id sai de agendamentos."
+    },
+    {
+     "task": "5",
+     "kind": "refazer",
+     "note": "A duração do horário passa a ser a soma dos serviços escolhidos."
+    },
+    {
+     "task": "6",
+     "kind": "ajustar",
+     "note": "Permitir escolher mais de um serviço."
+    },
+    {
+     "task": "9",
+     "kind": "alterar",
+     "note": "O painel mostra todos os serviços de cada horário."
+    },
+    {
+     "task": "10",
+     "kind": "alterar",
+     "note": "Testar agendamentos com vários serviços."
+    },
+    {
+     "task": "12",
+     "kind": "nova",
+     "note": "Combos aparecem na tela de agendamento."
+    },
+    {
+     "task": "8",
+     "kind": "remover",
+     "note": "O lembrete sai deste plano."
+    }
+   ],
+   "extra": 60,
+   "tasks": [
+    {
+     "id": "1",
+     "title": "Entender o pedido",
+     "summary": "Serviços, barbeiros, horários e regras da barbearia",
+     "state": "done",
+     "deps": []
+    },
+    {
+     "id": "2",
+     "title": "Estrutura do projeto",
+     "summary": "Next.js com TypeScript, Prisma e SQLite",
+     "state": "done",
+     "deps": [
+      "1"
+     ]
+    },
+    {
+     "id": "3",
+     "title": "Modelar o banco",
+     "summary": "Vários serviços por agendamento",
+     "state": "todo",
+     "deps": [
+      "2"
+     ]
+    },
+    {
+     "id": "4",
+     "title": "Cadastro de serviços e barbeiros",
+     "summary": "Telas simples para o dono cadastrar",
+     "state": "done",
+     "deps": [
+      "3"
+     ]
+    },
+    {
+     "id": "5",
+     "title": "Horários disponíveis",
+     "summary": "Calcula os horários livres de cada barbeiro",
+     "state": "todo",
+     "deps": [
+      "3"
+     ]
+    },
+    {
+     "id": "6",
+     "title": "Tela de agendamento",
+     "summary": "Cliente escolhe serviço, barbeiro e horário",
+     "state": "todo",
+     "deps": [
+      "4",
+      "5"
+     ]
+    },
+    {
+     "id": "7",
+     "title": "Pagamento por Pix",
+     "summary": "QR Code Pix na confirmação do agendamento",
+     "state": "todo",
+     "deps": [
+      "6"
+     ]
+    },
+    {
+     "id": "9",
+     "title": "Painel do barbeiro",
+     "summary": "Agenda do dia de cada barbeiro",
+     "state": "failed",
+     "deps": [
+      "5"
+     ]
+    },
+    {
+     "id": "10",
+     "title": "Testes do fluxo completo",
+     "summary": "Do agendamento ao pagamento e ao lembrete",
+     "state": "todo",
+     "deps": [
+      "6",
+      "7",
+      "9"
+     ]
+    },
+    {
+     "id": "11",
+     "title": "Publicar o site",
+     "summary": "Colocar no ar com o domínio da barbearia",
+     "state": "todo",
+     "deps": [
+      "10"
+     ]
+    },
+    {
+     "id": "12",
+     "title": "Combos de serviços",
+     "summary": "Pacotes com preço especial, como corte + barba",
+     "state": "todo",
+     "deps": [
+      "3"
+     ]
+    }
+   ]
+  }
+ ]
+}

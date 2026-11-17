@@ -1,0 +1,179 @@
+{
+ "schema": 1,
+ "entries": [
+  {
+   "at": 1794645663.4355464,
+   "sheet": "f0dcf35726",
+   "action": "export",
+   "title": "Exportar",
+   "question": "exporta o gráfico do mês e uma planilha nova",
+   "result": "dados/saida/atendimentos-2026-limpo.xlsx, dados/saida/ticket-medio-por-dia-da-semana.svg, dados/saida/de-onde-vem-os-agendamentos.svg, dados/saida/forma-de-pagamento-por-mes.svg, dados/saida/horarios-de-pico.svg, dados/saida/faturamento-por-barbeiro.svg, dados/saida/faturamento-por-servico.svg, dados/saida/faturamento-por-mes.svg",
+   "rows": 4799,
+   "basis": "clean",
+   "version": 4
+  },
+  {
+   "at": 1794645663.29692,
+   "sheet": "f0dcf35726",
+   "action": "rows",
+   "title": "Filtrar a tabela",
+   "question": "filtrar a tabela: serviço = Corte e barba",
+   "result": "963 linhas",
+   "rows": 963,
+   "basis": "clean",
+   "version": 4
+  },
+  {
+   "at": 1794645663.2788916,
+   "sheet": "f0dcf35726",
+   "action": "chart",
+   "title": "Ticket médio por dia da semana",
+   "question": null,
+   "result": "bar",
+   "chart": "g8",
+   "rows": 4309,
+   "basis": "clean",
+   "version": 4
+  },
+  {
+   "at": 1794645663.1945388,
+   "sheet": "f0dcf35726",
+   "action": "column",
+   "title": "Nova coluna dia da semana",
+   "question": "cria uma coluna com o dia da semana",
+   "result": "categoria",
+   "rows": 4799,
+   "basis": "clean",
+   "version": 4
+  },
+  {
+   "at": 1794645663.122428,
+   "sheet": "f0dcf35726",
+   "action": "fix",
+   "title": "Aplicar correções",
+   "question": "pode aplicar",
+   "result": "3 passos",
+   "rows": 4799,
+   "basis": "clean",
+   "version": 3
+  },
+  {
+   "at": 1794645663.024558,
+   "sheet": "f0dcf35726",
+   "action": "problems",
+   "title": "Procurar problemas",
+   "question": "tem algo errado nos dados?",
+   "result": "3 problemas",
+   "rows": 4809,
+   "basis": "raw",
+   "version": 0
+  },
+  {
+   "at": 1794645662.9889991,
+   "sheet": "f0dcf35726",
+   "action": "profile",
+   "title": "Perfil das colunas",
+   "question": "me mostra um resumo das colunas",
+   "result": "9 colunas",
+   "rows": 4809,
+   "basis": "raw",
+   "version": 0
+  },
+  {
+   "at": 1794645662.940128,
+   "sheet": "f0dcf35726",
+   "action": "panel",
+   "title": "Painel para o Zé",
+   "question": "monta um painel com o principal pra eu mostrar pro Zé",
+   "result": "4 números, 4 gráficos",
+   "rows": 4809,
+   "basis": "raw",
+   "version": 0
+  },
+  {
+   "at": 1794645662.9145625,
+   "sheet": "f0dcf35726",
+   "action": "chart",
+   "title": "De onde vêm os agendamentos",
+   "question": null,
+   "result": "stacked100",
+   "chart": "g7",
+   "rows": 4809,
+   "basis": "raw",
+   "version": 0
+  },
+  {
+   "at": 1794645662.9016254,
+   "sheet": "f0dcf35726",
+   "action": "pivot",
+   "title": "Serviço por barbeiro",
+   "question": "faz uma tabela dinâmica de serviço por barbeiro",
+   "result": "tabela dinâmica",
+   "chart": "g6",
+   "rows": 4317,
+   "basis": "raw",
+   "version": 0
+  },
+  {
+   "at": 1794645662.8890219,
+   "sheet": "f0dcf35726",
+   "action": "chart",
+   "title": "Forma de pagamento por mês",
+   "question": "e a forma de pagamento, mudou ao longo do ano?",
+   "result": "stacked100",
+   "chart": "g5",
+   "rows": 4317,
+   "basis": "raw",
+   "version": 0
+  },
+  {
+   "at": 1794645662.875402,
+   "sheet": "f0dcf35726",
+   "action": "chart",
+   "title": "Horários de pico",
+   "question": "quais são os horários de pico?",
+   "result": "heatmap",
+   "chart": "g4",
+   "rows": 4317,
+   "basis": "raw",
+   "version": 0
+  },
+  {
+   "at": 1794645662.8621826,
+   "sheet": "f0dcf35726",
+   "action": "chart",
+   "title": "Faturamento por barbeiro",
+   "question": "compara os três barbeiros",
+   "result": "line",
+   "chart": "g3",
+   "rows": 4317,
+   "basis": "raw",
+   "version": 0
+  },
+  {
+   "at": 1794645662.844509,
+   "sheet": "f0dcf35726",
+   "action": "chart",
+   "title": "Faturamento por serviço",
+   "question": "qual serviço mais fatura?",
+   "result": "hbar",
+   "chart": "g2",
+   "rows": 4317,
+   "basis": "raw",
+   "version": 0
+  },
+  {
+   "at": 1794645662.832509,
+   "sheet": "f0dcf35726",
+   "action": "chart",
+   "title": "Faturamento por mês",
+   "question": "faça um gráfico do faturamento por mês",
+   "result": "bar",
+   "chart": "g1",
+   "rows": 4317,
+   "basis": "raw",
+   "version": 0
+  }
+ ],
+ "updatedAt": 1794645663.4366703
+}

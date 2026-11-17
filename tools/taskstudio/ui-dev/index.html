@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. -->
+<!-- Licensed under the MIT License. See License.txt in the project root for license information. -->
+<!-- Dev only: opens the TaskStudio interface with a fake host and the "Barbearia do Zé" sample.
+     Open with file:// and add a query string, for example index.html?state=proposal or ?state=big
+     (every state is listed at the top of fake-host.js). For data=real (the files the Python package
+     wrote in tests/fixtures/barbearia) and the real webview CSP, run `node serve.mjs` instead. -->
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<title>TaskStudio · harness</title>
+	<link rel="stylesheet" href="../src/jumpcode_taskstudio/ui/app.css">
+</head>
+<body>
+	<script src="theme.js"></script>
+	<script src="sample.js"></script>
+	<script src="fake-host.js"></script>
+	<script src="../src/jumpcode_taskstudio/ui/app.js"></script>
+</body>
+</html>

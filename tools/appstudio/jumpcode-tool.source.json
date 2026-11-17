@@ -1,0 +1,55 @@
+{
+	"format": 1,
+	"id": "appstudio",
+	"publisher": "jumpcode",
+	"version": "1.0.1",
+	"contract": 1,
+	"compatibility": {
+		"python": {
+			"minimum": "3.13"
+		},
+		"platforms": [
+			"win32-x64"
+		]
+	},
+	"entry": {
+		"kind": "python",
+		"root": "code",
+		"module": "jumpcode_appstudio"
+	},
+	"isolation": "process",
+	"capabilities": {
+		"suppliedText": true,
+		"projectFiles": true,
+		"network": false
+	},
+	"tool": "src/jumpcode_appstudio/tool.json",
+	"studio": {
+		"ui": {
+			"scripts": [
+				"code/jumpcode_appstudio/ui/runtime.js",
+				"code/jumpcode_appstudio/ui/app.js"
+			],
+			"styles": [
+				"code/jumpcode_appstudio/ui/app.css"
+			]
+		},
+		"data": {
+			"format": 1,
+			"reads": [
+				1
+			]
+		}
+	},
+	"assets": {
+		"mark": "code/jumpcode_appstudio/assets/mark.svg",
+		"cover": "code/jumpcode_appstudio/assets/cover.png"
+	},
+	"dependencies": [],
+	"include": [
+		{
+			"from": "src/jumpcode_appstudio",
+			"to": "code/jumpcode_appstudio"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"select": null,
+	"highlight": [
+		"l-mqtt",
+		"s:firmware/rastreador",
+		"s:plataforma"
+	],
+	"level": "system",
+	"scope": null,
+	"mode": "map",
+	"note": "Posição a cada 5 s",
+	"revision": 4
+}

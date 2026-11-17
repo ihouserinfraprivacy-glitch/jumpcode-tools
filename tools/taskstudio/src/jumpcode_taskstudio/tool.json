@@ -1,0 +1,442 @@
+{
+	"id": "taskstudio",
+	"name": "TaskStudio",
+	"description": "Transforma um pedido em um plano de tarefas ligadas, acompanha cada tarefa enquanto o agente trabalha e recalibra o plano quando você muda algo.",
+	"version": "1.0.1",
+	"icon": "checklist",
+	"studio": {
+		"title": "TaskStudio",
+		"description": "Planeja e acompanha tarefas",
+		"ui": true
+	},
+	"details": {
+		"about": "O TaskStudio transforma o seu pedido em um plano de tarefas pequenas e ligadas entre si e mostra esse plano no Studio, ao lado da conversa. Cada tarefa diz o que é, o que precisa para ficar pronta e de quais outras depende. Enquanto o agente trabalha com as outras ferramentas, o Studio mostra o que está em execução, o que já foi concluído, o que espera por você e os problemas encontrados. Se você mudar uma tarefa, o plano é recalibrado: o agente lista o que muda em cada tarefa e nada é refeito antes de você aprovar.",
+		"features": [
+			"Plano de tarefas pequenas, com dependências, critérios de pronto e estimativas",
+			"Acompanhamento ao vivo: executando, concluída, aguardando, precisa de você e problema",
+			"Mapa, lista, quadro, linha do tempo, raias e metrô sobre o mesmo plano",
+			"Condições que dependem de você (chaves, aprovações, escolhas) sem pedir segredos no chat",
+			"Edite qualquer tarefa e veja o que muda no plano antes de aprovar",
+			"Histórico de versões do plano com o motivo de cada mudança"
+		],
+		"limitations": [
+			"O TaskStudio organiza e acompanha o trabalho; quem faz cada tarefa é o agente, com as outras ferramentas",
+			"Sem uma pasta de projeto só é possível planejar; para executar, abra o TaskStudio a partir de um projeto",
+			"Até 60 tarefas por plano e 30 versões no histórico",
+			"As estimativas de tempo são palpites do modelo e podem variar bastante"
+		],
+		"examples": [
+			"Crie um sistema de agendamento para a minha barbearia",
+			"Planeje uma loja virtual com pagamento por Pix",
+			"Monte um aplicativo de controle de estoque para o meu mercado",
+			"Divida em tarefas a migração do meu site para um novo servidor"
+		],
+		"author": "JumpCode",
+		"updatedAt": "2026-11-13",
+		"execution": "local",
+		"access": {
+			"suppliedText": true,
+			"projectFiles": false,
+			"network": false
+		}
+	},
+	"instructions": "Plan and track the user's work in the TaskStudio beside the chat. Tasks are numbered; the user sees them as #N. Pass the number as id. 1) When the user asks to build or change something sizeable, call plan with a title, the request and 4-15 small tasks (title, summary, detail, deps). Tasks are numbered 1, 2, 3 in list order; deps lists the numbers a task needs first, so link every task that uses another's work (example: tasks [{\"title\":\"Criar o HTML\",\"deps\":[]},{\"title\":\"Estilizar\",\"deps\":[1]},{\"title\":\"Testar\",\"deps\":[1,2]}]). Say the plan in one or two sentences and wait until the user says start. 2) To carry out the plan: call read, start one ready task, do the work with your other tools, call progress with a short note and the files you touched, then finish with a short result. finish tells you what is ready next. 3) If a task is blocked, call fail with the problem and options. If the user must provide or approve something, call need (kind secret with env for a key or token, approval, or choice). For a secret, tell the user which variable to put in the project's .env file; never ask for secret values in the chat. When the user says it is done, call resolve. 'Para depois' means skip. 4) When the user changes a task (in words, or a message like 'Mudei a tarefa #3 ...'), call edit with the id, the user's words as text and the new detail. Your next call is propose, with one change per affected task (always the edited one; leave task out for a new task); do not change files before the user applies it. On 'Aplique' call apply; on 'Descarte' call discard. 5) Use focus to point at a task. Without a project folder you can only plan: tell the user to open TaskStudio from a project to carry it out. Keep notes short and answer in the user's language.",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"action": {
+				"type": "string",
+				"enum": [
+					"plan",
+					"read",
+					"start",
+					"progress",
+					"finish",
+					"fail",
+					"need",
+					"resolve",
+					"skip",
+					"pause",
+					"edit",
+					"propose",
+					"apply",
+					"discard",
+					"focus"
+				],
+				"description": "plan creates the plan; read shows it (or one task with id); start, progress, finish, fail, skip and pause track a task; need adds a condition for the user and resolve marks it met; edit records the user's change to a task, propose lists the changes, apply or discard follow the user's answer; focus shows a task in the Studio."
+			},
+			"id": {
+				"type": "string",
+				"maxLength": 12,
+				"description": "Task number, such as \"6\"."
+			},
+			"title": {
+				"type": "string",
+				"maxLength": 80,
+				"description": "plan: title of the plan; edit: new task title."
+			},
+			"request": {
+				"type": "string",
+				"maxLength": 2000,
+				"description": "plan: the user's request."
+			},
+			"tasks": {
+				"type": "array",
+				"maxItems": 60,
+				"items": {
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string",
+							"maxLength": 60
+						},
+						"summary": {
+							"type": "string",
+							"maxLength": 90,
+							"description": "One line."
+						},
+						"detail": {
+							"type": "string",
+							"maxLength": 1200,
+							"description": "What the task does."
+						},
+						"deps": {
+							"type": "array",
+							"maxItems": 12,
+							"items": {
+								"type": "string",
+								"maxLength": 12
+							},
+							"description": "Numbers of the tasks that must be done first (a task that uses another's work lists it)."
+						},
+						"area": {
+							"type": "string",
+							"maxLength": 40,
+							"description": "Lane, such as 'Banco' or 'Site'."
+						},
+						"phase": {
+							"type": "string",
+							"maxLength": 60
+						},
+						"estimate": {
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 10000,
+							"description": "Minutes."
+						},
+						"criteria": {
+							"type": "array",
+							"maxItems": 20,
+							"items": {
+								"type": "string",
+								"maxLength": 160
+							},
+							"description": "What makes it done."
+						},
+						"gates": {
+							"type": "array",
+							"maxItems": 6,
+							"items": {
+								"type": "object",
+								"properties": {
+									"kind": {
+										"type": "string",
+										"enum": [
+											"secret",
+											"approval",
+											"choice",
+											"other"
+										]
+									},
+									"label": {
+										"type": "string",
+										"maxLength": 80
+									},
+									"where": {
+										"type": "string",
+										"maxLength": 300
+									},
+									"env": {
+										"type": "string",
+										"maxLength": 64
+									},
+									"alternatives": {
+										"type": "array",
+										"maxItems": 4,
+										"items": {
+											"type": "string",
+											"maxLength": 80
+										}
+									}
+								},
+								"required": [
+									"label"
+								],
+								"additionalProperties": false
+							},
+							"description": "Conditions that need the user."
+						}
+					},
+					"required": [
+						"title"
+					],
+					"additionalProperties": false
+				},
+				"description": "plan: the tasks in order."
+			},
+			"draft": {
+				"type": "boolean",
+				"description": "plan: true when more tasks follow in another plan call."
+			},
+			"note": {
+				"type": "string",
+				"maxLength": 200,
+				"description": "start, progress, skip, resolve: short note; focus: caption."
+			},
+			"percent": {
+				"type": "integer",
+				"minimum": 0,
+				"maximum": 100,
+				"description": "progress: 0 to 100."
+			},
+			"log": {
+				"type": "string",
+				"maxLength": 200,
+				"description": "progress: one line for the task log."
+			},
+			"kind": {
+				"type": "string",
+				"enum": [
+					"info",
+					"ok",
+					"error",
+					"secret",
+					"approval",
+					"choice",
+					"other"
+				],
+				"description": "progress: info, ok or error; need: secret, approval, choice or other."
+			},
+			"files": {
+				"type": "array",
+				"maxItems": 40,
+				"items": {
+					"type": "string",
+					"maxLength": 240
+				},
+				"description": "progress, finish: project files touched (relative paths)."
+			},
+			"result": {
+				"type": "string",
+				"maxLength": 600,
+				"description": "finish: what was delivered."
+			},
+			"criteria": {
+				"type": "array",
+				"maxItems": 20,
+				"items": {
+					"type": "string",
+					"maxLength": 160
+				},
+				"description": "finish: criteria met (default all); edit: new criteria."
+			},
+			"problem": {
+				"type": "string",
+				"maxLength": 120,
+				"description": "fail: what blocks the task."
+			},
+			"detail": {
+				"type": "string",
+				"maxLength": 1200,
+				"description": "fail: more about the problem; edit: new detail."
+			},
+			"options": {
+				"type": "array",
+				"maxItems": 4,
+				"items": {
+					"type": "string",
+					"maxLength": 80
+				},
+				"description": "fail: what the user can choose."
+			},
+			"label": {
+				"type": "string",
+				"maxLength": 80,
+				"description": "need: what is missing, such as 'Chave Pix de teste'."
+			},
+			"where": {
+				"type": "string",
+				"maxLength": 300,
+				"description": "need: where the user finds it."
+			},
+			"env": {
+				"type": "string",
+				"maxLength": 64,
+				"description": "need: only the variable name, such as PIX_KEY."
+			},
+			"alternatives": {
+				"type": "array",
+				"maxItems": 4,
+				"items": {
+					"type": "string",
+					"maxLength": 80
+				},
+				"description": "need: other ways forward."
+			},
+			"gate": {
+				"type": "string",
+				"maxLength": 80,
+				"description": "resolve: gate id or label (default all)."
+			},
+			"text": {
+				"type": "string",
+				"maxLength": 600,
+				"description": "edit: the user's words."
+			},
+			"summary": {
+				"type": "string",
+				"maxLength": 300,
+				"description": "edit: new task summary; propose: what the change does."
+			},
+			"changes": {
+				"type": "array",
+				"maxItems": 60,
+				"items": {
+					"type": "object",
+					"properties": {
+						"task": {
+							"type": "string",
+							"maxLength": 12,
+							"description": "Number of the task to change; leave out for a new task."
+						},
+						"note": {
+							"type": "string",
+							"maxLength": 300,
+							"description": "What changes."
+						},
+						"why": {
+							"type": "string",
+							"maxLength": 40,
+							"description": "Short reason, such as 'usa #3'."
+						},
+						"title": {
+							"type": "string",
+							"maxLength": 60
+						},
+						"summary": {
+							"type": "string",
+							"maxLength": 90
+						},
+						"detail": {
+							"type": "string",
+							"maxLength": 1200
+						},
+						"deps": {
+							"type": "array",
+							"maxItems": 12,
+							"items": {
+								"type": "string",
+								"maxLength": 12
+							},
+							"description": "New deps (task numbers)."
+						},
+						"area": {
+							"type": "string",
+							"maxLength": 40
+						},
+						"phase": {
+							"type": "string",
+							"maxLength": 60
+						},
+						"estimate": {
+							"type": "integer",
+							"minimum": 0,
+							"maximum": 10000
+						},
+						"criteria": {
+							"type": "array",
+							"maxItems": 20,
+							"items": {
+								"type": "string",
+								"maxLength": 160
+							}
+						},
+						"gates": {
+							"type": "array",
+							"maxItems": 6,
+							"items": {
+								"type": "object",
+								"properties": {
+									"kind": {
+										"type": "string",
+										"enum": [
+											"secret",
+											"approval",
+											"choice",
+											"other"
+										]
+									},
+									"label": {
+										"type": "string",
+										"maxLength": 80
+									},
+									"where": {
+										"type": "string",
+										"maxLength": 300
+									},
+									"env": {
+										"type": "string",
+										"maxLength": 64
+									},
+									"alternatives": {
+										"type": "array",
+										"maxItems": 4,
+										"items": {
+											"type": "string",
+											"maxLength": 80
+										}
+									}
+								},
+								"required": [
+									"label"
+								],
+								"additionalProperties": false
+							},
+							"description": "Conditions that need the user."
+						},
+						"remove": {
+							"type": "boolean",
+							"description": "Remove a task that was not started."
+						}
+					},
+					"additionalProperties": false
+				},
+				"description": "propose: one change per affected task."
+			},
+			"extra": {
+				"type": "integer",
+				"minimum": -10000,
+				"maximum": 10000,
+				"description": "propose: extra minutes."
+			},
+			"mode": {
+				"type": "string",
+				"enum": [
+					"map",
+					"list",
+					"board",
+					"timeline",
+					"lanes",
+					"metro",
+					"focus",
+					"history"
+				],
+				"description": "focus: how the Studio shows it."
+			}
+		},
+		"required": [
+			"action"
+		],
+		"additionalProperties": false
+	}
+}

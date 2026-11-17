@@ -1,0 +1,21 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License. See LICENSE in the project root.
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jumpcode-generator3d"
+version = "1.0.0"
+description = "3D Generator: an image of a character becomes a rigged, animated 3D model (GLB), made on this computer and shown inside a JumpCode Studio"
+readme = "README.md"
+requires-python = ">=3.11,<3.15"
+license = "MIT"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+jumpcode_generator3d = ["tool.json", "ui/*.js", "ui/*.css", "assets/*", "engine/*.py"]

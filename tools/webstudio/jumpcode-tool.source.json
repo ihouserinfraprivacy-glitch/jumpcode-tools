@@ -1,0 +1,20 @@
+{
+	"format": 1,
+	"id": "webstudio",
+	"publisher": "jumpcode",
+	"version": "1.0.1",
+	"contract": 1,
+	"compatibility": {
+		"python": { "minimum": "3.13" },
+		"platforms": ["win32-x64"]
+	},
+	"entry": { "kind": "python", "root": "code", "module": "jumpcode_webstudio" },
+	"isolation": "container",
+	"capabilities": { "suppliedText": true, "projectFiles": false, "network": false },
+	"tool": "src/jumpcode_webstudio/tool.json",
+	"studio": { "data": { "format": 1, "reads": [1] } },
+	"dependencies": [],
+	"include": [
+		{ "from": "src/jumpcode_webstudio", "to": "code/jumpcode_webstudio" }
+	]
+}

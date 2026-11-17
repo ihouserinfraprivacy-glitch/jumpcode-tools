@@ -1,0 +1,11 @@
+{
+	"select": null,
+	"highlight": [
+		"u:rota-certa-pedidos"
+	],
+	"level": "system",
+	"scope": null,
+	"mode": "deploy",
+	"note": "Roda no cluster",
+	"revision": 4
+}

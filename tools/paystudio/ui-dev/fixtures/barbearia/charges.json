@@ -1,0 +1,778 @@
+{
+ "schema": 1,
+ "charges": [
+  {
+   "gateway": "stripe",
+   "ref": "pi_qIAsb46sQNvlRr872HXph334",
+   "method": "card",
+   "amount": 3500,
+   "status": "paga",
+   "gatewayStatus": "succeeded",
+   "created": 1794633269.37453,
+   "expires": null,
+   "paid": 1794633269.3747063,
+   "booking": "AG-4840",
+   "customer": null,
+   "events": [
+    {
+     "at": 1794633269.375,
+     "text": "PaymentIntent criado · R$ 35,00 · sem Idempotency-Key",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.375,
+     "text": "evento payment_intent.created · webhook #19",
+     "kind": "webhook",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633269.375,
+     "text": "visa final 4242 aprovado · R$ 35,00",
+     "kind": "ok",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.375,
+     "text": "evento payment_intent.succeeded · webhook #20",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "id": "pi_qIAsb46sQNvlRr872HXph334",
+    "payment_method": "pm_card_visa",
+    "card": {
+     "brand": "visa",
+     "last4": "4242",
+     "exp_month": 12,
+     "exp_year": 2030,
+     "funding": "credit",
+     "country": "US"
+    },
+    "last_payment_error": null,
+    "idempotency": null,
+    "dispute": null,
+    "metadata": {
+     "booking": "AG-4840"
+    }
+   }
+  },
+  {
+   "gateway": "stripe",
+   "ref": "pi_pAB6dU0oxqnQ5tf638EZRdXN",
+   "method": "card",
+   "amount": 4500,
+   "status": "pendente",
+   "gatewayStatus": "requires_payment_method",
+   "created": 1794633269.2893872,
+   "expires": null,
+   "paid": null,
+   "booking": "AG-4839",
+   "customer": null,
+   "events": [
+    {
+     "at": 1794633269.289,
+     "text": "PaymentIntent criado · R$ 45,00 · sem Idempotency-Key",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.289,
+     "text": "possível cobrança duplicada: igual a pi_C18KiX8v5nsrZcJXXDpo1v6K e sem Idempotency-Key",
+     "kind": "bad",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633269.29,
+     "text": "evento payment_intent.created · webhook #18",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [
+    {
+     "kind": "duplicate",
+     "text": "mesmo valor e mesmo agendamento de pi_C18KiX8v5nsrZcJXXDpo1v6K, sem Idempotency-Key",
+     "other": "pi_C18KiX8v5nsrZcJXXDpo1v6K"
+    }
+   ],
+   "refunded": 0,
+   "details": {
+    "id": "pi_pAB6dU0oxqnQ5tf638EZRdXN",
+    "payment_method": null,
+    "card": null,
+    "last_payment_error": null,
+    "idempotency": null,
+    "dispute": null,
+    "metadata": {
+     "booking": "AG-4839"
+    }
+   }
+  },
+  {
+   "gateway": "stripe",
+   "ref": "pi_C18KiX8v5nsrZcJXXDpo1v6K",
+   "method": "card",
+   "amount": 4500,
+   "status": "pendente",
+   "gatewayStatus": "requires_payment_method",
+   "created": 1794633269.2873466,
+   "expires": null,
+   "paid": null,
+   "booking": "AG-4839",
+   "customer": null,
+   "events": [
+    {
+     "at": 1794633269.287,
+     "text": "PaymentIntent criado · R$ 45,00 · sem Idempotency-Key",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.288,
+     "text": "evento payment_intent.created · webhook #17",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "id": "pi_C18KiX8v5nsrZcJXXDpo1v6K",
+    "payment_method": null,
+    "card": null,
+    "last_payment_error": null,
+    "idempotency": null,
+    "dispute": null,
+    "metadata": {
+     "booking": "AG-4839"
+    }
+   }
+  },
+  {
+   "gateway": "stripe",
+   "ref": "pi_67tFABtxPfMjsT7mTgOIduhj",
+   "method": "card",
+   "amount": 7000,
+   "status": "contestada",
+   "gatewayStatus": "succeeded",
+   "created": 1794633269.2858894,
+   "expires": null,
+   "paid": 1794633269.2860289,
+   "booking": "AG-4838",
+   "customer": null,
+   "events": [
+    {
+     "at": 1794633269.286,
+     "text": "PaymentIntent criado · R$ 70,00 · sem Idempotency-Key",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.286,
+     "text": "evento payment_intent.created · webhook #15",
+     "kind": "webhook",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633269.286,
+     "text": "visa final 0259 aprovado · R$ 70,00",
+     "kind": "ok",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.286,
+     "text": "evento payment_intent.succeeded · webhook #16",
+     "kind": "webhook",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633272.316,
+     "text": "contestação aberta · motivo fraudulent · responder até 21/11",
+     "kind": "bad",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633272.316,
+     "text": "evento charge.dispute.created · webhook #23",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "id": "pi_67tFABtxPfMjsT7mTgOIduhj",
+    "payment_method": "pm_card_createDispute",
+    "card": {
+     "brand": "visa",
+     "last4": "0259",
+     "exp_month": 12,
+     "exp_year": 2030,
+     "funding": "credit",
+     "country": "US"
+    },
+    "last_payment_error": null,
+    "idempotency": null,
+    "dispute": "dp_vGgpZoxjdSuiPqnFvG2Mx2Qd",
+    "metadata": {
+     "booking": "AG-4838"
+    }
+   }
+  },
+  {
+   "gateway": "stripe",
+   "ref": "pi_Lwh48IvjJpR0Pic6fQp0AwK8",
+   "method": "card",
+   "amount": 4500,
+   "status": "estornada",
+   "gatewayStatus": "succeeded",
+   "created": 1794633269.2419927,
+   "expires": null,
+   "paid": 1794633269.2421627,
+   "booking": "AG-4837",
+   "customer": null,
+   "events": [
+    {
+     "at": 1794633269.242,
+     "text": "PaymentIntent criado · R$ 45,00 · sem Idempotency-Key",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.242,
+     "text": "evento payment_intent.created · webhook #12",
+     "kind": "webhook",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633269.242,
+     "text": "mastercard final 4444 aprovado · R$ 45,00",
+     "kind": "ok",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.242,
+     "text": "evento payment_intent.succeeded · webhook #13",
+     "kind": "webhook",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633269.283,
+     "text": "reembolso de R$ 45,00",
+     "kind": "warn",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.283,
+     "text": "evento charge.refunded · webhook #14",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 4500,
+   "details": {
+    "id": "pi_Lwh48IvjJpR0Pic6fQp0AwK8",
+    "payment_method": "pm_card_mastercard",
+    "card": {
+     "brand": "mastercard",
+     "last4": "4444",
+     "exp_month": 12,
+     "exp_year": 2030,
+     "funding": "credit",
+     "country": "US"
+    },
+    "last_payment_error": null,
+    "idempotency": null,
+    "dispute": null,
+    "metadata": {
+     "booking": "AG-4837"
+    }
+   }
+  },
+  {
+   "gateway": "stripe",
+   "ref": "pi_pZe39lHCZEmtUhKkHhvXDTzf",
+   "method": "card",
+   "amount": 3500,
+   "status": "pendente",
+   "gatewayStatus": "requires_action",
+   "created": 1794633269.2063882,
+   "expires": null,
+   "paid": null,
+   "booking": "AG-4836",
+   "customer": null,
+   "events": [
+    {
+     "at": 1794633269.206,
+     "text": "PaymentIntent criado · R$ 35,00 · sem Idempotency-Key",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.207,
+     "text": "evento payment_intent.created · webhook #10",
+     "kind": "webhook",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633269.207,
+     "text": "visa final 3155: o banco pede autenticação 3-D Secure (requires_action)",
+     "kind": "warn",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.207,
+     "text": "evento payment_intent.requires_action · webhook #11",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "id": "pi_pZe39lHCZEmtUhKkHhvXDTzf",
+    "payment_method": "pm_card_authenticationRequired",
+    "card": {
+     "brand": "visa",
+     "last4": "3155",
+     "exp_month": 12,
+     "exp_year": 2030,
+     "funding": "credit",
+     "country": "US"
+    },
+    "last_payment_error": null,
+    "idempotency": null,
+    "dispute": null,
+    "metadata": {
+     "booking": "AG-4836"
+    }
+   }
+  },
+  {
+   "gateway": "stripe",
+   "ref": "pi_lrInEkGhVFZZYetHsVRalzwp",
+   "method": "card",
+   "amount": 4500,
+   "status": "recusada",
+   "gatewayStatus": "requires_payment_method",
+   "created": 1794633269.170182,
+   "expires": null,
+   "paid": null,
+   "booking": "AG-4835",
+   "customer": null,
+   "events": [
+    {
+     "at": 1794633269.17,
+     "text": "PaymentIntent criado · R$ 45,00 · sem Idempotency-Key",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.17,
+     "text": "evento payment_intent.created · webhook #8",
+     "kind": "webhook",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633269.17,
+     "text": "visa final 9995 recusado · insufficient_funds",
+     "kind": "bad",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.17,
+     "text": "evento payment_intent.payment_failed · webhook #9",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "id": "pi_lrInEkGhVFZZYetHsVRalzwp",
+    "payment_method": "pm_card_chargeDeclinedInsufficientFunds",
+    "card": {
+     "brand": "visa",
+     "last4": "9995",
+     "exp_month": 12,
+     "exp_year": 2030,
+     "funding": "credit",
+     "country": "US"
+    },
+    "last_payment_error": {
+     "type": "card_error",
+     "code": "card_declined",
+     "decline_code": "insufficient_funds",
+     "message": "Your card has insufficient funds.",
+     "charge": "ch_RJNTZqD4KrLiCvLFRLTtziCX",
+     "payment_method": {
+      "id": "pm_card_chargeDeclinedInsufficientFunds",
+      "object": "payment_method",
+      "type": "card",
+      "created": 1794633269,
+      "livemode": false,
+      "card": {
+       "brand": "visa",
+       "last4": "9995",
+       "exp_month": 12,
+       "exp_year": 2030,
+       "funding": "credit",
+       "country": "US"
+      },
+      "billing_details": {}
+     }
+    },
+    "idempotency": null,
+    "dispute": null,
+    "metadata": {
+     "booking": "AG-4835"
+    }
+   }
+  },
+  {
+   "gateway": "stripe",
+   "ref": "pi_kfti06ID6RCCKOpxgCBlR05w",
+   "method": "card",
+   "amount": 7000,
+   "status": "paga",
+   "gatewayStatus": "succeeded",
+   "created": 1794633269.134339,
+   "expires": null,
+   "paid": 1794633269.1345136,
+   "booking": "AG-4834",
+   "customer": null,
+   "events": [
+    {
+     "at": 1794633269.134,
+     "text": "PaymentIntent criado · R$ 70,00 · sem Idempotency-Key",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.134,
+     "text": "evento payment_intent.created · webhook #6",
+     "kind": "webhook",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633269.135,
+     "text": "visa final 4242 aprovado · R$ 70,00",
+     "kind": "ok",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.135,
+     "text": "evento payment_intent.succeeded · webhook #7",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "id": "pi_kfti06ID6RCCKOpxgCBlR05w",
+    "payment_method": "pm_card_visa",
+    "card": {
+     "brand": "visa",
+     "last4": "4242",
+     "exp_month": 12,
+     "exp_year": 2030,
+     "funding": "credit",
+     "country": "US"
+    },
+    "last_payment_error": null,
+    "idempotency": null,
+    "dispute": null,
+    "metadata": {
+     "booking": "AG-4834"
+    }
+   }
+  },
+  {
+   "gateway": "mercadopago",
+   "ref": "1325000002",
+   "method": "card",
+   "amount": 7000,
+   "status": "recusada",
+   "gatewayStatus": "rejected · cc_rejected_insufficient_amount",
+   "created": 1794633269.113377,
+   "expires": null,
+   "paid": null,
+   "booking": "AG-4832",
+   "customer": "lucas@exemplo.com.br",
+   "events": [
+    {
+     "at": 1794633269.113,
+     "text": "pagamento criado · visa · R$ 70,00 · rejected (cc_rejected_insufficient_amount)",
+     "kind": "bad",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.113,
+     "text": "webhook #5 payment.created",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "id": "1325000002",
+    "payment_method_id": "visa",
+    "status_detail": "cc_rejected_insufficient_amount",
+    "external_reference": "AG-4832",
+    "idempotency": "ag-4832",
+    "card": {
+     "first_six_digits": "423564",
+     "last_four_digits": "5682",
+     "cardholder": {
+      "name": "FUND"
+     },
+     "brand": "visa"
+    },
+    "pixCopiaECola": null,
+    "notification_url": null
+   }
+  },
+  {
+   "gateway": "mercadopago",
+   "ref": "1325000001",
+   "method": "card",
+   "amount": 4500,
+   "status": "paga",
+   "gatewayStatus": "approved · accredited",
+   "created": 1794633269.0932648,
+   "expires": null,
+   "paid": 1794633269.0932648,
+   "booking": "AG-4831",
+   "customer": "rafael@exemplo.com.br",
+   "events": [
+    {
+     "at": 1794633269.093,
+     "text": "pagamento criado · master · R$ 45,00 · approved (accredited)",
+     "kind": "ok",
+     "by": "app"
+    },
+    {
+     "at": 1794633269.093,
+     "text": "webhook #4 payment.created",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "id": "1325000001",
+    "payment_method_id": "master",
+    "status_detail": "accredited",
+    "external_reference": "AG-4831",
+    "idempotency": "ag-4831",
+    "card": {
+     "first_six_digits": "503143",
+     "last_four_digits": "6351",
+     "cardholder": {
+      "name": "APRO"
+     },
+     "brand": "master"
+    },
+    "pixCopiaECola": null,
+    "notification_url": null
+   }
+  },
+  {
+   "gateway": "pix",
+   "ref": "AG4830corteebarba000000000",
+   "method": "pix",
+   "amount": 7000,
+   "status": "pendente",
+   "gatewayStatus": "ATIVA",
+   "created": 1794633269.0904214,
+   "expires": 1794634169.0904214,
+   "paid": null,
+   "booking": "AG-4830",
+   "customer": "Ana Beatriz Costa",
+   "events": [
+    {
+     "at": 1794633269.091,
+     "text": "cob criada · R$ 70,00 · vence em 15 min",
+     "kind": "info",
+     "by": "app"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "txid": "AG4830corteebarba000000000",
+    "revisao": 0,
+    "chave": "3b8c2f71-5a4e-4d19-9c07-e2a6b15f8d43",
+    "location": "127.0.0.1:55125/pix/v2/loc/33c233d6-c648-4e15-a146-2c027833dc7f",
+    "pixCopiaECola": "00020101021226850014br.gov.bcb.pix2563127.0.0.1:55125/pix/v2/loc/33c233d6-c648-4e15-a146-2c027833dc7f520400005303986540570.005802BR5915BARBEARIA DO ZE6009SAO PAULO62070503***6304CE8C",
+    "solicitacaoPagador": "Barbearia do Zé · AG-4830 · corte e barba",
+    "devedor": {
+     "cpf": "12345678909",
+     "nome": "Ana Beatriz Costa"
+    },
+    "e2eids": [],
+    "devolucoes": []
+   },
+   "qr": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NSA2NSIgc2hhcGUtcmVuZGVyaW5nPSJjcmlzcEVkZ2VzIj48cmVjdCB3aWR0aD0iNjUiIGhlaWdodD0iNjUiIGZpbGw9IiNmZmYiLz48cGF0aCBmaWxsPSIjMDAwIiBkPSJNNCA0aDd2MWgtN3pNMTMgNGg0djFoLTR6TTIwIDRoMXYxaC0xek0yMiA0aDF2MWgtMXpNMjYgNGgxdjFoLTF6TTI4IDRoMXYxaC0xek0zMSA0aDF2MWgtMXpNMzMgNGgydjFoLTJ6TTM2IDRoMnYxaC0yek0zOSA0aDF2MWgtMXpNNDEgNGg0djFoLTR6TTQ2IDRoMXYxaC0xek00OSA0aDN2MWgtM3pNNTQgNGg3djFoLTd6TTQgNWgxdjFoLTF6TTEwIDVoMXYxaC0xek0xMyA1aDF2MWgtMXpNMTkgNWgydjFoLTJ6TTIyIDVoMXYxaC0xek0yNyA1aDJ2MWgtMnpNMzAgNWg0djFoLTR6TTM1IDVoMnYxaC0yek0zOCA1aDF2MWgtMXpNNDAgNWgxdjFoLTF6TTQ0IDVoMXYxaC0xek00OCA1aDF2MWgtMXpNNTEgNWgxdjFoLTF6TTU0IDVoMXYxaC0xek02MCA1aDF2MWgtMXpNNCA2aDF2MWgtMXpNNiA2aDN2MWgtM3pNMTAgNmgxdjFoLTF6TTEyIDZoMXYxaC0xek0xOCA2aDN2MWgtM3pNMjQgNmgxdjFoLTF6TTI3IDZoM3YxaC0zek0zMiA2aDJ2MWgtMnpNMzUgNmgxdjFoLTF6TTM3IDZoM3YxaC0zek00MSA2aDF2MWgtMXpNNDUgNmg3djFoLTd6TTU0IDZoMXYxaC0xek01NiA2aDN2MWgtM3pNNjAgNmgxdjFoLTF6TTQgN2gxdjFoLTF6TTYgN2gzdjFoLTN6TTEwIDdoMXYxaC0xek0xMiA3aDV2MWgtNXpNMjEgN2gydjFoLTJ6TTI1IDdoMXYxaC0xek0yOSA3aDN2MWgtM3pNMzMgN2gydjFoLTJ6TTQwIDdoMXYxaC0xek00NSA3aDF2MWgtMXpNNDkgN2gxdjFoLTF6TTUxIDdoMXYxaC0xek01NCA3aDF2MWgtMXpNNTYgN2gzdjFoLTN6TTYwIDdoMXYxaC0xek00IDhoMXYxaC0xek02IDhoM3YxaC0zek0xMCA4aDF2MWgtMXpNMTIgOGgydjFoLTJ6TTE2IDhoMXYxaC0xek0xOCA4aDF2MWgtMXpNMjIgOGgzdjFoLTN6TTI2IDhoMXYxaC0xek0yOCA4aDF2MWgtMXpNMzAgOGg2djFoLTZ6TTM5IDhoMXYxaC0xek00MSA4aDF2MWgtMXpNNDMgOGgxdjFoLTF6TTQ1IDhoMnYxaC0yek00OCA4aDF2MWgtMXpNNTEgOGgxdjFoLTF6TTU0IDhoMXYxaC0xek01NiA4aDN2MWgtM3pNNjAgOGgxdjFoLTF6TTQgOWgxdjFoLTF6TTEwIDloMXYxaC0xek0xMiA5aDJ2MWgtMnpNMTYgOWgzdjFoLTN6TTIyIDloMnYxaC0yek0yNSA5aDF2MWgtMXpNMjcgOWgydjFoLTJ6TTMwIDloMXYxaC0xek0zNCA5aDF2MWgtMXpNNDAgOWgxdjFoLTF6TTQyIDloMnYxaC0yek00NyA5aDF2MWgtMXpNNTAgOWgxdjFoLTF6TTU0IDloMXYxaC0xek02MCA5aDF2MWgtMXpNNCAxMGg3djFoLTd6TTEyIDEwaDF2MWgtMXpNMTQgMTBoMXYxaC0xek0xNiAxMGgxdjFoLTF6TTE4IDEwaDF2MWgtMXpNMjAgMTBoMXYxaC0xek0yMiAxMGgxdjFoLTF6TTI0IDEwaDF2MWgtMXpNMjYgMTBoMXYxaC0xek0yOCAxMGgxdjFoLTF6TTMwIDEwaDF2MWgtMXpNMzIgMTBoMXYxaC0xek0zNCAxMGgxdjFoLTF6TTM2IDEwaDF2MWgtMXpNMzggMTBoMXYxaC0xek00MCAxMGgxdjFoLTF6TTQyIDEwaDF2MWgtMXpNNDQgMTBoMXYxaC0xek00NiAxMGgxdjFoLTF6TTQ4IDEwaDF2MWgtMXpNNTAgMTBoMXYxaC0xek01MiAxMGgxdjFoLTF6TTU0IDEwaDd2MWgtN3pNMTIgMTFoMnYxaC0yek0xOCAxMWgydjFoLTJ6TTIxIDExaDF2MWgtMXpNMjQgMTFoMXYxaC0xek0yNyAxMWg0djFoLTR6TTM0IDExaDF2MWgtMXpNMzggMTFoMnYxaC0yek00MSAxMWgydjFoLTJ6TTQ0IDExaDF2MWgtMXpNNDkgMTFoMXYxaC0xek01MSAxMWgydjFoLTJ6TTQgMTJoMXYxaC0xek02IDEyaDV2MWgtNXpNMTQgMTJoMXYxaC0xek0xNyAxMmgzdjFoLTN6TTIyIDEyaDJ2MWgtMnpNMjUgMTJoMXYxaC0xek0yNyAxMmgxdjFoLTF6TTI5IDEyaDd2MWgtN3pNMzcgMTJoN3YxaC03ek00NSAxMmg1djFoLTV6TTUxIDEyaDJ2MWgtMnpNNTQgMTJoNXYxaC01ek02IDEzaDN2MWgtM3pNMTEgMTNoMXYxaC0xek0xNSAxM2gxdjFoLTF6TTIwIDEzaDV2MWgtNXpNMjggMTNoMnYxaC0yek0zMSAxM2g0djFoLTR6TTM4IDEzaDJ2MWgtMnpNNDEgMTNoMXYxaC0xek00MyAxM2gxdjFoLTF6TTQ1IDEzaDJ2MWgtMnpNNDggMTNoMnYxaC0yek01MSAxM2gydjFoLTJ6TTU4IDEzaDF2MWgtMXpNNjAgMTNoMXYxaC0xek01IDE0aDN2MWgtM3pNMTAgMTRoM3YxaC0zek0xNCAxNGgxdjFoLTF6TTE2IDE0aDF2MWgtMXpNMTkgMTRoMnYxaC0yek0yNCAxNGgxdjFoLTF6TTI2IDE0aDF2MWgtMXpNMzAgMTRoMnYxaC0yek0zNyAxNGgxdjFoLTF6TTM5IDE0aDF2MWgtMXpNNDIgMTRoMXYxaC0xek00NiAxNGgzdjFoLTN6TTUwIDE0aDl2MWgtOXpNNCAxNWgxdjFoLTF6TTYgMTVoMXYxaC0xek05IDE1aDF2MWgtMXpNMTUgMTVoMXYxaC0xek0yNCAxNWgzdjFoLTN6TTI4IDE1aDF2MWgtMXpNMzMgMTVoNHYxaC00ek0zOSAxNWgydjFoLTJ6TTQzIDE1aDJ2MWgtMnpNNDYgMTVoMXYxaC0xek00OSAxNWgxdjFoLTF6TTUyIDE1aDF2MWgtMXpNNTUgMTVoMnYxaC0yek01OCAxNWgxdjFoLTF6TTQgMTZoM3YxaC0zek04IDE2aDV2MWgtNXpNMTQgMTZoMnYxaC0yek0yMiAxNmgxdjFoLTF6TTI0IDE2aDF2MWgtMXpNMjYgMTZoMXYxaC0xek0yOCAxNmg0djFoLTR6TTMzIDE2aDJ2MWgtMnpNMzcgMTZoMnYxaC0yek00MCAxNmgxdjFoLTF6TTQ1IDE2aDN2MWgtM3pNNDkgMTZoM3YxaC0zek01MyAxNmgydjFoLTJ6TTU3IDE2aDF2MWgtMXpNNSAxN2gydjFoLTJ6TTggMTdoMXYxaC0xek0xNCAxN2gxdjFoLTF6TTE2IDE3aDJ2MWgtMnpNMTkgMTdoMXYxaC0xek0yMSAxN2gxdjFoLTF6TTI0IDE3aDJ2MWgtMnpNMjcgMTdoMXYxaC0xek0yOSAxN2gydjFoLTJ6TTM0IDE3aDF2MWgtMXpNMzYgMTdoMnYxaC0yek0zOSAxN2gydjFoLTJ6TTQzIDE3aDF2MWgtMXpNNDYgMTdoMXYxaC0xek00OCAxN2gydjFoLTJ6TTUyIDE3aDF2MWgtMXpNNTUgMTdoMnYxaC0yek01OCAxN2gzdjFoLTN6TTQgMThoMnYxaC0yek05IDE4aDR2MWgtNHpNMTUgMThoMnYxaC0yek0xOCAxOGgxdjFoLTF6TTIzIDE4aDJ2MWgtMnpNMjYgMThoMXYxaC0xek0zMCAxOGgydjFoLTJ6TTMzIDE4aDF2MWgtMXpNMzUgMThoMXYxaC0xek0zNyAxOGgydjFoLTJ6TTQwIDE4aDN2MWgtM3pNNDQgMThoM3YxaC0zek01MCAxOGgydjFoLTJ6TTUzIDE4aDN2MWgtM3pNNCAxOWg1djFoLTV6TTE0IDE5aDJ2MWgtMnpNMTcgMTloMXYxaC0xek0xOSAxOWg1djFoLTV6TTI1IDE5aDN2MWgtM3pNMjkgMTloMnYxaC0yek0zMiAxOWgxdjFoLTF6TTM0IDE5aDF2MWgtMXpNMzYgMTloMnYxaC0yek0zOSAxOWgxdjFoLTF6TTQyIDE5aDF2MWgtMXpNNDQgMTloMXYxaC0xek00NyAxOWg2djFoLTZ6TTU2IDE5aDN2MWgtM3pNNjAgMTloMXYxaC0xek02IDIwaDN2MWgtM3pNMTAgMjBoMXYxaC0xek0xMiAyMGgxdjFoLTF6TTE0IDIwaDZ2MWgtNnpNMjEgMjBoM3YxaC0zek0yNSAyMGgxdjFoLTF6TTI3IDIwaDF2MWgtMXpNMzEgMjBoMXYxaC0xek0zMyAyMGgydjFoLTJ6TTM3IDIwaDJ2MWgtMnpNNDAgMjBoMXYxaC0xek00MiAyMGgydjFoLTJ6TTQ2IDIwaDF2MWgtMXpNNDkgMjBoMXYxaC0xek01MSAyMGgxdjFoLTF6TTU1IDIwaDF2MWgtMXpNNTggMjBoMnYxaC0yek01IDIxaDF2MWgtMXpNNyAyMWgzdjFoLTN6TTEyIDIxaDJ2MWgtMnpNMTUgMjFoMXYxaC0xek0xNyAyMWg3djFoLTd6TTI4IDIxaDJ2MWgtMnpNMzIgMjFoM3YxaC0zek0zNiAyMWgydjFoLTJ6TTQwIDIxaDJ2MWgtMnpNNDYgMjFoNHYxaC00ek01MiAyMWgxdjFoLTF6TTYwIDIxaDF2MWgtMXpNNSAyMmgydjFoLTJ6TTggMjJoMXYxaC0xek0xMCAyMmg0djFoLTR6TTE1IDIyaDJ2MWgtMnpNMTggMjJoMnYxaC0yek0yMSAyMmgxdjFoLTF6TTIzIDIyaDN2MWgtM3pNMjggMjJoMnYxaC0yek0zMiAyMmg0djFoLTR6TTM4IDIyaDF2MWgtMXpNNDAgMjJoMXYxaC0xek00MyAyMmgxdjFoLTF6TTQ1IDIyaDF2MWgtMXpNNTAgMjJoNnYxaC02ek01IDIzaDF2MWgtMXpNNyAyM2gydjFoLTJ6TTExIDIzaDF2MWgtMXpNMTMgMjNoMnYxaC0yek0xNiAyM2gxdjFoLTF6TTIwIDIzaDN2MWgtM3pNMjggMjNoMXYxaC0xek0zMiAyM2gydjFoLTJ6TTM2IDIzaDJ2MWgtMnpNMzkgMjNoMXYxaC0xek00NSAyM2gxdjFoLTF6TTQ3IDIzaDN2MWgtM3pNNTIgMjNoMXYxaC0xek01NCAyM2gxdjFoLTF6TTU2IDIzaDF2MWgtMXpNNTggMjNoM3YxaC0zek01IDI0aDF2MWgtMXpNNyAyNGgxdjFoLTF6TTkgMjRoNHYxaC00ek0xNCAyNGgxdjFoLTF6TTE4IDI0aDJ2MWgtMnpNMjIgMjRoM3YxaC0zek0yNyAyNGgxdjFoLTF6TTI5IDI0aDN2MWgtM3pNMzcgMjRoMXYxaC0xek00MCAyNGgydjFoLTJ6TTQzIDI0aDF2MWgtMXpNNDUgMjRoMXYxaC0xek00NyAyNGgxdjFoLTF6TTQ5IDI0aDN2MWgtM3pNNTQgMjRoMnYxaC0yek00IDI1aDF2MWgtMXpNNyAyNWgxdjFoLTF6TTEyIDI1aDR2MWgtNHpNMjMgMjVoMXYxaC0xek0yNSAyNWgxdjFoLTF6TTI4IDI1aDN2MWgtM3pNMzMgMjVoMXYxaC0xek0zNiAyNWgydjFoLTJ6TTM5IDI1aDJ2MWgtMnpNNDUgMjVoM3YxaC0zek01MiAyNWgxdjFoLTF6TTU1IDI1aDJ2MWgtMnpNNTggMjVoM3YxaC0zek01IDI2aDF2MWgtMXpNOSAyNmg0djFoLTR6TTE1IDI2aDF2MWgtMXpNMTcgMjZoMnYxaC0yek0yMyAyNmg0djFoLTR6TTI4IDI2aDJ2MWgtMnpNMzQgMjZoMXYxaC0xek0zOCAyNmg0djFoLTR6TTQzIDI2aDF2MWgtMXpNNDUgMjZoMXYxaC0xek00OCAyNmgydjFoLTJ6TTUxIDI2aDV2MWgtNXpNNTggMjZoMXYxaC0xek01IDI3aDF2MWgtMXpNOCAyN2gydjFoLTJ6TTExIDI3aDJ2MWgtMnpNMTQgMjdoMnYxaC0yek0xNyAyN2gzdjFoLTN6TTIyIDI3aDF2MWgtMXpNMjUgMjdoMnYxaC0yek0yOCAyN2gxdjFoLTF6TTMyIDI3aDF2MWgtMXpNMzQgMjdoMXYxaC0xek0zNyAyN2gxdjFoLTF6TTQzIDI3aDh2MWgtOHpNNTIgMjdoMXYxaC0xek01NiAyN2gxdjFoLTF6TTU4IDI3aDF2MWgtMXpNNSAyOGgydjFoLTJ6TTggMjhoM3YxaC0zek0xNSAyOGgzdjFoLTN6TTIxIDI4aDJ2MWgtMnpNMjcgMjhoMXYxaC0xek0yOSAyOGgzdjFoLTN6TTM0IDI4aDN2MWgtM3pNMzggMjhoM3YxaC0zek00MiAyOGgydjFoLTJ6TTQ5IDI4aDF2MWgtMXpNNTIgMjhoNHYxaC00ek01NyAyOGgxdjFoLTF6TTYgMjloM3YxaC0zek0xMyAyOWgydjFoLTJ6TTE2IDI5aDF2MWgtMXpNMTkgMjloMXYxaC0xek0yMSAyOWgxdjFoLTF6TTIzIDI5aDF2MWgtMXpNMjUgMjloMXYxaC0xek0yOCAyOWgxdjFoLTF6TTMxIDI5aDF2MWgtMXpNMzMgMjloMnYxaC0yek0zNiAyOWgxdjFoLTF6TTM5IDI5aDF2MWgtMXpNNDEgMjloMXYxaC0xek00NCAyOWgxdjFoLTF6TTQ2IDI5aDF2MWgtMXpNNDggMjloMXYxaC0xek01MSAyOWgydjFoLTJ6TTU1IDI5aDN2MWgtM3pNNTkgMjloMnYxaC0yek02IDMwaDl2MWgtOXpNMTYgMzBoMXYxaC0xek0xOSAzMGg3djFoLTd6TTI3IDMwaDJ2MWgtMnpNMzAgMzBoOHYxaC04ek00MCAzMGgzdjFoLTN6TTQ0IDMwaDJ2MWgtMnpNNDkgMzBoMXYxaC0xek01MSAzMGg2djFoLTZ6TTQgMzFoMnYxaC0yek04IDMxaDF2MWgtMXpNMTIgMzFoMXYxaC0xek0xNSAzMWgxdjFoLTF6TTE3IDMxaDN2MWgtM3pNMjQgMzFoMXYxaC0xek0yNiAzMWgxdjFoLTF6TTI4IDMxaDF2MWgtMXpNMzAgMzFoMXYxaC0xek0zNCAzMWgydjFoLTJ6TTM3IDMxaDF2MWgtMXpNNDQgMzFoMXYxaC0xek00NiAzMWgydjFoLTJ6TTQ5IDMxaDF2MWgtMXpNNTEgMzFoMnYxaC0yek01NiAzMWgxdjFoLTF6TTU4IDMxaDJ2MWgtMnpNNSAzMmgxdjFoLTF6TTggMzJoMXYxaC0xek0xMCAzMmgxdjFoLTF6TTEyIDMyaDJ2MWgtMnpNMTYgMzJoMnYxaC0yek0yMSAzMmg0djFoLTR6TTI2IDMyaDJ2MWgtMnpNMzAgMzJoMXYxaC0xek0zMiAzMmgxdjFoLTF6TTM0IDMyaDJ2MWgtMnpNMzkgMzJoNXYxaC01ek00NSAzMmgydjFoLTJ6TTQ5IDMyaDJ2MWgtMnpNNTIgMzJoMXYxaC0xek01NCAzMmgxdjFoLTF6TTU2IDMyaDJ2MWgtMnpNNSAzM2g0djFoLTR6TTEyIDMzaDJ2MWgtMnpNMTUgMzNoM3YxaC0zek0yMSAzM2gydjFoLTJ6TTI1IDMzaDJ2MWgtMnpNMjggMzNoMXYxaC0xek0zMCAzM2gxdjFoLTF6TTM0IDMzaDF2MWgtMXpNMzcgMzNoMXYxaC0xek0zOSAzM2gxdjFoLTF6TTQzIDMzaDF2MWgtMXpNNDYgMzNoMnYxaC0yek00OSAzM2gxdjFoLTF6TTUyIDMzaDF2MWgtMXpNNTYgMzNoNXYxaC01ek02IDM0aDF2MWgtMXpNOCAzNGg1djFoLTV6TTE2IDM0aDF2MWgtMXpNMjIgMzRoMXYxaC0xek0yNSAzNGgxMHYxaC0xMHpNMzkgMzRoMnYxaC0yek00MiAzNGgydjFoLTJ6TTUwIDM0aDF2MWgtMXpNNTIgMzRoNXYxaC01ek01OCAzNGgxdjFoLTF6TTQgMzVoMXYxaC0xek02IDM1aDF2MWgtMXpNMTEgMzVoMXYxaC0xek0xNCAzNWgxdjFoLTF6TTE3IDM1aDF2MWgtMXpNMTkgMzVoMXYxaC0xek0yMSAzNWgydjFoLTJ6TTI2IDM1aDF2MWgtMXpNMjggMzVoMXYxaC0xek0zNSAzNWgydjFoLTJ6TTM4IDM1aDF2MWgtMXpNNDAgMzVoMXYxaC0xek00MyAzNWgzdjFoLTN6TTQ3IDM1aDF2MWgtMXpNNTMgMzVoMnYxaC0yek01OCAzNWgxdjFoLTF6TTYwIDM1aDF2MWgtMXpNNCAzNmg4djFoLTh6TTE0IDM2aDF2MWgtMXpNMTggMzZoMXYxaC0xek0yMiAzNmgxdjFoLTF6TTI0IDM2aDF2MWgtMXpNMjcgMzZoM3YxaC0zek0zMiAzNmgxdjFoLTF6TTM0IDM2aDF2MWgtMXpNMzcgMzZoM3YxaC0zek00NyAzNmgxdjFoLTF6TTUyIDM2aDF2MWgtMXpNNTYgMzZoMnYxaC0yek01OSAzNmgydjFoLTJ6TTQgMzdoMXYxaC0xek0xMSAzN2gydjFoLTJ6TTE0IDM3aDF2MWgtMXpNMTYgMzdoMnYxaC0yek0xOSAzN2gxdjFoLTF6TTIyIDM3aDF2MWgtMXpNMjQgMzdoM3YxaC0zek0yOCAzN2gxdjFoLTF6TTMxIDM3aDF2MWgtMXpNMzMgMzdoMXYxaC0xek00NCAzN2gydjFoLTJ6TTQ3IDM3aDF2MWgtMXpNNDkgMzdoMXYxaC0xek01MSAzN2gzdjFoLTN6TTU1IDM3aDF2MWgtMXpNNTggMzdoM3YxaC0zek02IDM4aDN2MWgtM3pNMTAgMzhoM3YxaC0zek0xNCAzOGgxdjFoLTF6TTE2IDM4aDF2MWgtMXpNMTggMzhoMXYxaC0xek0yMCAzOGgxdjFoLTF6TTI1IDM4aDF2MWgtMXpNMjcgMzhoM3YxaC0zek0zMSAzOGgxdjFoLTF6TTM0IDM4aDF2MWgtMXpNMzYgMzhoNHYxaC00ek00MSAzOGgydjFoLTJ6TTQ0IDM4aDF2MWgtMXpNNDYgMzhoMXYxaC0xek00OSAzOGgydjFoLTJ6TTYwIDM4aDF2MWgtMXpNNiAzOWgxdjFoLTF6TTggMzloMXYxaC0xek0xMiAzOWgydjFoLTJ6TTE2IDM5aDN2MWgtM3pNMjAgMzloNXYxaC01ek0yOCAzOWgxdjFoLTF6TTMwIDM5aDR2MWgtNHpNMzUgMzloM3YxaC0zek0zOSAzOWgxdjFoLTF6TTQxIDM5aDF2MWgtMXpNNDQgMzloM3YxaC0zek00OCAzOWgydjFoLTJ6TTUxIDM5aDR2MWgtNHpNNTcgMzloMnYxaC0yek00IDQwaDF2MWgtMXpNNiA0MGgydjFoLTJ6TTEwIDQwaDJ2MWgtMnpNMTMgNDBoMXYxaC0xek0xOCA0MGgydjFoLTJ6TTIyIDQwaDF2MWgtMXpNMjQgNDBoMXYxaC0xek0yNiA0MGgydjFoLTJ6TTMxIDQwaDF2MWgtMXpNMzMgNDBoMnYxaC0yek0zOCA0MGgxdjFoLTF6TTQwIDQwaDJ2MWgtMnpNNDMgNDBoMXYxaC0xek00NSA0MGgzdjFoLTN6TTUwIDQwaDF2MWgtMXpNNTIgNDBoMXYxaC0xek01NiA0MGgzdjFoLTN6TTQgNDFoMXYxaC0xek02IDQxaDN2MWgtM3pNMTEgNDFoMXYxaC0xek0xNCA0MWgydjFoLTJ6TTIwIDQxaDJ2MWgtMnpNMjQgNDFoMXYxaC0xek0yOCA0MWgxdjFoLTF6TTMwIDQxaDF2MWgtMXpNMzIgNDFoMXYxaC0xek0zNCA0MWgxdjFoLTF6TTM3IDQxaDF2MWgtMXpNNDAgNDFoMXYxaC0xek00MyA0MWgxdjFoLTF6TTQ2IDQxaDF2MWgtMXpNNDkgNDFoMXYxaC0xek01MSA0MWgydjFoLTJ6TTU1IDQxaDF2MWgtMXpNNTkgNDFoMnYxaC0yek03IDQyaDF2MWgtMXpNOSA0MmgydjFoLTJ6TTEyIDQyaDF2MWgtMXpNMTYgNDJoMXYxaC0xek0xOCA0MmgxdjFoLTF6TTIwIDQyaDF2MWgtMXpNMjQgNDJoMXYxaC0xek0yNiA0MmgydjFoLTJ6TTMxIDQyaDJ2MWgtMnpNMzQgNDJoMnYxaC0yek0zOCA0MmgxdjFoLTF6TTQwIDQyaDR2MWgtNHpNNDUgNDJoMXYxaC0xek00NyA0MmgxdjFoLTF6TTUwIDQyaDF2MWgtMXpNNiA0M2gxdjFoLTF6TTggNDNoMXYxaC0xek0xMSA0M2gydjFoLTJ6TTE1IDQzaDF2MWgtMXpNMTcgNDNoMnYxaC0yek0yMCA0M2gxdjFoLTF6TTI0IDQzaDV2MWgtNXpNMzAgNDNoMXYxaC0xek0zMiA0M2gydjFoLTJ6TTM2IDQzaDJ2MWgtMnpNMzkgNDNoMXYxaC0xek00MSA0M2gzdjFoLTN6TTQ1IDQzaDJ2MWgtMnpNNDggNDNoMnYxaC0yek01MSA0M2g0djFoLTR6TTU2IDQzaDF2MWgtMXpNNTggNDNoMXYxaC0xek00IDQ0aDR2MWgtNHpNMTAgNDRoN3YxaC03ek0xOCA0NGgydjFoLTJ6TTIxIDQ0aDJ2MWgtMnpNMjUgNDRoM3YxaC0zek0yOSA0NGgzdjFoLTN6TTMzIDQ0aDN2MWgtM3pNMzggNDRoMXYxaC0xek00MCA0NGgxdjFoLTF6TTQyIDQ0aDF2MWgtMXpNNDQgNDRoMXYxaC0xek00NyA0NGgxdjFoLTF6TTQ5IDQ0aDJ2MWgtMnpNNTYgNDRoMXYxaC0xek0xMSA0NWgydjFoLTJ6TTE2IDQ1aDF2MWgtMXpNMTggNDVoMXYxaC0xek0yMCA0NWgxdjFoLTF6TTI0IDQ1aDJ2MWgtMnpNMjggNDVoMXYxaC0xek0zMyA0NWg1djFoLTV6TTQwIDQ1aDV2MWgtNXpNNDYgNDVoMXYxaC0xek01MyA0NWgxdjFoLTF6TTU1IDQ1aDF2MWgtMXpNNTggNDVoM3YxaC0zek00IDQ2aDJ2MWgtMnpNOCA0NmgzdjFoLTN6TTE2IDQ2aDF2MWgtMXpNMjYgNDZoMXYxaC0xek0yOCA0NmgydjFoLTJ6TTMxIDQ2aDF2MWgtMXpNMzMgNDZoMnYxaC0yek0zOCA0NmgxdjFoLTF6TTQwIDQ2aDF2MWgtMXpNNDQgNDZoMnYxaC0yek00OSA0NmgxdjFoLTF6TTU1IDQ2aDJ2MWgtMnpNNTggNDZoMXYxaC0xek03IDQ3aDF2MWgtMXpNOSA0N2gxdjFoLTF6TTEyIDQ3aDJ2MWgtMnpNMTUgNDdoMXYxaC0xek0xOCA0N2gydjFoLTJ6TTIzIDQ3aDF2MWgtMXpNMjggNDdoMXYxaC0xek0zMCA0N2gxdjFoLTF6TTMyIDQ3aDF2MWgtMXpNMzQgNDdoMnYxaC0yek0zNyA0N2gxdjFoLTF6TTM5IDQ3aDF2MWgtMXpNNDMgNDdoMXYxaC0xek00NSA0N2g1djFoLTV6TTUxIDQ3aDR2MWgtNHpNNTYgNDdoMXYxaC0xek01OCA0N2gxdjFoLTF6TTQgNDhoM3YxaC0zek04IDQ4aDd2MWgtN3pNMTYgNDhoM3YxaC0zek0yMCA0OGg0djFoLTR6TTI1IDQ4aDF2MWgtMXpNMjcgNDhoMXYxaC0xek0zMCA0OGgxdjFoLTF6TTMyIDQ4aDF2MWgtMXpNMzQgNDhoMXYxaC0xek00MCA0OGgxdjFoLTF6TTQyIDQ4aDF2MWgtMXpNNDUgNDhoMnYxaC0yek01MCA0OGgxdjFoLTF6TTUyIDQ4aDJ2MWgtMnpNNTYgNDhoMnYxaC0yek02MCA0OGgxdjFoLTF6TTUgNDloNHYxaC00ek0xOSA0OWgxdjFoLTF6TTIxIDQ5aDR2MWgtNHpNMjYgNDloMXYxaC0xek0yOCA0OWgxdjFoLTF6TTMxIDQ5aDF2MWgtMXpNMzMgNDloM3YxaC0zek0zOSA0OWgxdjFoLTF6TTQzIDQ5aDF2MWgtMXpNNDYgNDloMXYxaC0xek00OCA0OWgydjFoLTJ6TTUyIDQ5aDJ2MWgtMnpNNTUgNDloMXYxaC0xek01OCA0OWgxdjFoLTF6TTYwIDQ5aDF2MWgtMXpNNCA1MGgxdjFoLTF6TTYgNTBoMXYxaC0xek05IDUwaDJ2MWgtMnpNMTIgNTBoM3YxaC0zek0xNiA1MGgzdjFoLTN6TTIwIDUwaDN2MWgtM3pNMjUgNTBoMXYxaC0xek0yNyA1MGg1djFoLTV6TTM0IDUwaDF2MWgtMXpNMzcgNTBoMXYxaC0xek00MCA1MGgxdjFoLTF6TTQyIDUwaDF2MWgtMXpNNDUgNTBoMXYxaC0xek00OSA1MGgxdjFoLTF6TTUyIDUwaDF2MWgtMXpNNTUgNTBoMXYxaC0xek01OCA1MGgydjFoLTJ6TTQgNTFoNXYxaC01ek0xMiA1MWgxdjFoLTF6TTE0IDUxaDJ2MWgtMnpNMTcgNTFoMnYxaC0yek0yMCA1MWgxdjFoLTF6TTI3IDUxaDN2MWgtM3pNMzEgNTFoMXYxaC0xek0zMyA1MWgydjFoLTJ6TTM2IDUxaDF2MWgtMXpNMzggNTFoMXYxaC0xek00MSA1MWgydjFoLTJ6TTQ0IDUxaDF2MWgtMXpNNDYgNTFoMXYxaC0xek00OSA1MWgxdjFoLTF6TTUzIDUxaDN2MWgtM3pNNTggNTFoMnYxaC0yek0xMCA1MmgydjFoLTJ6TTE3IDUyaDF2MWgtMXpNMTkgNTJoMXYxaC0xek0yNCA1MmgxdjFoLTF6TTI3IDUyaDF2MWgtMXpNMjkgNTJoNnYxaC02ek0zNyA1Mmg3djFoLTd6TTQ2IDUyaDN2MWgtM3pNNTIgNTJoNXYxaC01ek01OSA1MmgydjFoLTJ6TTEyIDUzaDN2MWgtM3pNMTggNTNoMnYxaC0yek0yMSA1M2g0djFoLTR6TTI4IDUzaDN2MWgtM3pNMzQgNTNoM3YxaC0zek0zOCA1M2gxdjFoLTF6TTQzIDUzaDR2MWgtNHpNNDggNTNoMnYxaC0yek01MiA1M2gxdjFoLTF6TTU2IDUzaDN2MWgtM3pNNjAgNTNoMXYxaC0xek00IDU0aDd2MWgtN3pNMTMgNTRoM3YxaC0zek0xOSA1NGgxdjFoLTF6TTIxIDU0aDJ2MWgtMnpNMjYgNTRoMnYxaC0yek0zMCA1NGgxdjFoLTF6TTMyIDU0aDF2MWgtMXpNMzQgNTRoNHYxaC00ek0zOSA1NGgxdjFoLTF6TTQxIDU0aDN2MWgtM3pNNDYgNTRoM3YxaC0zek01MCA1NGgxdjFoLTF6TTUyIDU0aDF2MWgtMXpNNTQgNTRoMXYxaC0xek01NiA1NGgxdjFoLTF6TTQgNTVoMXYxaC0xek0xMCA1NWgxdjFoLTF6TTEyIDU1aDF2MWgtMXpNMTQgNTVoMnYxaC0yek0xOCA1NWgzdjFoLTN6TTIyIDU1aDF2MWgtMXpNMjUgNTVoMXYxaC0xek0yOCA1NWgxdjFoLTF6TTMwIDU1aDF2MWgtMXpNMzQgNTVoNHYxaC00ek0zOSA1NWgydjFoLTJ6TTQzIDU1aDJ2MWgtMnpNNDYgNTVoMXYxaC0xek01MCA1NWgzdjFoLTN6TTU2IDU1aDF2MWgtMXpNNTggNTVoM3YxaC0zek00IDU2aDF2MWgtMXpNNiA1NmgzdjFoLTN6TTEwIDU2aDF2MWgtMXpNMTIgNTZoMXYxaC0xek0xNCA1NmgxdjFoLTF6TTE2IDU2aDF2MWgtMXpNMjEgNTZoNnYxaC02ek0yOCA1NmgxdjFoLTF6TTMwIDU2aDV2MWgtNXpNMzcgNTZoMnYxaC0yek00MCA1NmgxdjFoLTF6TTQzIDU2aDF2MWgtMXpNNDUgNTZoM3YxaC0zek01MCA1NmgxdjFoLTF6TTUyIDU2aDV2MWgtNXpNNTkgNTZoMXYxaC0xek00IDU3aDF2MWgtMXpNNiA1N2gzdjFoLTN6TTEwIDU3aDF2MWgtMXpNMTIgNTdoMXYxaC0xek0xNyA1N2gxdjFoLTF6TTE5IDU3aDF2MWgtMXpNMjEgNTdoMnYxaC0yek0yNCA1N2g0djFoLTR6TTI5IDU3aDJ2MWgtMnpNMzIgNTdoMXYxaC0xek0zNSA1N2gxdjFoLTF6TTM5IDU3aDJ2MWgtMnpNNDMgNTdoMnYxaC0yek00NiA1N2gydjFoLTJ6TTUyIDU3aDF2MWgtMXpNNTYgNTdoMXYxaC0xek01OCA1N2gxdjFoLTF6TTQgNThoMXYxaC0xek02IDU4aDN2MWgtM3pNMTAgNThoMXYxaC0xek0xMiA1OGgxdjFoLTF6TTE1IDU4aDF2MWgtMXpNMjIgNThoMXYxaC0xek0yNiA1OGgxdjFoLTF6TTMxIDU4aDF2MWgtMXpNMzMgNThoMnYxaC0yek0zNiA1OGgzdjFoLTN6TTQwIDU4aDR2MWgtNHpNNDUgNThoM3YxaC0zek01MCA1OGgzdjFoLTN6TTU1IDU4aDF2MWgtMXpNNCA1OWgxdjFoLTF6TTEwIDU5aDF2MWgtMXpNMTMgNTloM3YxaC0zek0xOSA1OWg1djFoLTV6TTI2IDU5aDJ2MWgtMnpNMzEgNTloNHYxaC00ek0zNiA1OWgydjFoLTJ6TTM5IDU5aDF2MWgtMXpNNDEgNTloMXYxaC0xek00NCA1OWgxdjFoLTF6TTQ2IDU5aDF2MWgtMXpNNDggNTloMnYxaC0yek01MSA1OWgydjFoLTJ6TTU1IDU5aDJ2MWgtMnpNNTggNTloMXYxaC0xek00IDYwaDd2MWgtN3pNMTIgNjBoMXYxaC0xek0xNSA2MGgxdjFoLTF6TTE3IDYwaDR2MWgtNHpNMjIgNjBoMXYxaC0xek0yNCA2MGgxdjFoLTF6TTI3IDYwaDF2MWgtMXpNMzMgNjBoMXYxaC0xek0zNSA2MGgxdjFoLTF6TTM4IDYwaDF2MWgtMXpNNDAgNjBoMXYxaC0xek00MiA2MGgydjFoLTJ6TTQ2IDYwaDJ2MWgtMnpNNTAgNjBoOHYxaC04ek01OSA2MGgxdjFoLTF6Ii8+PC9zdmc+"
+  },
+  {
+   "gateway": "pix",
+   "ref": "AG4828barba000000000000000",
+   "method": "pix",
+   "amount": 3500,
+   "status": "expirada",
+   "gatewayStatus": "ATIVA",
+   "created": 1794633267.5866988,
+   "expires": 1794633268.5866988,
+   "paid": null,
+   "booking": "AG-4828",
+   "customer": "João Pedro Silva",
+   "events": [
+    {
+     "at": 1794633267.587,
+     "text": "cob criada · R$ 35,00 · vence em 1 s",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633268.658,
+     "text": "venceu sem pagamento · nenhum webhook é enviado no padrão do Banco Central",
+     "kind": "warn",
+     "by": "PayStudio"
+    },
+    {
+     "at": 1794633269.089,
+     "text": "vencimento antecipado pelo PayStudio: a cobrança não pode mais ser paga (o padrão do Banco Central não manda webhook de vencimento)",
+     "kind": "warn",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "txid": "AG4828barba000000000000000",
+    "revisao": 0,
+    "chave": "3b8c2f71-5a4e-4d19-9c07-e2a6b15f8d43",
+    "location": "127.0.0.1:55125/pix/v2/loc/d28c0d9d-a132-4a1d-a5aa-7a67e602e205",
+    "pixCopiaECola": "00020101021226850014br.gov.bcb.pix2563127.0.0.1:55125/pix/v2/loc/d28c0d9d-a132-4a1d-a5aa-7a67e602e205520400005303986540535.005802BR5915BARBEARIA DO ZE6009SAO PAULO62070503***630479CD",
+    "solicitacaoPagador": "Barbearia do Zé · AG-4828 · barba",
+    "devedor": {
+     "cpf": "12345678909",
+     "nome": "João Pedro Silva"
+    },
+    "e2eids": [],
+    "devolucoes": []
+   }
+  },
+  {
+   "gateway": "pix",
+   "ref": "AG4827corteebarba000000000",
+   "method": "pix",
+   "amount": 7000,
+   "status": "paga",
+   "gatewayStatus": "CONCLUIDA",
+   "created": 1794633267.5827532,
+   "expires": 1794634167.5827532,
+   "paid": 1794633267.5854738,
+   "booking": "AG-4827",
+   "customer": "Marina Lopes",
+   "events": [
+    {
+     "at": 1794633267.583,
+     "text": "cob criada · R$ 70,00 · vence em 15 min",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633267.585,
+     "text": "pago pelo pagador · R$ 70,00 · e2eid ln8st3q0nt",
+     "kind": "ok",
+     "by": "agente"
+    },
+    {
+     "at": 1794633267.586,
+     "text": "webhook #2 para o app · enviado 2 vezes pelo cenário",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "txid": "AG4827corteebarba000000000",
+    "revisao": 0,
+    "chave": "3b8c2f71-5a4e-4d19-9c07-e2a6b15f8d43",
+    "location": "127.0.0.1:55125/pix/v2/loc/1ad3bf7c-7735-4c0b-96a1-bd8ef3e49963",
+    "pixCopiaECola": "00020101021226850014br.gov.bcb.pix2563127.0.0.1:55125/pix/v2/loc/1ad3bf7c-7735-4c0b-96a1-bd8ef3e49963520400005303986540570.005802BR5915BARBEARIA DO ZE6009SAO PAULO62070503***6304946D",
+    "solicitacaoPagador": "Barbearia do Zé · AG-4827 · corte e barba",
+    "devedor": {
+     "cpf": "12345678909",
+     "nome": "Marina Lopes"
+    },
+    "e2eids": [
+     "E18236120202611140514jln8st3q0nt"
+    ],
+    "devolucoes": []
+   }
+  },
+  {
+   "gateway": "pix",
+   "ref": "AG4826corte000000000000000",
+   "method": "pix",
+   "amount": 4500,
+   "status": "paga",
+   "gatewayStatus": "CONCLUIDA",
+   "created": 1794633267.5663698,
+   "expires": 1794634167.5663698,
+   "paid": 1794633267.5747547,
+   "booking": "AG-4826",
+   "customer": "Carlos Andrade",
+   "events": [
+    {
+     "at": 1794633267.567,
+     "text": "cob criada · R$ 45,00 · vence em 15 min",
+     "kind": "info",
+     "by": "app"
+    },
+    {
+     "at": 1794633267.575,
+     "text": "pago pelo pagador · R$ 45,00 · e2eid cab9md9lf7",
+     "kind": "ok",
+     "by": "agente"
+    },
+    {
+     "at": 1794633267.575,
+     "text": "webhook #1 para o app",
+     "kind": "webhook",
+     "by": "PayStudio"
+    }
+   ],
+   "flags": [],
+   "refunded": 0,
+   "details": {
+    "txid": "AG4826corte000000000000000",
+    "revisao": 0,
+    "chave": "3b8c2f71-5a4e-4d19-9c07-e2a6b15f8d43",
+    "location": "127.0.0.1:55125/pix/v2/loc/c4b65003-27ee-4b27-88ed-0428d3985162",
+    "pixCopiaECola": "00020101021226850014br.gov.bcb.pix2563127.0.0.1:55125/pix/v2/loc/c4b65003-27ee-4b27-88ed-0428d3985162520400005303986540545.005802BR5915BARBEARIA DO ZE6009SAO PAULO62070503***6304C49A",
+    "solicitacaoPagador": "Barbearia do Zé · AG-4826 · corte",
+    "devedor": {
+     "cpf": "12345678909",
+     "nome": "Carlos Andrade"
+    },
+    "e2eids": [
+     "E18236120202611140514bcab9md9lf7"
+    ],
+    "devolucoes": []
+   }
+  }
+ ]
+}

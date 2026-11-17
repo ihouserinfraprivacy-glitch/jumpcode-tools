@@ -1,0 +1,152 @@
+{
+	"paths": [
+		{
+			"id": "criar-pedido",
+			"name": "Criar pedido",
+			"steps": [
+				{
+					"from": "s:apps/cliente",
+					"to": "v:plataforma/servicos/api-gateway",
+					"label": "POST /pedidos",
+					"async": false,
+					"note": "O app envia o carrinho e o meio de pagamento para o gateway.",
+					"evidence": {
+						"path": "apps/cliente/src/api/apiClient.ts",
+						"line": 58
+					}
+				},
+				{
+					"from": "v:plataforma/servicos/api-gateway",
+					"to": "v:plataforma/servicos/auth",
+					"label": "valida o token",
+					"async": false,
+					"note": "O gateway confere o token do cliente antes de seguir.",
+					"evidence": {
+						"path": "plataforma/servicos/api-gateway/internal/auth/token.go",
+						"line": 18
+					}
+				},
+				{
+					"from": "v:plataforma/servicos/auth",
+					"to": "v:plataforma/servicos/api-gateway",
+					"label": "ok",
+					"async": false,
+					"note": "Token válido; o gateway segue com o pedido."
+				},
+				{
+					"from": "v:plataforma/servicos/api-gateway",
+					"to": "v:plataforma/servicos/pedidos",
+					"label": "CriarPedido",
+					"async": false,
+					"note": "O gateway repassa o pedido para o serviço de pedidos.",
+					"evidence": {
+						"path": "plataforma/servicos/api-gateway/internal/rotas/rotas.go",
+						"line": 33
+					}
+				},
+				{
+					"from": "v:plataforma/servicos/pedidos",
+					"to": "v:plataforma/servicos/pagamentos",
+					"label": "Cobrar · gRPC",
+					"async": false,
+					"note": "Chamada gRPC Cobrar(pedidoID, total). Tempo médio: 180 ms.",
+					"evidence": {
+						"path": "plataforma/servicos/pedidos/internal/pagamento/cliente_grpc.go",
+						"line": 24
+					}
+				},
+				{
+					"from": "v:plataforma/servicos/pagamentos",
+					"to": "x:gateway-pix",
+					"label": "cria cobrança Pix",
+					"async": false,
+					"note": "pagamentos cria a cobrança no Gateway Pix.",
+					"evidence": {
+						"path": "plataforma/servicos/pagamentos/internal/pix/cliente.go",
+						"line": 40
+					}
+				},
+				{
+					"from": "x:gateway-pix",
+					"to": "v:plataforma/servicos/pagamentos",
+					"label": "QR Code",
+					"async": false,
+					"note": "O Gateway Pix devolve o QR Code da cobrança."
+				},
+				{
+					"from": "v:plataforma/servicos/pedidos",
+					"to": "q:rabbitmq",
+					"label": "pedido.criado",
+					"async": true,
+					"note": "pedidos publica o evento na fila e não espera resposta.",
+					"evidence": {
+						"path": "plataforma/servicos/pedidos/internal/http/handlers.go",
+						"line": 47
+					}
+				},
+				{
+					"from": "q:rabbitmq",
+					"to": "v:plataforma/servicos/notificacoes",
+					"label": "entrega o evento",
+					"async": true,
+					"note": "A fila entrega o evento para notificações."
+				},
+				{
+					"from": "v:plataforma/servicos/notificacoes",
+					"to": "x:whatsapp",
+					"label": "“Recebemos seu pedido”",
+					"async": false,
+					"note": "notificações manda a mensagem pelo WhatsApp Business."
+				},
+				{
+					"from": "v:plataforma/servicos/pedidos",
+					"to": "s:apps/cliente",
+					"label": "201 · QR Code Pix",
+					"async": false,
+					"note": "O app recebe o pedido criado e mostra o QR Code."
+				}
+			]
+		},
+		{
+			"id": "compra-no-app",
+			"name": "Compra no app",
+			"steps": [
+				{
+					"from": "s:apps/cliente",
+					"to": "s:plataforma",
+					"label": "HTTPS · REST",
+					"async": false,
+					"note": "O cliente monta o carrinho e o app envia o pedido para a Plataforma."
+				},
+				{
+					"from": "s:plataforma",
+					"to": "x:gateway-pix",
+					"label": "HTTPS",
+					"async": false,
+					"note": "O app do cliente envia o pedido para a Plataforma, que cobra pelo Gateway Pix e devolve o QR Code em menos de 1 segundo."
+				},
+				{
+					"from": "s:plataforma",
+					"to": "x:whatsapp",
+					"label": "HTTPS",
+					"async": false,
+					"note": "Com o pagamento confirmado, a Plataforma avisa o cliente pelo WhatsApp."
+				},
+				{
+					"from": "s:apps/entregador",
+					"to": "s:plataforma",
+					"label": "HTTPS + WebSocket",
+					"async": false,
+					"note": "O entregador recebe a entrega no app e aceita a rota."
+				},
+				{
+					"from": "s:firmware/rastreador",
+					"to": "s:plataforma",
+					"label": "MQTT · LTE",
+					"async": true,
+					"note": "O rastreador do veículo envia a posição a cada 5 segundos até a entrega."
+				}
+			]
+		}
+	]
+}

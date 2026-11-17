@@ -1,0 +1,167 @@
+{
+	"id": "cloudstudio",
+	"name": "CloudStudio",
+	"description": "Roda uma nuvem AWS de mentira no seu computador, sem conta e sem custo: S3, DynamoDB, Lambda, filas, API e mais, para testar o seu app antes de publicar.",
+	"version": "1.0.1",
+	"icon": "cloud",
+	"studio": {
+		"title": "CloudStudio",
+		"description": "Nuvem AWS local",
+		"ui": true
+	},
+	"details": {
+		"about": "O CloudStudio liga uma nuvem local no seu computador que responde como a AWS em http://127.0.0.1:4566. O seu app, os testes e o agente usam os SDKs e a CLI da AWS de sempre, só apontando para esse endereço: nada vai para a internet e nada é cobrado. O Studio mostra cada recurso por dentro (arquivos do S3, itens do DynamoDB, mensagens das filas, execuções das funções), cada chamada que o app faz com o erro explicado, e os logs ao vivo. As funções Lambda rodam o código da pasta do projeto com o Python ou o Node.js do computador, então cada mudança vale na próxima chamada.",
+		"features": [
+			"S3, DynamoDB, SQS, SNS, Lambda, API Gateway (HTTP), Step Functions, EventBridge, Scheduler, Secrets Manager, Parameter Store, CloudWatch Logs e STS",
+			"Funções Lambda em Python e Node.js rodando o código do projeto, com filas, agendamentos e API ligados a elas",
+			"Chamadas do app ao vivo, com o pedido, a resposta e o erro do jeito que a AWS devolve",
+			"Mapa dos recursos com as ligações entre eles",
+			"Cópias do estado para voltar atrás e dados guardados entre sessões, se você quiser",
+			"Segredos lidos do .env do projeto, sem passar pelo chat"
+		],
+		"limitations": [
+			"Não substitui um teste na AWS de verdade: permissões do IAM, limites e cobrança não são simulados",
+			"Funções só em Python e Node.js; imagens de contêiner, RDS e outros serviços que precisam de Docker não estão disponíveis",
+			"API Gateway só no formato HTTP (v2); o formato REST (v1) ainda não é emulado",
+			"Os SDKs precisam aceitar AWS_ENDPOINT_URL (boto3 1.28+, AWS SDK para JavaScript v3); para chamar a Step Functions de forma síncrona, desligue o prefixo de host no cliente",
+			"A nuvem fica ligada enquanto o JumpCode estiver aberto e só escuta neste computador"
+		],
+		"examples": [
+			"Ligue a nuvem local e crie a tabela de agendamentos",
+			"Rode o backend da barbearia na nuvem local",
+			"Por que o app recebeu erro 400 ao salvar?",
+			"Mostre os logs da função agendar"
+		],
+		"author": "JumpCode",
+		"updatedAt": "2026-11-13",
+		"execution": "local",
+		"access": {
+			"suppliedText": true,
+			"projectFiles": true,
+			"network": false
+		}
+	},
+	"instructions": "CloudStudio runs a local AWS cloud on this computer (an emulator, no account, no cost) and shows it in the Studio beside the chat. Use it when the user wants to run or test AWS code locally. 1) start turns the cloud on (create, invoke, send, request and env start it too). status tells what exists and the last errors. 2) To build the user's backend, call create once per resource with service and name: bucket; table with key (and sort, indexes [{name,key,sort}], ttl); queue (dlq and maxReceives for a dead-letter queue, fifo); topic (subscribe [{queue}|{function}|{url}]); function with folder (project folder with the code, such as src/agendar), handler (app.handler or index.handler), runtime (python or node), env {NAME: value}, timeout and queue to run it for each message; api with routes [{route: 'POST /agendamentos', function: 'agendar'}]; secret with fromEnv (the variable name in the project's .env; never pass secret values); parameter with value; schedule with expression and target (function:name, queue:name or topic:name); rule with pattern and targets; statemachine with definition. Calling create again for a function updates it. 3) Only when the user asks to connect the code (or to create .env.local), call env: it writes the endpoint and test keys to the project's .env.local. 4) To test, use invoke (function and event), request (api, method, path, body), send (queue or topic and message) and run (statemachine and input). 5) When something fails, call calls with errors true (and logs with the function name) and explain the AWS error in simple words, quoting the exact field or value that is wrong. 6) snapshot saves a copy, restore brings one back, reset empties the cloud, stop turns it off. Use focus (view: overview, resources, map, calls, logs, copies; select like table:Agendamentos) to point at something. After the last call, always answer the user in one or two short sentences in the user's language, saying what changed.",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"action": {
+				"type": "string",
+				"enum": ["status", "start", "stop", "create", "remove", "invoke", "send", "request", "run", "calls", "logs", "env", "snapshot", "restore", "reset", "focus"],
+				"description": "status, start, stop; create or remove a resource; invoke a function, request an API route, send a message, run a state machine; calls and logs show what happened; env writes .env.local; snapshot, restore and reset manage the state; focus points the Studio."
+			},
+			"service": {
+				"type": "string",
+				"enum": ["bucket", "table", "queue", "topic", "function", "api", "secret", "parameter", "schedule", "rule", "statemachine"],
+				"description": "create, remove: the kind of resource; calls: only this kind."
+			},
+			"name": {
+				"type": "string",
+				"maxLength": 256,
+				"description": "Resource name; invoke: function; run: state machine; logs, calls: resource; snapshot, restore: copy name."
+			},
+			"storage": {
+				"type": "string",
+				"enum": ["memory", "persistent"],
+				"description": "start: memory (lost when stopped, default) or persistent (kept between sessions)."
+			},
+			"region": {
+				"type": "string",
+				"maxLength": 32,
+				"description": "Resource region. Defaults to the cloud region; start changes that default. Use the selected resource's region when supplied by the Studio."
+			},
+			"account": {"type": "string", "maxLength": 12, "description": "Resource account (12 digits), default 000000000000. Preserve the account supplied by the Studio."},
+			"key": {"type": "string", "maxLength": 255, "description": "table: partition key attribute."},
+			"keyType": {"type": "string", "enum": ["S", "N", "B"], "description": "table: S (text, default), N (number) or B."},
+			"sort": {"type": "string", "maxLength": 255, "description": "table: sort key attribute."},
+			"sortType": {"type": "string", "enum": ["S", "N", "B"]},
+			"indexes": {
+				"type": "array",
+				"maxItems": 20,
+				"items": {
+					"type": "object",
+					"properties": {
+						"name": {"type": "string", "maxLength": 255},
+						"key": {"type": "string", "maxLength": 255},
+						"keyType": {"type": "string", "enum": ["S", "N", "B"]},
+						"sort": {"type": "string", "maxLength": 255},
+						"sortType": {"type": "string", "enum": ["S", "N", "B"]}
+					},
+					"required": ["name", "key"],
+					"additionalProperties": false
+				},
+				"description": "table: global secondary indexes."
+			},
+			"ttl": {"type": "string", "maxLength": 255, "description": "table: attribute with the expiry time (epoch seconds)."},
+			"items": {"type": "array", "maxItems": 100, "description": "table: items to put, as plain JSON objects."},
+			"folder": {"type": "string", "maxLength": 400, "description": "function: project folder with the code, relative to the project."},
+			"handler": {"type": "string", "maxLength": 128, "description": "function: file.function, such as app.handler."},
+			"runtime": {"type": "string", "maxLength": 32, "description": "function: python (default) or node, or an exact runtime such as python3.12."},
+			"env": {"type": "object", "additionalProperties": {"type": "string", "maxLength": 4000}, "description": "function: environment variables."},
+			"timeout": {"type": "integer", "minimum": 1, "maximum": 900, "description": "function: seconds."},
+			"queue": {"type": "string", "maxLength": 80, "description": "function: queue that triggers it; send: queue to send to."},
+			"batch": {"type": "integer", "minimum": 1, "maximum": 10, "description": "function: messages per call from the queue."},
+			"deadLetter": {"type": "string", "maxLength": 256, "description": "function: where failed async events go (queue:name or topic:name)."},
+			"routes": {
+				"type": "array",
+				"maxItems": 100,
+				"items": {
+					"type": "object",
+					"properties": {
+						"route": {"type": "string", "maxLength": 200, "description": "METHOD /path, such as POST /agendamentos or GET /agendamentos/{id}."},
+						"function": {"type": "string", "maxLength": 64}
+					},
+					"required": ["route", "function"],
+					"additionalProperties": false
+				},
+				"description": "api: routes and the function each one calls."
+			},
+			"cors": {"type": "boolean", "description": "api: allow browsers from any origin (default true)."},
+			"dlq": {"type": "string", "maxLength": 80, "description": "queue: dead-letter queue name (created too)."},
+			"maxReceives": {"type": "integer", "minimum": 1, "maximum": 1000, "description": "queue: receives before a message goes to the dead-letter queue."},
+			"fifo": {"type": "boolean", "description": "queue: FIFO queue."},
+			"visibility": {"type": "integer", "minimum": 0, "maximum": 43200, "description": "queue: visibility timeout in seconds."},
+			"subscribe": {
+				"type": "array",
+				"maxItems": 20,
+				"items": {
+					"type": "object",
+					"properties": {
+						"queue": {"type": "string", "maxLength": 80},
+						"function": {"type": "string", "maxLength": 64},
+						"url": {"type": "string", "maxLength": 400},
+						"email": {"type": "string", "maxLength": 200},
+						"raw": {"type": "boolean"}
+					},
+					"additionalProperties": false
+				},
+				"description": "topic: subscribers."
+			},
+			"fromEnv": {"type": "string", "maxLength": 128, "description": "secret: name of the variable in the project's .env that holds the value."},
+			"value": {"type": "string", "maxLength": 4000, "description": "parameter: value (not for secrets)."},
+			"secure": {"type": "boolean", "description": "parameter: SecureString."},
+			"expression": {"type": "string", "maxLength": 256, "description": "schedule, rule: rate(5 minutes), cron(0 12 * * ? *) or at(2026-12-01T09:00:00)."},
+			"timezone": {"type": "string", "maxLength": 64, "description": "schedule: such as America/Sao_Paulo (default UTC)."},
+			"target": {"type": "string", "maxLength": 256, "description": "schedule: function:name, queue:name, topic:name or statemachine as machine:name."},
+			"input": {"description": "schedule: JSON sent to the target; run: execution input."},
+			"pattern": {"description": "rule: EventBridge event pattern (JSON)."},
+			"targets": {"type": "array", "maxItems": 5, "items": {"type": "string", "maxLength": 256}, "description": "rule: function:name, queue:name or topic:name."},
+			"bus": {"type": "string", "maxLength": 256, "description": "rule: event bus (default); send: bus to put an event on."},
+			"definition": {"description": "statemachine: Amazon States Language definition (JSON)."},
+			"event": {"description": "invoke: the event (JSON)."},
+			"topic": {"type": "string", "maxLength": 256, "description": "send: topic."},
+			"message": {"description": "send: message (text or JSON)."},
+			"api": {"type": "string", "maxLength": 128, "description": "request: API name."},
+			"method": {"type": "string", "enum": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"], "description": "request: HTTP method."},
+			"path": {"type": "string", "maxLength": 1000, "description": "request: path, such as /agendamentos/42."},
+			"body": {"description": "request: body (JSON or text)."},
+			"errors": {"type": "boolean", "description": "calls: only calls that failed."},
+			"limit": {"type": "integer", "minimum": 1, "maximum": 200, "description": "calls, logs: how many."},
+			"view": {"type": "string", "enum": ["overview", "resources", "map", "calls", "logs", "copies", "catalog", "settings"], "description": "focus: what the Studio shows."},
+			"select": {"type": "string", "maxLength": 300, "description": "focus: resource as kind:name, such as table:Agendamentos or function:agendar."},
+			"note": {"type": "string", "maxLength": 200, "description": "focus: short caption."}
+		},
+		"required": ["action"],
+		"additionalProperties": false
+	}
+}

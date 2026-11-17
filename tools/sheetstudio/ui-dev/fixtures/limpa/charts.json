@@ -1,0 +1,969 @@
+{
+ "schema": 1,
+ "charts": [
+  {
+   "id": "g8",
+   "created": 1794645663.278272,
+   "kind": "bar",
+   "title": "Ticket médio por dia da semana",
+   "x": {
+    "column": "dia da semana",
+    "by": "value"
+   },
+   "y": {
+    "column": "valor",
+    "agg": "avg",
+    "type": "currency"
+   },
+   "group": null,
+   "labels": [
+    "qui",
+    "qua",
+    "ter",
+    "sáb",
+    "seg",
+    "sex"
+   ],
+   "keys": [
+    "qui",
+    "qua",
+    "ter",
+    "sáb",
+    "seg",
+    "sex"
+   ],
+   "series": [
+    {
+     "name": "média de valor",
+     "values": [
+      45.2254,
+      45.1913,
+      44.7692,
+      44.5706,
+      44.4784,
+      44.4772
+     ]
+    }
+   ],
+   "unit": "currency",
+   "total": null,
+   "calc": {
+    "basis": "clean",
+    "steps": 4,
+    "rowsTotal": 4799,
+    "rowsMatched": 4309,
+    "rowsUsed": 4309,
+    "excluded": [
+     {
+      "reason": "fora do filtro",
+      "count": 490
+     }
+    ],
+    "filter": [
+     "status = concluído"
+    ],
+    "sql": "SELECT \"dia da semana\" AS x, AVG(\"valor\") AS v FROM dados WHERE \"status\" = 'concluído' GROUP BY x",
+    "readable": "Média de valor por dia da semana, só onde status = concluído: 4.309 de 4.799 linhas."
+   },
+   "sheet": "f0dcf35726",
+   "file": "df024e022a",
+   "fileName": "dados/atendimentos-2026.xlsx",
+   "sheetName": "Atendimentos",
+   "question": null,
+   "spec": {
+    "x": "dia da semana",
+    "y": "valor",
+    "agg": "avg",
+    "filter": "status = concluído",
+    "title": "Ticket médio por dia da semana"
+   }
+  },
+  {
+   "id": "g7",
+   "created": 1794645662.914271,
+   "kind": "stacked100",
+   "title": "De onde vêm os agendamentos",
+   "x": {
+    "column": "data",
+    "by": "month"
+   },
+   "y": {
+    "column": null,
+    "agg": "count",
+    "type": "integer"
+   },
+   "group": {
+    "column": "origem",
+    "by": "value"
+   },
+   "labels": [
+    "jan",
+    "fev",
+    "mar",
+    "abr",
+    "mai",
+    "jun",
+    "jul",
+    "ago",
+    "set",
+    "out"
+   ],
+   "keys": [
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+   ],
+   "series": [
+    {
+     "name": "Balcão",
+     "values": [
+      174,
+      148,
+      171,
+      167,
+      149,
+      162,
+      163,
+      168,
+      157,
+      170
+     ]
+    },
+    {
+     "name": "App",
+     "values": [
+      159,
+      154,
+      158,
+      162,
+      156,
+      159,
+      179,
+      154,
+      157,
+      172
+     ]
+    },
+    {
+     "name": "WhatsApp",
+     "values": [
+      171,
+      129,
+      158,
+      141,
+      159,
+      175,
+      172,
+      166,
+      145,
+      154
+     ]
+    }
+   ],
+   "unit": "count",
+   "total": 4809,
+   "calc": {
+    "basis": "raw",
+    "steps": 0,
+    "rowsTotal": 4809,
+    "rowsMatched": 4809,
+    "rowsUsed": 4809,
+    "excluded": [],
+    "filter": [],
+    "sql": "SELECT strftime('%Y-%m', \"data\") AS x, \"origem\" AS g, COUNT(*) AS v FROM dados WHERE 1=1 GROUP BY x, g",
+    "readable": "Contagem de linhas por mês de data e por origem: 4.809 de 4.809 linhas."
+   },
+   "sheet": "f0dcf35726",
+   "file": "df024e022a",
+   "fileName": "dados/atendimentos-2026.xlsx",
+   "sheetName": "Atendimentos",
+   "question": null,
+   "spec": {
+    "x": "data",
+    "by": "month",
+    "group": "origem",
+    "kind": "stacked100",
+    "title": "De onde vêm os agendamentos"
+   }
+  },
+  {
+   "id": "g6",
+   "created": 1794645662.9013171,
+   "kind": "pivot",
+   "title": "Serviço por barbeiro",
+   "x": {
+    "column": "serviço",
+    "by": "value"
+   },
+   "y": {
+    "column": "valor",
+    "agg": "sum",
+    "type": "currency"
+   },
+   "group": {
+    "column": "barbeiro",
+    "by": "value"
+   },
+   "labels": [
+    "Corte e barba",
+    "Pigmentação",
+    "Corte",
+    "Barba",
+    "Sobrancelha"
+   ],
+   "keys": [
+    "Corte e barba",
+    "Pigmentação",
+    "Corte",
+    "Barba",
+    "Sobrancelha"
+   ],
+   "series": [
+    {
+     "name": "Rafa",
+     "values": [
+      19600.0,
+      16260.0,
+      13635.0,
+      9780.0,
+      6220.0
+     ]
+    },
+    {
+     "name": "Zé",
+     "values": [
+      20720.0,
+      17280.0,
+      13230.0,
+      8700.0,
+      5020.0
+     ]
+    },
+    {
+     "name": "Léo",
+     "values": [
+      20580.0,
+      15600.0,
+      12060.0,
+      8940.0,
+      5740.0
+     ]
+    }
+   ],
+   "unit": "currency",
+   "total": 193365.0,
+   "calc": {
+    "basis": "raw",
+    "steps": 0,
+    "rowsTotal": 4809,
+    "rowsMatched": 4317,
+    "rowsUsed": 4317,
+    "excluded": [
+     {
+      "reason": "fora do filtro",
+      "count": 492
+     }
+    ],
+    "filter": [
+     "status = concluído"
+    ],
+    "sql": "SELECT \"serviço\" AS x, \"barbeiro\" AS g, SUM(\"valor\") AS v FROM dados WHERE \"status\" = 'concluído' GROUP BY x, g",
+    "readable": "Soma de valor por serviço e por barbeiro, só onde status = concluído: 4.317 de 4.809 linhas."
+   },
+   "pivot": {
+    "rows": [
+     "Corte e barba",
+     "Pigmentação",
+     "Corte",
+     "Barba",
+     "Sobrancelha"
+    ],
+    "columns": [
+     "Rafa",
+     "Zé",
+     "Léo"
+    ],
+    "cells": [
+     [
+      19600.0,
+      20720.0,
+      20580.0
+     ],
+     [
+      16260.0,
+      17280.0,
+      15600.0
+     ],
+     [
+      13635.0,
+      13230.0,
+      12060.0
+     ],
+     [
+      9780.0,
+      8700.0,
+      8940.0
+     ],
+     [
+      6220.0,
+      5020.0,
+      5740.0
+     ]
+    ],
+    "rowTotals": [
+     60900.0,
+     49140.0,
+     38925.0,
+     27420.0,
+     16980.0
+    ],
+    "columnTotals": [
+     65495.0,
+     64950.0,
+     62920.0
+    ]
+   },
+   "sheet": "f0dcf35726",
+   "file": "df024e022a",
+   "fileName": "dados/atendimentos-2026.xlsx",
+   "sheetName": "Atendimentos",
+   "question": "faz uma tabela dinâmica de serviço por barbeiro",
+   "spec": {
+    "rows": "serviço",
+    "columns": "barbeiro",
+    "value": "valor",
+    "agg": "sum",
+    "filter": "status = concluído",
+    "title": "Serviço por barbeiro"
+   }
+  },
+  {
+   "id": "g5",
+   "created": 1794645662.8887877,
+   "kind": "stacked100",
+   "title": "Forma de pagamento por mês",
+   "x": {
+    "column": "data",
+    "by": "month"
+   },
+   "y": {
+    "column": null,
+    "agg": "count",
+    "type": "integer"
+   },
+   "group": {
+    "column": "pagamento",
+    "by": "value"
+   },
+   "labels": [
+    "jan",
+    "fev",
+    "mar",
+    "abr",
+    "mai",
+    "jun",
+    "jul",
+    "ago",
+    "set",
+    "out"
+   ],
+   "keys": [
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+   ],
+   "series": [
+    {
+     "name": "Cartão",
+     "values": [
+      157,
+      143,
+      132,
+      135,
+      143,
+      146,
+      161,
+      158,
+      150,
+      135
+     ]
+    },
+    {
+     "name": "Dinheiro",
+     "values": [
+      134,
+      129,
+      148,
+      148,
+      146,
+      150,
+      164,
+      141,
+      126,
+      151
+     ]
+    },
+    {
+     "name": "Pix",
+     "values": [
+      158,
+      109,
+      153,
+      137,
+      132,
+      154,
+      138,
+      142,
+      129,
+      168
+     ]
+    }
+   ],
+   "unit": "count",
+   "total": 4317,
+   "calc": {
+    "basis": "raw",
+    "steps": 0,
+    "rowsTotal": 4809,
+    "rowsMatched": 4317,
+    "rowsUsed": 4317,
+    "excluded": [
+     {
+      "reason": "fora do filtro",
+      "count": 492
+     }
+    ],
+    "filter": [
+     "status = concluído"
+    ],
+    "sql": "SELECT strftime('%Y-%m', \"data\") AS x, \"pagamento\" AS g, COUNT(*) AS v FROM dados WHERE \"status\" = 'concluído' GROUP BY x, g",
+    "readable": "Contagem de linhas por mês de data e por pagamento, só onde status = concluído: 4.317 de 4.809 linhas."
+   },
+   "sheet": "f0dcf35726",
+   "file": "df024e022a",
+   "fileName": "dados/atendimentos-2026.xlsx",
+   "sheetName": "Atendimentos",
+   "question": "e a forma de pagamento, mudou ao longo do ano?",
+   "spec": {
+    "x": "data",
+    "by": "month",
+    "group": "pagamento",
+    "filter": "status = concluído",
+    "kind": "stacked100",
+    "title": "Forma de pagamento por mês"
+   }
+  },
+  {
+   "id": "g4",
+   "created": 1794645662.8749762,
+   "kind": "heatmap",
+   "title": "Horários de pico",
+   "x": {
+    "column": "hora",
+    "by": "hour"
+   },
+   "y": {
+    "column": null,
+    "agg": "count",
+    "type": "integer"
+   },
+   "group": {
+    "column": "data",
+    "by": "weekday"
+   },
+   "labels": [
+    "09h",
+    "10h",
+    "11h",
+    "13h",
+    "14h",
+    "15h",
+    "16h",
+    "17h",
+    "18h"
+   ],
+   "keys": [
+    "09",
+    "10",
+    "11",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18"
+   ],
+   "series": [
+    {
+     "name": "seg",
+     "values": [
+      79,
+      82,
+      83,
+      79,
+      83,
+      74,
+      90,
+      71,
+      78
+     ]
+    },
+    {
+     "name": "ter",
+     "values": [
+      83,
+      76,
+      87,
+      82,
+      77,
+      75,
+      75,
+      79,
+      85
+     ]
+    },
+    {
+     "name": "qua",
+     "values": [
+      70,
+      94,
+      76,
+      103,
+      85,
+      66,
+      79,
+      73,
+      88
+     ]
+    },
+    {
+     "name": "qui",
+     "values": [
+      81,
+      84,
+      80,
+      81,
+      95,
+      62,
+      69,
+      80,
+      79
+     ]
+    },
+    {
+     "name": "sex",
+     "values": [
+      86,
+      86,
+      70,
+      82,
+      85,
+      77,
+      76,
+      82,
+      103
+     ]
+    },
+    {
+     "name": "sáb",
+     "values": [
+      72,
+      86,
+      73,
+      76,
+      74,
+      83,
+      88,
+      66,
+      69
+     ]
+    }
+   ],
+   "unit": "count",
+   "total": 4317,
+   "calc": {
+    "basis": "raw",
+    "steps": 0,
+    "rowsTotal": 4809,
+    "rowsMatched": 4317,
+    "rowsUsed": 4317,
+    "excluded": [
+     {
+      "reason": "fora do filtro",
+      "count": 492
+     }
+    ],
+    "filter": [
+     "status = concluído"
+    ],
+    "sql": "SELECT substr(\"hora\", 1, 2) AS x, CAST(strftime('%w', \"data\") AS INTEGER) AS g, COUNT(*) AS v FROM dados WHERE \"status\" = 'concluído' GROUP BY x, g",
+    "readable": "Contagem de linhas por hora e por dia da semana de data, só onde status = concluído: 4.317 de 4.809 linhas."
+   },
+   "sheet": "f0dcf35726",
+   "file": "df024e022a",
+   "fileName": "dados/atendimentos-2026.xlsx",
+   "sheetName": "Atendimentos",
+   "question": "quais são os horários de pico?",
+   "spec": {
+    "x": "hora",
+    "group": "data",
+    "group_by": "weekday",
+    "filter": "status = concluído",
+    "kind": "heatmap",
+    "title": "Horários de pico"
+   }
+  },
+  {
+   "id": "g3",
+   "created": 1794645662.8619955,
+   "kind": "line",
+   "title": "Faturamento por barbeiro",
+   "x": {
+    "column": "data",
+    "by": "month"
+   },
+   "y": {
+    "column": "valor",
+    "agg": "sum",
+    "type": "currency"
+   },
+   "group": {
+    "column": "barbeiro",
+    "by": "value"
+   },
+   "labels": [
+    "jan",
+    "fev",
+    "mar",
+    "abr",
+    "mai",
+    "jun",
+    "jul",
+    "ago",
+    "set",
+    "out"
+   ],
+   "keys": [
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+   ],
+   "series": [
+    {
+     "name": "Rafa",
+     "values": [
+      6030.0,
+      5630.0,
+      6895.0,
+      6500.0,
+      5790.0,
+      6845.0,
+      6190.0,
+      7445.0,
+      7130.0,
+      7040.0
+     ]
+    },
+    {
+     "name": "Zé",
+     "values": [
+      6570.0,
+      6085.0,
+      6505.0,
+      6190.0,
+      7720.0,
+      6195.0,
+      7150.0,
+      6465.0,
+      4970.0,
+      7100.0
+     ]
+    },
+    {
+     "name": "Léo",
+     "values": [
+      7855.0,
+      5415.0,
+      5820.0,
+      5755.0,
+      5480.0,
+      6605.0,
+      7650.0,
+      5965.0,
+      6090.0,
+      6285.0
+     ]
+    }
+   ],
+   "unit": "currency",
+   "total": 193365.0,
+   "calc": {
+    "basis": "raw",
+    "steps": 0,
+    "rowsTotal": 4809,
+    "rowsMatched": 4317,
+    "rowsUsed": 4317,
+    "excluded": [
+     {
+      "reason": "fora do filtro",
+      "count": 492
+     }
+    ],
+    "filter": [
+     "status = concluído"
+    ],
+    "sql": "SELECT strftime('%Y-%m', \"data\") AS x, \"barbeiro\" AS g, SUM(\"valor\") AS v FROM dados WHERE \"status\" = 'concluído' GROUP BY x, g",
+    "readable": "Soma de valor por mês de data e por barbeiro, só onde status = concluído: 4.317 de 4.809 linhas."
+   },
+   "sheet": "f0dcf35726",
+   "file": "df024e022a",
+   "fileName": "dados/atendimentos-2026.xlsx",
+   "sheetName": "Atendimentos",
+   "question": "compara os três barbeiros",
+   "spec": {
+    "x": "data",
+    "by": "month",
+    "y": "valor",
+    "agg": "sum",
+    "group": "barbeiro",
+    "filter": "status = concluído",
+    "kind": "line",
+    "title": "Faturamento por barbeiro"
+   }
+  },
+  {
+   "id": "g2",
+   "created": 1794645662.8441672,
+   "kind": "hbar",
+   "title": "Faturamento por serviço",
+   "x": {
+    "column": "serviço",
+    "by": "value"
+   },
+   "y": {
+    "column": "valor",
+    "agg": "sum",
+    "type": "currency"
+   },
+   "group": null,
+   "labels": [
+    "Corte e barba",
+    "Pigmentação",
+    "Corte",
+    "Barba",
+    "Sobrancelha"
+   ],
+   "keys": [
+    "Corte e barba",
+    "Pigmentação",
+    "Corte",
+    "Barba",
+    "Sobrancelha"
+   ],
+   "series": [
+    {
+     "name": "soma de valor",
+     "values": [
+      60900.0,
+      49140.0,
+      38925.0,
+      27420.0,
+      16980.0
+     ]
+    }
+   ],
+   "unit": "currency",
+   "total": 193365.0,
+   "calc": {
+    "basis": "raw",
+    "steps": 0,
+    "rowsTotal": 4809,
+    "rowsMatched": 4317,
+    "rowsUsed": 4317,
+    "excluded": [
+     {
+      "reason": "fora do filtro",
+      "count": 492
+     }
+    ],
+    "filter": [
+     "status = concluído"
+    ],
+    "sql": "SELECT \"serviço\" AS x, SUM(\"valor\") AS v FROM dados WHERE \"status\" = 'concluído' GROUP BY x",
+    "readable": "Soma de valor por serviço, só onde status = concluído: 4.317 de 4.809 linhas."
+   },
+   "sheet": "f0dcf35726",
+   "file": "df024e022a",
+   "fileName": "dados/atendimentos-2026.xlsx",
+   "sheetName": "Atendimentos",
+   "question": "qual serviço mais fatura?",
+   "spec": {
+    "x": "serviço",
+    "y": "valor",
+    "agg": "sum",
+    "filter": "status = concluído",
+    "kind": "hbar",
+    "title": "Faturamento por serviço"
+   }
+  },
+  {
+   "id": "g1",
+   "created": 1794645662.8322523,
+   "kind": "bar",
+   "title": "Faturamento por mês",
+   "x": {
+    "column": "data",
+    "by": "month"
+   },
+   "y": {
+    "column": "valor",
+    "agg": "sum",
+    "type": "currency"
+   },
+   "group": null,
+   "labels": [
+    "jan",
+    "fev",
+    "mar",
+    "abr",
+    "mai",
+    "jun",
+    "jul",
+    "ago",
+    "set",
+    "out"
+   ],
+   "keys": [
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+   ],
+   "series": [
+    {
+     "name": "soma de valor",
+     "values": [
+      20455.0,
+      17130.0,
+      19220.0,
+      18445.0,
+      18990.0,
+      19645.0,
+      20990.0,
+      19875.0,
+      18190.0,
+      20425.0
+     ]
+    }
+   ],
+   "unit": "currency",
+   "total": 193365.0,
+   "calc": {
+    "basis": "raw",
+    "steps": 0,
+    "rowsTotal": 4809,
+    "rowsMatched": 4317,
+    "rowsUsed": 4317,
+    "excluded": [
+     {
+      "reason": "fora do filtro",
+      "count": 492
+     }
+    ],
+    "filter": [
+     "status = concluído"
+    ],
+    "sql": "SELECT strftime('%Y-%m', \"data\") AS x, SUM(\"valor\") AS v FROM dados WHERE \"status\" = 'concluído' GROUP BY x",
+    "readable": "Soma de valor por mês de data, só onde status = concluído: 4.317 de 4.809 linhas."
+   },
+   "sheet": "f0dcf35726",
+   "file": "df024e022a",
+   "fileName": "dados/atendimentos-2026.xlsx",
+   "sheetName": "Atendimentos",
+   "question": "faça um gráfico do faturamento por mês",
+   "spec": {
+    "x": "data",
+    "by": "month",
+    "y": "valor",
+    "agg": "sum",
+    "filter": "status = concluído",
+    "title": "Faturamento por mês"
+   }
+  }
+ ],
+ "dashboard": {
+  "title": "Painel para o Zé",
+  "charts": [
+   "g7",
+   "g3",
+   "g2",
+   "g1"
+  ],
+  "numbers": [
+   {
+    "title": "Faturamento",
+    "value": 193365.0,
+    "unit": "currency",
+    "note": "Soma de valor, só onde status = concluído: 4.317 de 4.809 linhas.",
+    "basis": "raw",
+    "version": 0
+   },
+   {
+    "title": "Atendimentos concluídos",
+    "value": 4317,
+    "unit": "count",
+    "note": "Contagem de linhas, só onde status = concluído: 4.317 de 4.809 linhas.",
+    "basis": "raw",
+    "version": 0
+   },
+   {
+    "title": "Ticket médio",
+    "value": 44.7915,
+    "unit": "currency",
+    "note": "Média de valor, só onde status = concluído: 4.317 de 4.809 linhas.",
+    "basis": "raw",
+    "version": 0
+   },
+   {
+    "title": "Faltas",
+    "value": 206,
+    "unit": "count",
+    "note": "Contagem de linhas, só onde status = faltou: 206 de 4.809 linhas.",
+    "basis": "raw",
+    "version": 0
+   }
+  ],
+  "at": 1794645662.9391754,
+  "sheet": "f0dcf35726",
+  "basis": "raw",
+  "version": 0
+ },
+ "updatedAt": 1794645663.2794878
+}

@@ -1,0 +1,427 @@
+{
+ "schema": 1,
+ "status": "ready",
+ "error": null,
+ "files": [
+  {
+   "id": "df024e022a",
+   "path": "dados/atendimentos-2026.xlsx",
+   "format": "xlsx",
+   "bytes": 179012
+  }
+ ],
+ "found": [
+  {
+   "path": "dados/atendimentos-2026.csv",
+   "bytes": 67160,
+   "modified": 1794645662.4592297
+  },
+  {
+   "path": "dados/atendimentos-2026.xlsx",
+   "bytes": 179012,
+   "modified": 1794645662.443516
+  },
+  {
+   "path": "dados/precos.csv",
+   "bytes": 64,
+   "modified": 1794645662.4592297
+  }
+ ],
+ "updatedAt": 1794645662.9760034,
+ "file": {
+  "id": "df024e022a",
+  "path": "dados/atendimentos-2026.xlsx",
+  "name": "atendimentos-2026.xlsx",
+  "format": "xlsx",
+  "bytes": 179012,
+  "modified": 1794645662.443516,
+  "sha256": "e722d9052748376d8a43c70ae20eee51893c551c094c1b1e211ba7e22194d210",
+  "intact": true,
+  "meta": {
+   "warnings": [],
+   "date1904": false
+  }
+ },
+ "sheet": {
+  "id": "f0dcf35726",
+  "name": "Atendimentos",
+  "rows": 4809,
+  "header": 1,
+  "hidden": false,
+  "protected": false,
+  "warnings": [],
+  "formulas": 0
+ },
+ "sheets": [
+  {
+   "id": "f0dcf35726",
+   "name": "Atendimentos",
+   "rows": 4809,
+   "cols": 9,
+   "imported": true,
+   "hidden": false,
+   "protected": false
+  },
+  {
+   "id": "bce45fc4e0",
+   "name": "Preços",
+   "rows": 6,
+   "cols": 2,
+   "imported": false,
+   "hidden": false,
+   "protected": false
+  },
+  {
+   "id": "5e28d5dbfe",
+   "name": "Resumo",
+   "rows": 4,
+   "cols": 2,
+   "imported": false,
+   "hidden": false,
+   "protected": false
+  }
+ ],
+ "basis": "raw",
+ "rowsRaw": 4809,
+ "rows": 4809,
+ "columns": [
+  {
+   "key": "c1",
+   "name": "data",
+   "letter": "A",
+   "type": "date",
+   "label": "data",
+   "filled": 4809,
+   "empty": 0,
+   "unique": 260,
+   "min": "2026-01-02",
+   "max": "2026-10-31",
+   "notes": {
+    "text-date": 37
+   },
+   "histogram": {
+    "months": [
+     [
+      "2026-01",
+      504
+     ],
+     [
+      "2026-02",
+      431
+     ],
+     [
+      "2026-03",
+      487
+     ],
+     [
+      "2026-04",
+      470
+     ],
+     [
+      "2026-05",
+      464
+     ],
+     [
+      "2026-06",
+      496
+     ],
+     [
+      "2026-07",
+      514
+     ],
+     [
+      "2026-08",
+      488
+     ],
+     [
+      "2026-09",
+      459
+     ],
+     [
+      "2026-10",
+      496
+     ]
+    ]
+   }
+  },
+  {
+   "key": "c2",
+   "name": "hora",
+   "letter": "B",
+   "type": "time",
+   "label": "hora",
+   "filled": 4809,
+   "empty": 0,
+   "unique": 18,
+   "min": "09:00:00",
+   "max": "18:30:00",
+   "notes": {},
+   "histogram": {
+    "hours": [
+     [
+      "09",
+      514
+     ],
+     [
+      "10",
+      565
+     ],
+     [
+      "11",
+      526
+     ],
+     [
+      "13",
+      557
+     ],
+     [
+      "14",
+      547
+     ],
+     [
+      "15",
+      490
+     ],
+     [
+      "16",
+      542
+     ],
+     [
+      "17",
+      506
+     ],
+     [
+      "18",
+      562
+     ]
+    ]
+   }
+  },
+  {
+   "key": "c3",
+   "name": "cliente",
+   "letter": "C",
+   "type": "text",
+   "label": "texto",
+   "filled": 4753,
+   "empty": 56,
+   "unique": 16,
+   "min": "André Souza",
+   "max": "Wagner Costa",
+   "notes": {},
+   "top": [
+    [
+     "Rodrigo Pinto",
+     321
+    ],
+    [
+     "Igor Souza",
+     319
+    ],
+    [
+     "Guilherme Alves",
+     310
+    ],
+    [
+     "Diego Lima",
+     303
+    ],
+    [
+     "Miguel Moreira",
+     301
+    ],
+    [
+     "Jorge Cardoso",
+     300
+    ],
+    [
+     "Paulo Barbosa",
+     299
+    ],
+    [
+     "Luan Dias",
+     296
+    ]
+   ]
+  },
+  {
+   "key": "c4",
+   "name": "serviço",
+   "letter": "D",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4809,
+   "empty": 0,
+   "unique": 5,
+   "min": "Barba",
+   "max": "Sobrancelha",
+   "notes": {},
+   "top": [
+    [
+     "Barba",
+     1026
+    ],
+    [
+     "Corte e barba",
+     966
+    ],
+    [
+     "Corte",
+     950
+    ],
+    [
+     "Sobrancelha",
+     948
+    ],
+    [
+     "Pigmentação",
+     919
+    ]
+   ]
+  },
+  {
+   "key": "c5",
+   "name": "barbeiro",
+   "letter": "E",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4809,
+   "empty": 0,
+   "unique": 3,
+   "min": "Léo",
+   "max": "Zé",
+   "notes": {},
+   "top": [
+    [
+     "Rafa",
+     1655
+    ],
+    [
+     "Zé",
+     1598
+    ],
+    [
+     "Léo",
+     1556
+    ]
+   ]
+  },
+  {
+   "key": "c6",
+   "name": "valor",
+   "letter": "F",
+   "type": "currency",
+   "label": "R$ moeda",
+   "filled": 4809,
+   "empty": 0,
+   "unique": 5,
+   "min": 20.0,
+   "max": 70.0,
+   "notes": {
+    "text-number": 112
+   },
+   "sum": 215250.0,
+   "avg": 44.7598,
+   "histogram": {
+    "from": 20.0,
+    "step": 4.1667,
+    "counts": [
+     948,
+     0,
+     1026,
+     0,
+     0,
+     0,
+     950,
+     0,
+     0,
+     919,
+     0,
+     966
+    ]
+   }
+  },
+  {
+   "key": "c7",
+   "name": "pagamento",
+   "letter": "G",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4317,
+   "empty": 492,
+   "unique": 3,
+   "min": "Cartão",
+   "max": "Pix",
+   "notes": {},
+   "top": [
+    [
+     "Cartão",
+     1460
+    ],
+    [
+     "Dinheiro",
+     1437
+    ],
+    [
+     "Pix",
+     1420
+    ]
+   ]
+  },
+  {
+   "key": "c8",
+   "name": "origem",
+   "letter": "H",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4809,
+   "empty": 0,
+   "unique": 3,
+   "min": "App",
+   "max": "WhatsApp",
+   "notes": {},
+   "top": [
+    [
+     "Balcão",
+     1629
+    ],
+    [
+     "App",
+     1610
+    ],
+    [
+     "WhatsApp",
+     1570
+    ]
+   ]
+  },
+  {
+   "key": "c9",
+   "name": "status",
+   "letter": "I",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4809,
+   "empty": 0,
+   "unique": 3,
+   "min": "cancelado",
+   "max": "faltou",
+   "notes": {},
+   "top": [
+    [
+     "concluído",
+     4317
+    ],
+    [
+     "cancelado",
+     286
+    ],
+    [
+     "faltou",
+     206
+    ]
+   ]
+  }
+ ],
+ "steps": []
+}

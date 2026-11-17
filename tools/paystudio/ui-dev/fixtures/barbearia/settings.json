@@ -1,0 +1,16 @@
+{
+ "schema": 1,
+ "storage": "memory",
+ "gateways": [
+  "pix",
+  "mercadopago",
+  "stripe"
+ ],
+ "webhooks": {
+  "pix": "http://127.0.0.1:55124/webhooks",
+  "mercadopago": "http://127.0.0.1:55124/webhooks/mp",
+  "stripe": "http://127.0.0.1:55124/webhooks/stripe"
+ },
+ "merchant": "BARBEARIA DO ZE",
+ "city": "SAO PAULO"
+}

@@ -1,0 +1,24 @@
+{
+ "schema": 1,
+ "status": "empty",
+ "error": null,
+ "files": [],
+ "found": [
+  {
+   "path": "dados/atendimentos-2026.csv",
+   "bytes": 67160,
+   "modified": 1794645662.4592297
+  },
+  {
+   "path": "dados/atendimentos-2026.xlsx",
+   "bytes": 179012,
+   "modified": 1794645662.443516
+  },
+  {
+   "path": "dados/precos.csv",
+   "bytes": 64,
+   "modified": 1794645662.4592297
+  }
+ ],
+ "updatedAt": 1794645662.4737759
+}

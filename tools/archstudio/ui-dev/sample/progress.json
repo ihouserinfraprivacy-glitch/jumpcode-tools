@@ -1,0 +1,32 @@
+{
+	"status": "scanning",
+	"phase": "links",
+	"steps": [
+		{
+			"id": "tree",
+			"label": "Estrutura de pastas",
+			"state": "done",
+			"note": "38 pastas"
+		},
+		{
+			"id": "systems",
+			"label": "Sistemas encontrados",
+			"state": "done",
+			"note": "6"
+		},
+		{
+			"id": "links",
+			"label": "Ligações entre serviços",
+			"state": "run",
+			"note": "812 de 1.248 arquivos"
+		},
+		{
+			"id": "files",
+			"label": "Arquivos de cada serviço",
+			"state": "todo"
+		}
+	],
+	"current": "firmware/rastreador/src/tarefas/gps/gps_task.c",
+	"done": 812,
+	"total": 1248
+}

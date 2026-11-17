@@ -1,0 +1,521 @@
+{
+ "schema": 1,
+ "status": "ready",
+ "error": null,
+ "files": [
+  {
+   "id": "df024e022a",
+   "path": "dados/atendimentos-2026.xlsx",
+   "format": "xlsx",
+   "bytes": 179012
+  }
+ ],
+ "found": [
+  {
+   "path": "dados/atendimentos-2026.csv",
+   "bytes": 67160,
+   "modified": 1794645662.4592297
+  },
+  {
+   "path": "dados/atendimentos-2026.xlsx",
+   "bytes": 179012,
+   "modified": 1794645662.443516
+  },
+  {
+   "path": "dados/precos.csv",
+   "bytes": 64,
+   "modified": 1794645662.4592297
+  }
+ ],
+ "updatedAt": 1794645663.2048655,
+ "file": {
+  "id": "df024e022a",
+  "path": "dados/atendimentos-2026.xlsx",
+  "name": "atendimentos-2026.xlsx",
+  "format": "xlsx",
+  "bytes": 179012,
+  "modified": 1794645662.443516,
+  "sha256": "e722d9052748376d8a43c70ae20eee51893c551c094c1b1e211ba7e22194d210",
+  "intact": true,
+  "meta": {
+   "warnings": [],
+   "date1904": false
+  }
+ },
+ "sheet": {
+  "id": "f0dcf35726",
+  "name": "Atendimentos",
+  "rows": 4809,
+  "header": 1,
+  "hidden": false,
+  "protected": false,
+  "warnings": [],
+  "formulas": 0
+ },
+ "sheets": [
+  {
+   "id": "f0dcf35726",
+   "name": "Atendimentos",
+   "rows": 4809,
+   "cols": 9,
+   "imported": true,
+   "hidden": false,
+   "protected": false
+  },
+  {
+   "id": "bce45fc4e0",
+   "name": "Preços",
+   "rows": 6,
+   "cols": 2,
+   "imported": false,
+   "hidden": false,
+   "protected": false
+  },
+  {
+   "id": "5e28d5dbfe",
+   "name": "Resumo",
+   "rows": 4,
+   "cols": 2,
+   "imported": false,
+   "hidden": false,
+   "protected": false
+  }
+ ],
+ "basis": "clean",
+ "rowsRaw": 4809,
+ "rows": 4799,
+ "columns": [
+  {
+   "key": "c1",
+   "name": "data",
+   "letter": "A",
+   "type": "date",
+   "label": "data",
+   "filled": 4799,
+   "empty": 0,
+   "unique": 260,
+   "min": "2026-01-02",
+   "max": "2026-10-31",
+   "notes": {
+    "text-date": 37
+   },
+   "histogram": {
+    "months": [
+     [
+      "2026-01",
+      504
+     ],
+     [
+      "2026-02",
+      431
+     ],
+     [
+      "2026-03",
+      487
+     ],
+     [
+      "2026-04",
+      470
+     ],
+     [
+      "2026-05",
+      464
+     ],
+     [
+      "2026-06",
+      495
+     ],
+     [
+      "2026-07",
+      514
+     ],
+     [
+      "2026-08",
+      488
+     ],
+     [
+      "2026-09",
+      450
+     ],
+     [
+      "2026-10",
+      496
+     ]
+    ]
+   }
+  },
+  {
+   "key": "c2",
+   "name": "hora",
+   "letter": "B",
+   "type": "time",
+   "label": "hora",
+   "filled": 4799,
+   "empty": 0,
+   "unique": 18,
+   "min": "09:00:00",
+   "max": "18:30:00",
+   "notes": {},
+   "histogram": {
+    "hours": [
+     [
+      "09",
+      514
+     ],
+     [
+      "10",
+      564
+     ],
+     [
+      "11",
+      525
+     ],
+     [
+      "13",
+      556
+     ],
+     [
+      "14",
+      547
+     ],
+     [
+      "15",
+      488
+     ],
+     [
+      "16",
+      541
+     ],
+     [
+      "17",
+      506
+     ],
+     [
+      "18",
+      558
+     ]
+    ]
+   }
+  },
+  {
+   "key": "c3",
+   "name": "cliente",
+   "letter": "C",
+   "type": "text",
+   "label": "texto",
+   "filled": 4743,
+   "empty": 56,
+   "unique": 16,
+   "min": "André Souza",
+   "max": "Wagner Costa",
+   "notes": {},
+   "top": [
+    [
+     "Rodrigo Pinto",
+     320
+    ],
+    [
+     "Igor Souza",
+     318
+    ],
+    [
+     "Guilherme Alves",
+     310
+    ],
+    [
+     "Diego Lima",
+     302
+    ],
+    [
+     "Miguel Moreira",
+     300
+    ],
+    [
+     "Paulo Barbosa",
+     299
+    ],
+    [
+     "Jorge Cardoso",
+     299
+    ],
+    [
+     "Luan Dias",
+     296
+    ]
+   ]
+  },
+  {
+   "key": "c4",
+   "name": "serviço",
+   "letter": "D",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4799,
+   "empty": 0,
+   "unique": 5,
+   "min": "Barba",
+   "max": "Sobrancelha",
+   "notes": {},
+   "top": [
+    [
+     "Barba",
+     1024
+    ],
+    [
+     "Corte e barba",
+     963
+    ],
+    [
+     "Sobrancelha",
+     947
+    ],
+    [
+     "Corte",
+     947
+    ],
+    [
+     "Pigmentação",
+     918
+    ]
+   ]
+  },
+  {
+   "key": "c5",
+   "name": "barbeiro",
+   "letter": "E",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4799,
+   "empty": 0,
+   "unique": 3,
+   "min": "Léo",
+   "max": "Zé",
+   "notes": {},
+   "top": [
+    [
+     "Rafa",
+     1651
+    ],
+    [
+     "Zé",
+     1595
+    ],
+    [
+     "Léo",
+     1553
+    ]
+   ]
+  },
+  {
+   "key": "c6",
+   "name": "valor",
+   "letter": "F",
+   "type": "currency",
+   "label": "R$ moeda",
+   "filled": 4799,
+   "empty": 0,
+   "unique": 5,
+   "min": 20.0,
+   "max": 70.0,
+   "notes": {
+    "text-number": 112
+   },
+   "sum": 214765.0,
+   "avg": 44.752,
+   "histogram": {
+    "from": 20.0,
+    "step": 4.1667,
+    "counts": [
+     947,
+     0,
+     1024,
+     0,
+     0,
+     0,
+     947,
+     0,
+     0,
+     918,
+     0,
+     963
+    ]
+   }
+  },
+  {
+   "key": "c7",
+   "name": "pagamento",
+   "letter": "G",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4309,
+   "empty": 490,
+   "unique": 3,
+   "min": "Cartão",
+   "max": "Pix",
+   "notes": {},
+   "top": [
+    [
+     "Cartão",
+     1460
+    ],
+    [
+     "Dinheiro",
+     1432
+    ],
+    [
+     "Pix",
+     1417
+    ]
+   ]
+  },
+  {
+   "key": "c8",
+   "name": "origem",
+   "letter": "H",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4799,
+   "empty": 0,
+   "unique": 3,
+   "min": "App",
+   "max": "WhatsApp",
+   "notes": {},
+   "top": [
+    [
+     "Balcão",
+     1627
+    ],
+    [
+     "App",
+     1603
+    ],
+    [
+     "WhatsApp",
+     1569
+    ]
+   ]
+  },
+  {
+   "key": "c9",
+   "name": "status",
+   "letter": "I",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4799,
+   "empty": 0,
+   "unique": 3,
+   "min": "cancelado",
+   "max": "faltou",
+   "notes": {},
+   "top": [
+    [
+     "concluído",
+     4309
+    ],
+    [
+     "cancelado",
+     284
+    ],
+    [
+     "faltou",
+     206
+    ]
+   ]
+  },
+  {
+   "key": "x1",
+   "name": "dia da semana",
+   "letter": "J",
+   "type": "category",
+   "label": "categoria",
+   "filled": 4799,
+   "empty": 0,
+   "unique": 6,
+   "min": "qua",
+   "max": "ter",
+   "notes": {},
+   "top": [
+    [
+     "sex",
+     836
+    ],
+    [
+     "seg",
+     806
+    ],
+    [
+     "qua",
+     801
+    ],
+    [
+     "qui",
+     799
+    ],
+    [
+     "ter",
+     794
+    ],
+    [
+     "sáb",
+     763
+    ]
+   ]
+  }
+ ],
+ "steps": [
+  {
+   "id": "p1",
+   "kind": "types",
+   "text": "Gravar data como data",
+   "rows": 37,
+   "at": 1794645663.118858,
+   "detail": {
+    "issue": "text-date"
+   }
+  },
+  {
+   "id": "p2",
+   "kind": "types",
+   "text": "Gravar valor como R$ moeda",
+   "rows": 112,
+   "at": 1794645663.1191082,
+   "detail": {
+    "issue": "text-number"
+   }
+  },
+  {
+   "id": "p3",
+   "kind": "dedupe",
+   "text": "Remover 10 linhas repetidas",
+   "rows": 10,
+   "at": 1794645663.1192908,
+   "detail": {
+    "rows": [
+     3033,
+     4802,
+     4803,
+     4804,
+     4805,
+     4806,
+     4807,
+     4808,
+     4809,
+     4810
+    ],
+    "count": 10
+   }
+  },
+  {
+   "id": "p4",
+   "kind": "column",
+   "text": "Nova coluna dia da semana",
+   "rows": 4799,
+   "at": 1794645663.1874025,
+   "detail": {
+    "column": "dia da semana",
+    "formula": "dia da semana de data",
+    "type": "category"
+   }
+  }
+ ]
+}

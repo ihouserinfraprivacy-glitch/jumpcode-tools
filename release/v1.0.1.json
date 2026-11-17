@@ -1,0 +1,58 @@
+[
+  {
+    "file": "webstudio-1.0.1.jctool",
+    "id": "webstudio",
+    "version": "1.0.1",
+    "size": 34151,
+    "sha256": "cbfecfa2bdb9650b1327ac3005294246c2e77a3fdb7dea8cb7219163134e581e"
+  },
+  {
+    "file": "archstudio-1.0.1.jctool",
+    "id": "archstudio",
+    "version": "1.0.1",
+    "size": 521998,
+    "sha256": "35438ad0b294d37272f541aa46e6e440de202219530f208e1bd915814a6a6da2"
+  },
+  {
+    "file": "taskstudio-1.0.1.jctool",
+    "id": "taskstudio",
+    "version": "1.0.1",
+    "size": 433931,
+    "sha256": "ddc9d9442d64909a72a55de586c35c540eb44aeab8862a739337b7cde1fea619"
+  },
+  {
+    "file": "cloudstudio-1.0.1.jctool",
+    "id": "cloudstudio",
+    "version": "1.0.1",
+    "size": 633591,
+    "sha256": "b9a52fa11ac642b8536262f3267194179c77467634efa92b4df2c1077f570ea6"
+  },
+  {
+    "file": "paystudio-1.0.1.jctool",
+    "id": "paystudio",
+    "version": "1.0.1",
+    "size": 447873,
+    "sha256": "3df4cd8ff0c6afe632411d17c5f3cada7367ec84a83ef82988b71fc910b1827a"
+  },
+  {
+    "file": "sheetstudio-1.0.1.jctool",
+    "id": "sheetstudio",
+    "version": "1.0.1",
+    "size": 537205,
+    "sha256": "eb6ed8ae1e99d8f1cbb9ab5c427754bf3737cfc0b24f4d2236fda88fd80671fe"
+  },
+  {
+    "file": "generator3d-1.0.1.jctool",
+    "id": "generator3d",
+    "version": "1.0.1",
+    "size": 1138007,
+    "sha256": "714477624bd0492cb651f7e59886686d62039873b40063267ea8cc76f89508ef"
+  },
+  {
+    "file": "appstudio-1.0.1.jctool",
+    "id": "appstudio",
+    "version": "1.0.1",
+    "size": 318987,
+    "sha256": "7ef6db627dabc93ce859ddbad285c851738ba5b4836df271830c7a58ac392285"
+  }
+]

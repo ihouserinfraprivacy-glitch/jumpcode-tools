@@ -1,0 +1,7 @@
+{
+ "schema": 1,
+ "revision": 1,
+ "select": "3",
+ "mode": "map",
+ "note": "Refazendo o banco com vários serviços por agendamento"
+}

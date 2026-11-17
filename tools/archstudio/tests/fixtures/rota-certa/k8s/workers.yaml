@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth
+  namespace: rota-certa
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: rotacerta/auth:1.0.3
+          ports:
+            - containerPort: 8082
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rotas
+  namespace: rota-certa
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: rotas
+    spec:
+      containers:
+        - name: rotas
+          image: rotacerta/rotas:1.0.0
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notificacoes
+  namespace: rota-certa
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: notificacoes
+    spec:
+      containers:
+        - name: notificacoes
+          image: rotacerta/notificacoes:1.0.0

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package pagamentos;
+option go_package = "github.com/rotacerta/plataforma/proto/pagamentospb";
+
+service Pagamentos {
+  rpc Cobrar (CobrancaPedido) returns (CobrancaResposta);
+  rpc Estornar (EstornoPedido) returns (CobrancaResposta);
+}
+
+message CobrancaPedido { string pedido_id = 1; int64 centavos = 2; }
+message EstornoPedido { string cobranca_id = 1; }
+message CobrancaResposta { string cobranca_id = 1; string status = 2; string copia_e_cola = 3; }

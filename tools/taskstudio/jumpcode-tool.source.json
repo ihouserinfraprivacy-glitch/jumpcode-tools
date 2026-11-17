@@ -1,0 +1,54 @@
+{
+	"format": 1,
+	"id": "taskstudio",
+	"publisher": "jumpcode",
+	"version": "1.0.1",
+	"contract": 1,
+	"compatibility": {
+		"python": {
+			"minimum": "3.13"
+		},
+		"platforms": [
+			"win32-x64"
+		]
+	},
+	"entry": {
+		"kind": "python",
+		"root": "code",
+		"module": "jumpcode_taskstudio"
+	},
+	"isolation": "container",
+	"capabilities": {
+		"suppliedText": true,
+		"projectFiles": false,
+		"network": false
+	},
+	"tool": "src/jumpcode_taskstudio/tool.json",
+	"studio": {
+		"ui": {
+			"scripts": [
+				"code/jumpcode_taskstudio/ui/app.js"
+			],
+			"styles": [
+				"code/jumpcode_taskstudio/ui/app.css"
+			]
+		},
+		"data": {
+			"format": 1,
+			"reads": [
+				1
+			]
+		}
+	},
+	"assets": {
+		"mark": "code/jumpcode_taskstudio/assets/mark.svg",
+		"cover": "code/jumpcode_taskstudio/assets/cover.png"
+	},
+	"dependencies": [],
+	"include": [
+		{
+			"from": "src/jumpcode_taskstudio",
+			"to": "code/jumpcode_taskstudio"
+		}
+	]
+}

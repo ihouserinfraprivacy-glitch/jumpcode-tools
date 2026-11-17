@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+dist/
+*.jctool
+*.key
+*.pem
+*.pfx
+.env
+.env.*
+.optional-3d-engine/

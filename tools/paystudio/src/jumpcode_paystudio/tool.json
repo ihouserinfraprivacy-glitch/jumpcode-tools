@@ -1,0 +1,82 @@
+{
+	"id": "paystudio",
+	"name": "PayStudio",
+	"description": "Simula Pix, Mercado Pago e Stripe no seu computador, sem conta e sem dinheiro de verdade: o seu app cobra, o cliente paga, o webhook chega, e você testa atraso, duplicidade, recusa e gateway fora do ar.",
+	"version": "1.0.1",
+	"icon": "credit-card",
+	"studio": {
+		"title": "PayStudio",
+		"description": "Gateway de pagamento de teste",
+		"ui": true
+	},
+	"details": {
+		"about": "O PayStudio liga um gateway de pagamento de mentira no seu computador, em http://127.0.0.1:4570, que responde como a API Pix do Banco Central, o Mercado Pago e a Stripe. O seu app usa as mesmas chamadas de sempre, só trocando o endereço e usando as chaves de teste que o PayStudio gera: nada vai para a internet e nenhum dinheiro se move. Quando o app cria uma cobrança, o agente faz o papel do cliente (paga o Pix, autentica o cartão, deixa vencer) e o PayStudio manda o webhook assinado para a rota do app. O Studio mostra cada cobrança com a linha do tempo, cada webhook com as tentativas e a resposta do app, e cada chamada com o erro explicado. Cenários prontos testam o que quebra em produção: webhook atrasado, duplicado, fora de ordem ou com assinatura errada, cartão recusado e gateway lento ou fora do ar.",
+		"features": [
+			"API Pix (cobrança imediata, QR Code e copia e cola válidos, devolução e webhook), Mercado Pago (pagamentos com Pix e cartão, reembolso, contestação) e Stripe (PaymentIntents, 3-D Secure, reembolso, disputa)",
+			"Webhooks assinados como os gateways reais (Stripe-Signature e x-signature), com novas tentativas quando o app falha",
+			"Cenários prontos: Pix pago depois, Pix vencido, webhook atrasado, duplicado, fora de ordem ou com assinatura errada",
+			"Cartões de teste e motivos de recusa (sem saldo, cartão vencido, CVC errado) e gateway lento, fora do ar ou limitando chamadas",
+			"Verificação de que o app confere a assinatura do webhook e de que não cobra duas vezes",
+			"Chaves de teste gravadas no .env.local do projeto, sem passar pelo chat"
+		],
+		"limitations": [
+			"Não substitui a homologação no gateway real: taxas, prazos de repasse, antifraude e regras de cada banco não são simulados",
+			"Só Pix pela API do Banco Central, Mercado Pago e Stripe; Checkout Pro, assinaturas, boleto e split de pagamento ainda não são emulados",
+			"O certificado mTLS da API Pix não é simulado; o webhook do Pix chega sem assinatura, como nos testes sem certificado",
+			"O app precisa permitir trocar o endereço do gateway (variável *_API_URL ou opção de host do SDK)",
+			"O gateway fica ligado enquanto o JumpCode estiver aberto e só escuta neste computador"
+		],
+		"examples": [
+			"Ligue o gateway de teste e conecte o meu app",
+			"Pague o Pix do agendamento AG-4830",
+			"E se o webhook chegar duas vezes?",
+			"Por que o pagamento com cartão foi recusado?"
+		],
+		"author": "JumpCode",
+		"updatedAt": "2026-11-14",
+		"execution": "local",
+		"access": {
+			"suppliedText": true,
+			"projectFiles": true,
+			"network": false
+		}
+	},
+	"instructions": "PayStudio runs a fake payment gateway on this computer (API Pix of Banco Central, Mercado Pago and Stripe; test keys only, no real money) and shows it in the Studio beside the chat. Use it when the user wants to test payments in their app. 1) start turns the gateway on (most actions start it too); status tells what exists, the webhook addresses and what needs attention. 2) To connect the app: call webhook once per gateway with the app's local webhook route (gateway and url, such as http://localhost:3000/webhooks/pix), and only when the user asks call env, which writes the gateway addresses and test keys to the project's .env.local (never pass or print keys). 3) When the app creates a charge, act as the customer: pay (ref is the booking such as AG-4830, the txid or the payment id; delay seconds makes the webhook late; duplicate true sends it twice), expire, refund (amount in reais, optional) or dispute. 4) To test what breaks in production use scenario with name: pix_pago, pix_atrasado_duplicado, pix_expira, webhook_duplicado, webhook_atrasado, webhook_fora_de_ordem, assinatura_errada, cartao_recusado, sem_saldo, gateway_fora_do_ar or gateway_lento; or rule (gateway, kind, seconds, copies, reason, times) and failure (gateway, mode unavailable|slow|timeout|rate_limit|refuse, calls, seconds); clear removes them. check compares the same webhook with valid and forged signatures; ok true means the control was accepted and the forgery refused, false means the forgery was accepted, and null is inconclusive (never claim signature validation in that case). 5) When something fails, call calls with errors true and webhooks, and explain in simple words what the app sent or answered wrong, quoting the exact field. charge shows one charge with its timeline; resend sends a webhook again; reset empties everything; stop turns the gateway off. Use focus (view: overview, charges, webhooks, scenarios, timeline, cards, calls, settings; select like stripe:pi_123) to point at something. After the last call, always answer the user in one or two short sentences in the user's language, saying what happened.",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"action": {
+				"type": "string",
+				"enum": ["status", "start", "stop", "webhook", "env", "charges", "charge", "pay", "expire", "refund", "dispute", "scenario", "rule", "failure", "clear", "resend", "check", "calls", "webhooks", "reset", "focus"],
+				"description": "status, start, stop; webhook and env connect the app; charges and charge read charges; pay, expire, refund and dispute act as the customer; scenario, rule, failure and clear change what happens next; check tests the webhook signature; calls and webhooks show what happened; resend, reset; focus points the Studio."
+			},
+			"storage": {"type": "string", "enum": ["memory", "persistent"], "description": "start: memory (lost when stopped, default) or persistent (kept between sessions)."},
+			"gateway": {"type": "string", "enum": ["pix", "mercadopago", "stripe", "any"], "description": "Which gateway: pix (API Pix), mercadopago or stripe; rule and failure also take any."},
+			"url": {"type": "string", "maxLength": 400, "description": "webhook: the app's local webhook route, such as http://localhost:3000/webhooks/stripe; empty turns webhooks off."},
+			"ref": {"type": "string", "maxLength": 120, "description": "The charge: booking or order such as AG-4830, Pix txid, Mercado Pago payment id or Stripe pi_ id. Optional when there is only one charge."},
+			"status": {"type": "string", "enum": ["pendente", "em_analise", "paga", "expirada", "recusada", "estornada", "estorno_parcial", "cancelada", "contestada"], "description": "charges: only this status."},
+			"delay": {"type": "number", "minimum": 0, "maximum": 3600, "description": "pay: seconds the webhook waits before arriving."},
+			"duplicate": {"type": "boolean", "description": "pay: the webhook arrives twice."},
+			"amount": {"type": "number", "minimum": 0.01, "maximum": 1000000, "description": "refund: amount in reais (default: everything)."},
+			"reason": {"type": "string", "enum": ["generic", "insufficient_funds", "expired_card", "incorrect_cvc", "call_for_authorize", "fraudulent", "product_not_received", "duplicate"], "description": "rule decline: why the card is refused; dispute: the reason."},
+			"name": {"type": "string", "maxLength": 64, "description": "scenario: pix_pago, pix_atrasado_duplicado, pix_expira, webhook_duplicado, webhook_atrasado, webhook_fora_de_ordem, assinatura_errada, cartao_recusado, sem_saldo, gateway_fora_do_ar or gateway_lento."},
+			"kind": {"type": "string", "enum": ["pay_after", "expire_after", "decline", "pending", "delay", "duplicate", "out_of_order", "wrong_signature"], "description": "rule: what happens to the next charges or webhooks."},
+			"seconds": {"type": "number", "minimum": 0, "maximum": 86400, "description": "rule pay_after, expire_after and delay: seconds; failure: how long it lasts."},
+			"copies": {"type": "integer", "minimum": 2, "maximum": 5, "description": "rule duplicate: how many times the webhook arrives."},
+			"times": {"type": "integer", "minimum": 1, "maximum": 50, "description": "rule: how many charges or webhooks it applies to (default 1)."},
+			"mode": {"type": "string", "enum": ["unavailable", "slow", "timeout", "rate_limit", "refuse"], "description": "failure: 503, slow answers, no answer, 429 or connection refused."},
+			"rate": {"type": "integer", "minimum": 1, "maximum": 100, "description": "failure: percent of calls that fail (default 100)."},
+			"latency": {"type": "integer", "minimum": 100, "maximum": 60000, "description": "failure slow: milliseconds per answer."},
+			"calls": {"type": "integer", "minimum": 1, "maximum": 1000, "description": "failure: how many calls fail (default 5)."},
+			"which": {"type": "string", "enum": ["all", "rules", "failures"], "description": "clear: what to remove."},
+			"id": {"type": "integer", "minimum": 1, "maximum": 1000000, "description": "resend: the webhook number."},
+			"errors": {"type": "boolean", "description": "calls, webhooks: only the ones that failed."},
+			"limit": {"type": "integer", "minimum": 1, "maximum": 200, "description": "charges, calls, webhooks: how many."},
+			"view": {"type": "string", "enum": ["overview", "charges", "webhooks", "scenarios", "timeline", "cards", "calls", "settings", "catalog"], "description": "focus: what the Studio shows."},
+			"select": {"type": "string", "maxLength": 200, "description": "focus: a charge as gateway:ref, such as pix:AG4830corte or stripe:pi_123."},
+			"note": {"type": "string", "maxLength": 200, "description": "focus: short caption."}
+		},
+		"required": ["action"],
+		"additionalProperties": false
+	}
+}

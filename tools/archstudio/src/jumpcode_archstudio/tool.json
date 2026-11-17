@@ -1,0 +1,274 @@
+{
+	"id": "archstudio",
+	"name": "ArchStudio",
+	"description": "Desenha a arquitetura do seu software no Studio: sistemas, serviços, arquivos e as ligações entre eles.",
+	"version": "1.0.1",
+	"icon": "type-hierarchy",
+	"studio": {
+		"title": "ArchStudio",
+		"description": "Desenha a arquitetura",
+		"ui": true
+	},
+	"details": {
+		"about": "O ArchStudio lê a pasta do projeto e desenha a arquitetura em três níveis: os sistemas (backend, site, aplicativo, firmware), os serviços de cada sistema e os arquivos de cada serviço, com as chamadas, mensagens, bancos de dados e serviços externos que ligam tudo. A análise é feita no seu computador, sem executar o código. Você também pode descrever um sistema em texto e pedir para o agente desenhar, explicar um fluxo passo a passo ou mostrar uma mudança proposta sobre o mapa atual.",
+		"features": [
+			"Mapa em três níveis: sistemas, serviços e arquivos",
+			"Encontra chamadas HTTP e gRPC, filas e tópicos (RabbitMQ, Kafka, MQTT), bancos de dados e serviços externos",
+			"Entende aplicativos, sites, backends e firmware embarcado",
+			"Mostra onde cada parte roda (Docker Compose, Kubernetes, Terraform)",
+			"Fluxos passo a passo e modo de apresentação",
+			"Propostas de mudança desenhadas sobre o mapa atual"
+		],
+		"limitations": [
+			"A análise é estática: ligações montadas em tempo de execução podem não aparecer",
+			"Pastas de teste, documentação e exemplos ficam fora do mapa",
+			"Projetos muito grandes são lidos até cerca de 20.000 arquivos ou 90 segundos",
+			"Não consulta a internet nem a nuvem; a implantação vem só dos arquivos do projeto"
+		],
+		"examples": [
+			"Desenhe a arquitetura deste projeto",
+			"Como um pedido é criado, passo a passo?",
+			"Quais serviços usam o banco de pedidos?",
+			"Mostre como ficaria se adicionássemos um serviço de cupons"
+		],
+		"author": "JumpCode",
+		"updatedAt": "2026-11-13",
+		"execution": "local",
+		"access": {
+			"suppliedText": true,
+			"projectFiles": true,
+			"network": false
+		}
+	},
+	"instructions": "Draw and explain the architecture of the user's software in the ArchStudio map beside the chat. Levels: systems (s:) contain services (v:), services contain files (f:); data stores (d:), queues (q:) and external services (x:) stand alone. Copy ids exactly from results. If the user asks about the project and read says there is no map, call scan once: it reads the project folder without running anything. To answer questions call read without id for the outline, then read with id for one part; answer only from what read returns and never invent parts or links. Point at what you explain with focus (id or ids, a short note, optional mode). When the user describes a system in words, build it with write_part (systems first, then services with parent set to the system id) and write_link (from, to, protocol, label). To add a summary, call write_part with the id and one short summary sentence. When the user asks for a path, a flow, a sequence or a step by step (such as 'how is an order created'), call read to find the ids, then write_path with name and steps (from, to, label, note), then focus with the path id and mode 'path', or 'present' to narrate it. Only when the user asks to plan a change, call write_proposal with title, summary, nodes (op add for new parts, change or remove for existing ids) and links (op add or remove); clear_proposal removes it. Call remove only when the user asks to delete something from the map. Keep each call small. After the last call, answer the user in one or two short sentences in the user's language.",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"action": {
+				"type": "string",
+				"enum": [
+					"scan",
+					"read",
+					"focus",
+					"write_part",
+					"write_link",
+					"remove",
+					"write_path",
+					"remove_path",
+					"write_proposal",
+					"clear_proposal"
+				],
+				"description": "scan analyzes the project folder; read returns the outline (no id) or one part or link (id); focus selects and highlights in the Studio; write_part creates or updates a part; write_link adds a link; remove deletes a part (with its contents) or a link; write_path and remove_path manage step-by-step flows; write_proposal and clear_proposal manage a proposed change."
+			},
+			"id": {
+				"type": "string",
+				"description": "Id of a part (s:, v:, f:, d:, q:, x:), link or path. read: what to describe; focus: what to select; write_part: the part to update; remove: what to delete; remove_path: the path."
+			},
+			"ids": {
+				"type": "array",
+				"items": {
+					"type": "string"
+				},
+				"maxItems": 20,
+				"description": "focus: more part or link ids to highlight."
+			},
+			"name": {
+				"type": "string",
+				"description": "write_part: display name of a new part; write_path and remove_path: the path name, such as 'Criar pedido'."
+			},
+			"level": {
+				"type": "string",
+				"enum": [
+					"system",
+					"service",
+					"data",
+					"queue",
+					"external"
+				],
+				"description": "write_part: level of a new part. Defaults to service when parent is given, else system."
+			},
+			"kind": {
+				"type": "string",
+				"enum": [
+					"backend",
+					"web",
+					"mobile",
+					"embedded",
+					"desktop",
+					"library",
+					"data",
+					"queue",
+					"external"
+				],
+				"description": "write_part: kind of a system or service."
+			},
+			"parent": {
+				"type": "string",
+				"description": "write_part: system id of a new service."
+			},
+			"tech": {
+				"type": "string",
+				"description": "write_part: technology, such as 'Go', 'Flutter' or 'PostgreSQL'."
+			},
+			"summary": {
+				"type": "string",
+				"description": "write_part: one short sentence about the part; write_proposal: what the change does."
+			},
+			"note": {
+				"type": "string",
+				"description": "focus: short caption shown in the Studio."
+			},
+			"mode": {
+				"type": "string",
+				"enum": [
+					"map",
+					"columns",
+					"circles",
+					"blocks",
+					"layers",
+					"path",
+					"present",
+					"deploy",
+					"matrix"
+				],
+				"description": "focus: how the Studio shows it. Defaults to map."
+			},
+			"from": {
+				"type": "string",
+				"description": "write_link: id of the caller or sender."
+			},
+			"to": {
+				"type": "string",
+				"description": "write_link: id of the called part or receiver."
+			},
+			"protocol": {
+				"type": "string",
+				"description": "write_link: HTTP, gRPC, AMQP, MQTT, Kafka, SQL, Redis, ... Defaults to HTTP."
+			},
+			"label": {
+				"type": "string",
+				"description": "write_link: short text drawn on the line, such as 'POST /pedidos' or 'pedido.criado'."
+			},
+			"async": {
+				"type": "boolean",
+				"description": "write_link: true for messages and events (drawn dashed)."
+			},
+			"steps": {
+				"type": "array",
+				"maxItems": 24,
+				"description": "write_path: the steps in order.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"from": {
+							"type": "string"
+						},
+						"to": {
+							"type": "string"
+						},
+						"label": {
+							"type": "string"
+						},
+						"async": {
+							"type": "boolean"
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"from",
+						"to"
+					],
+					"additionalProperties": false
+				}
+			},
+			"title": {
+				"type": "string",
+				"description": "write_proposal: title of the change."
+			},
+			"nodes": {
+				"type": "array",
+				"maxItems": 40,
+				"description": "write_proposal: parts to add, change or remove.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"op": {
+							"type": "string",
+							"enum": [
+								"add",
+								"change",
+								"remove"
+							]
+						},
+						"id": {
+							"type": "string"
+						},
+						"level": {
+							"type": "string"
+						},
+						"parent": {
+							"type": "string"
+						},
+						"name": {
+							"type": "string"
+						},
+						"kind": {
+							"type": "string"
+						},
+						"tech": {
+							"type": "string"
+						},
+						"summary": {
+							"type": "string"
+						},
+						"note": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"op"
+					],
+					"additionalProperties": false
+				}
+			},
+			"links": {
+				"type": "array",
+				"maxItems": 40,
+				"description": "write_proposal: links to add or remove.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"op": {
+							"type": "string",
+							"enum": [
+								"add",
+								"remove"
+							]
+						},
+						"from": {
+							"type": "string"
+						},
+						"to": {
+							"type": "string"
+						},
+						"label": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"op",
+						"from",
+						"to"
+					],
+					"additionalProperties": false
+				}
+			}
+		},
+		"required": [
+			"action"
+		],
+		"additionalProperties": false
+	}
+}

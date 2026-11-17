@@ -1,0 +1,5 @@
+#pragma once
+
+#define INTERVALO_POSICAO_MS 5000
+#define TAMANHO_FILA_POSICOES 32
+#define ID_DISPOSITIVO_PADRAO "rc-0001"

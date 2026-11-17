@@ -1,0 +1,506 @@
+{
+ "schema": 1,
+ "revision": 24,
+ "plan": 1,
+ "title": "Barbearia do Zé",
+ "request": "Crie um sistema de agendamento para a minha barbearia: o cliente escolhe o serviço, o barbeiro e o horário, paga por Pix e recebe um lembrete no WhatsApp. Eu quero ver a agenda do dia num painel.",
+ "draft": false,
+ "started": true,
+ "createdAt": "2026-11-13T14:20:00Z",
+ "updatedAt": "2026-11-13T14:35:20Z",
+ "tasks": [
+  {
+   "id": "1",
+   "title": "Entender o pedido",
+   "summary": "Serviços, barbeiros, horários e regras da barbearia",
+   "detail": "Listar os serviços com preço e duração, os barbeiros, o horário de funcionamento e as regras de cancelamento.",
+   "criteria": [
+    {
+     "text": "Lista de serviços com preço e duração",
+     "done": true
+    },
+    {
+     "text": "Horário de funcionamento",
+     "done": true
+    }
+   ],
+   "deps": [],
+   "gates": [],
+   "area": "Projeto",
+   "estimate": 10,
+   "state": "done",
+   "problem": null,
+   "log": [
+    {
+     "at": "2026-11-13T14:20:40Z",
+     "text": "Começou: Lendo o pedido",
+     "kind": "info",
+     "execution": "fixture-002"
+    },
+    {
+     "at": "2026-11-13T14:21:20Z",
+     "text": "Lista de serviços e preços",
+     "kind": "info",
+     "execution": "fixture-003"
+    },
+    {
+     "at": "2026-11-13T14:22:00Z",
+     "text": "Concluída: Corte, barba e sobrancelha; 2 barbeiros; seg. a sáb., 9h às 19h.",
+     "kind": "ok",
+     "execution": "fixture-004"
+    }
+   ],
+   "files": [],
+   "requestId": "fixture-request",
+   "startedAt": "2026-11-13T14:20:40Z",
+   "progress": 100,
+   "finishedAt": "2026-11-13T14:22:00Z",
+   "result": "Corte, barba e sobrancelha; 2 barbeiros; seg. a sáb., 9h às 19h."
+  },
+  {
+   "id": "2",
+   "title": "Estrutura do projeto",
+   "summary": "Next.js com TypeScript, Prisma e SQLite",
+   "detail": "Criar o projeto Next.js com TypeScript, configurar o Prisma com SQLite e deixar o servidor de desenvolvimento rodando.",
+   "criteria": [
+    {
+     "text": "npm run dev abre a página inicial",
+     "done": true
+    }
+   ],
+   "deps": [
+    "1"
+   ],
+   "gates": [],
+   "area": "Projeto",
+   "estimate": 15,
+   "state": "done",
+   "problem": null,
+   "log": [
+    {
+     "at": "2026-11-13T14:22:40Z",
+     "text": "Começou",
+     "kind": "info",
+     "execution": "fixture-005"
+    },
+    {
+     "at": "2026-11-13T14:23:20Z",
+     "text": "criou o projeto Next.js",
+     "kind": "info",
+     "execution": "fixture-006"
+    },
+    {
+     "at": "2026-11-13T14:24:00Z",
+     "text": "Concluída: Projeto Next.js com TypeScript, Prisma e SQLite.",
+     "kind": "ok",
+     "execution": "fixture-007"
+    }
+   ],
+   "files": [
+    {
+     "path": "package.json",
+     "state": "done"
+    },
+    {
+     "path": "src/app/layout.tsx",
+     "state": "done"
+    },
+    {
+     "path": "src/app/page.tsx",
+     "state": "done"
+    }
+   ],
+   "requestId": "fixture-request",
+   "startedAt": "2026-11-13T14:22:40Z",
+   "progress": 100,
+   "finishedAt": "2026-11-13T14:24:00Z",
+   "result": "Projeto Next.js com TypeScript, Prisma e SQLite."
+  },
+  {
+   "id": "3",
+   "title": "Modelar o banco",
+   "summary": "Tabelas de serviços, barbeiros, clientes e agendamentos",
+   "detail": "Criar as tabelas servicos, barbeiros, clientes e agendamentos, com a migração inicial e índices por barbeiro e data.",
+   "criteria": [
+    {
+     "text": "Migração inicial aplicada",
+     "done": true
+    },
+    {
+     "text": "Agendamento ligado a cliente, barbeiro e serviço",
+     "done": true
+    }
+   ],
+   "deps": [
+    "2"
+   ],
+   "gates": [],
+   "area": "Banco",
+   "estimate": 20,
+   "state": "done",
+   "problem": null,
+   "log": [
+    {
+     "at": "2026-11-13T14:24:40Z",
+     "text": "Começou",
+     "kind": "info",
+     "execution": "fixture-008"
+    },
+    {
+     "at": "2026-11-13T14:25:20Z",
+     "text": "criou as tabelas servicos, barbeiros, clientes e agendamentos",
+     "kind": "info",
+     "execution": "fixture-009"
+    },
+    {
+     "at": "2026-11-13T14:26:00Z",
+     "text": "Concluída: 4 tabelas com índices por barbeiro e data.",
+     "kind": "ok",
+     "execution": "fixture-010"
+    }
+   ],
+   "files": [
+    {
+     "path": "prisma/schema.prisma",
+     "state": "done"
+    },
+    {
+     "path": "prisma/migrations/0001_init/migration.sql",
+     "state": "done"
+    }
+   ],
+   "requestId": "fixture-request",
+   "startedAt": "2026-11-13T14:24:40Z",
+   "progress": 100,
+   "finishedAt": "2026-11-13T14:26:00Z",
+   "result": "4 tabelas com índices por barbeiro e data."
+  },
+  {
+   "id": "4",
+   "title": "Cadastro de serviços e barbeiros",
+   "summary": "Telas simples para o dono cadastrar",
+   "detail": "Páginas de administração para criar, editar e desativar serviços e barbeiros.",
+   "criteria": [],
+   "deps": [
+    "3"
+   ],
+   "gates": [],
+   "area": "Site",
+   "estimate": 25,
+   "state": "done",
+   "problem": null,
+   "log": [
+    {
+     "at": "2026-11-13T14:26:40Z",
+     "text": "Começou",
+     "kind": "info",
+     "execution": "fixture-011"
+    },
+    {
+     "at": "2026-11-13T14:27:20Z",
+     "text": "páginas de administração",
+     "kind": "info",
+     "execution": "fixture-012"
+    },
+    {
+     "at": "2026-11-13T14:28:00Z",
+     "text": "Concluída: Cadastro de serviços e barbeiros no /admin.",
+     "kind": "ok",
+     "execution": "fixture-013"
+    }
+   ],
+   "files": [
+    {
+     "path": "src/app/admin/servicos/page.tsx",
+     "state": "done"
+    },
+    {
+     "path": "src/app/admin/barbeiros/page.tsx",
+     "state": "done"
+    }
+   ],
+   "requestId": "fixture-request",
+   "startedAt": "2026-11-13T14:26:40Z",
+   "progress": 100,
+   "finishedAt": "2026-11-13T14:28:00Z",
+   "result": "Cadastro de serviços e barbeiros no /admin."
+  },
+  {
+   "id": "5",
+   "title": "Horários disponíveis",
+   "summary": "Calcula os horários livres de cada barbeiro",
+   "detail": "Função que recebe o barbeiro, o dia e o serviço e devolve os horários livres a cada 30 minutos, respeitando pausas e agendamentos existentes.",
+   "criteria": [
+    {
+     "text": "Não oferece horário já ocupado",
+     "done": true
+    },
+    {
+     "text": "Respeita o horário de funcionamento",
+     "done": true
+    }
+   ],
+   "deps": [
+    "3"
+   ],
+   "gates": [],
+   "area": "Banco",
+   "estimate": 30,
+   "state": "done",
+   "problem": null,
+   "log": [
+    {
+     "at": "2026-11-13T14:28:40Z",
+     "text": "Começou",
+     "kind": "info",
+     "execution": "fixture-014"
+    },
+    {
+     "at": "2026-11-13T14:29:20Z",
+     "text": "horarios.ts",
+     "kind": "info",
+     "execution": "fixture-015"
+    },
+    {
+     "at": "2026-11-13T14:30:00Z",
+     "text": "Concluída: Horários livres a cada 30 minutos, respeitando pausas.",
+     "kind": "ok",
+     "execution": "fixture-016"
+    }
+   ],
+   "files": [
+    {
+     "path": "src/lib/horarios.ts",
+     "state": "done"
+    }
+   ],
+   "requestId": "fixture-request",
+   "startedAt": "2026-11-13T14:28:40Z",
+   "progress": 100,
+   "finishedAt": "2026-11-13T14:30:00Z",
+   "result": "Horários livres a cada 30 minutos, respeitando pausas."
+  },
+  {
+   "id": "6",
+   "title": "Tela de agendamento",
+   "summary": "Cliente escolhe serviço, barbeiro e horário",
+   "detail": "Página pública em três passos: serviço, barbeiro e horário, com o resumo antes de confirmar.",
+   "criteria": [
+    {
+     "text": "Funciona no celular",
+     "done": false
+    },
+    {
+     "text": "Mostra o resumo antes de confirmar",
+     "done": false
+    }
+   ],
+   "deps": [
+    "4",
+    "5"
+   ],
+   "gates": [],
+   "area": "Site",
+   "estimate": 40,
+   "state": "paused",
+   "problem": null,
+   "log": [
+    {
+     "at": "2026-11-13T14:30:40Z",
+     "text": "Começou: Calendario.tsx",
+     "kind": "info",
+     "execution": "fixture-017"
+    },
+    {
+     "at": "2026-11-13T14:31:20Z",
+     "text": "criou BarbeiroPicker.tsx",
+     "kind": "ok",
+     "execution": "fixture-018"
+    },
+    {
+     "at": "2026-11-13T14:34:40Z",
+     "text": "Pausada para recalibrar o plano",
+     "kind": "info",
+     "execution": "fixture-023"
+    }
+   ],
+   "files": [
+    {
+     "path": "src/app/agendar/page.tsx",
+     "state": "partial"
+    },
+    {
+     "path": "src/components/BarbeiroPicker.tsx",
+     "state": "partial"
+    },
+    {
+     "path": "src/components/Calendario.tsx",
+     "state": "partial"
+    }
+   ],
+   "requestId": "fixture-request",
+   "startedAt": "2026-11-13T14:30:40Z",
+   "now": "Calendario.tsx",
+   "progress": 40,
+   "pausedAt": "2026-11-13T14:34:40Z"
+  },
+  {
+   "id": "7",
+   "title": "Pagamento por Pix",
+   "summary": "QR Code Pix na confirmação do agendamento",
+   "detail": "Gerar a cobrança Pix no ambiente de testes do gateway e confirmar o agendamento quando o pagamento chegar.",
+   "criteria": [],
+   "deps": [
+    "6"
+   ],
+   "gates": [
+    {
+     "id": "g1",
+     "kind": "secret",
+     "label": "Chave Pix de teste (sandbox)",
+     "met": false,
+     "where": "No painel do banco ou do gateway, em Integrações › Pix › Credenciais de teste.",
+     "env": "PIX_KEY",
+     "alternatives": [
+      "Deixar o Pix para depois",
+      "Usar um pagamento simulado"
+     ]
+    }
+   ],
+   "area": "Integrações",
+   "estimate": 35,
+   "state": "todo",
+   "problem": null,
+   "log": [
+    {
+     "at": "2026-11-13T14:34:00Z",
+     "text": "Precisa de você: Chave Pix de teste (sandbox)",
+     "kind": "info",
+     "execution": "fixture-022"
+    }
+   ],
+   "files": []
+  },
+  {
+   "id": "8",
+   "title": "Lembrete por WhatsApp",
+   "summary": "Mensagem no dia anterior ao horário",
+   "detail": "Enviar um lembrete pelo WhatsApp um dia antes, com link para remarcar.",
+   "criteria": [],
+   "deps": [
+    "6"
+   ],
+   "gates": [],
+   "area": "Integrações",
+   "estimate": 30,
+   "state": "todo",
+   "problem": null,
+   "log": [],
+   "files": []
+  },
+  {
+   "id": "9",
+   "title": "Painel do barbeiro",
+   "summary": "Agenda do dia de cada barbeiro",
+   "detail": "Página com a agenda do dia por barbeiro, com os clientes e os serviços de cada horário.",
+   "criteria": [],
+   "deps": [
+    "5"
+   ],
+   "gates": [],
+   "area": "Site",
+   "estimate": 30,
+   "state": "failed",
+   "problem": {
+    "title": "O painel não carrega a agenda do dia",
+    "detail": "A consulta de agendamentos por barbeiro devolve erro 500: falta o índice por data.",
+    "options": [
+     "Criar o índice e tentar de novo",
+     "Mostrar só a semana atual"
+    ],
+    "at": "2026-11-13T14:33:20Z"
+   },
+   "log": [
+    {
+     "at": "2026-11-13T14:32:00Z",
+     "text": "Começou",
+     "kind": "info",
+     "execution": "fixture-019"
+    },
+    {
+     "at": "2026-11-13T14:32:40Z",
+     "text": "agenda do dia",
+     "kind": "info",
+     "execution": "fixture-020"
+    },
+    {
+     "at": "2026-11-13T14:33:20Z",
+     "text": "Problema: O painel não carrega a agenda do dia",
+     "kind": "error",
+     "execution": "fixture-021"
+    }
+   ],
+   "files": [
+    {
+     "path": "src/app/painel/page.tsx",
+     "state": "partial"
+    }
+   ],
+   "requestId": "fixture-request",
+   "startedAt": "2026-11-13T14:32:00Z",
+   "progress": 30
+  },
+  {
+   "id": "10",
+   "title": "Testes do fluxo completo",
+   "summary": "Do agendamento ao pagamento e ao lembrete",
+   "detail": "Testes automáticos do fluxo: agendar, pagar, receber o lembrete e ver no painel.",
+   "criteria": [
+    {
+     "text": "Fluxo completo passa nos testes",
+     "done": false
+    }
+   ],
+   "deps": [
+    "6",
+    "7",
+    "8",
+    "9"
+   ],
+   "gates": [],
+   "area": "Projeto",
+   "estimate": 30,
+   "state": "todo",
+   "problem": null,
+   "log": [],
+   "files": []
+  },
+  {
+   "id": "11",
+   "title": "Publicar o site",
+   "summary": "Colocar no ar com o domínio da barbearia",
+   "detail": "Publicar o site e o banco em produção e apontar o domínio.",
+   "criteria": [],
+   "deps": [
+    "10"
+   ],
+   "gates": [
+    {
+     "id": "g1",
+     "kind": "approval",
+     "label": "Publicar o site",
+     "met": false,
+     "where": "Confira o site de testes antes de aprovar."
+    }
+   ],
+   "area": "Projeto",
+   "estimate": 20,
+   "state": "todo",
+   "problem": null,
+   "log": [],
+   "files": []
+  }
+ ],
+ "recalibrating": null,
+ "nextId": 12
+}

@@ -1,0 +1,78 @@
+services:
+  api-gateway:
+    build:
+      context: ./plataforma
+      dockerfile: servicos/api-gateway/Dockerfile
+    image: rotacerta/api-gateway:1.4.0
+    ports:
+      - "8080:8080"
+    environment:
+      PEDIDOS_URL: http://pedidos:8081
+      AUTH_URL: http://auth:8082
+      ROTAS_URL: http://rotas:8084
+      RASTREAMENTO_URL: http://rastreamento:8086
+    depends_on: [pedidos, auth, rotas, rastreamento]
+  auth:
+    build:
+      context: ./plataforma
+      dockerfile: servicos/auth/Dockerfile
+    environment:
+      DATABASE_URL: postgres://auth:auth@postgres:5432/auth
+    depends_on: [postgres]
+  pedidos:
+    build:
+      context: ./plataforma
+      dockerfile: servicos/pedidos/Dockerfile
+    image: rotacerta/pedidos:1.4.0
+    environment:
+      DATABASE_URL: postgres://pedidos:pedidos@postgres:5432/pedidos
+      AMQP_URL: amqp://guest:guest@rabbitmq:5672/
+      PAGAMENTOS_ADDR: pagamentos:9090
+    depends_on: [postgres, rabbitmq, pagamentos]
+    deploy:
+      replicas: 2
+  pagamentos:
+    build:
+      context: ./plataforma
+      dockerfile: servicos/pagamentos/Dockerfile
+  rotas:
+    build:
+      context: ./plataforma
+      dockerfile: servicos/rotas/Dockerfile
+    environment:
+      REDIS_ADDR: redis:6379
+    depends_on: [redis]
+  notificacoes:
+    build:
+      context: ./plataforma
+      dockerfile: servicos/notificacoes/Dockerfile
+    environment:
+      AMQP_URL: amqp://guest:guest@rabbitmq:5672/
+    depends_on: [rabbitmq]
+  rastreamento:
+    build:
+      context: ./plataforma
+      dockerfile: servicos/rastreamento/Dockerfile
+    environment:
+      MQTT_URL: tcp://mosquitto:1883
+      REDIS_ADDR: redis:6379
+    depends_on: [mosquitto, redis]
+  analytics:
+    build: ./analytics
+    environment:
+      DATABASE_URL: postgresql://analytics@postgres:5432/pedidos
+  postgres:
+    image: postgres:16
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:7-alpine
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  mosquitto:
+    image: eclipse-mosquitto:2
+    ports:
+      - "1883:1883"

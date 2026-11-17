@@ -1,0 +1,1513 @@
+{
+ "schema": 1,
+ "deliveries": [
+  {
+   "id": 23,
+   "gateway": "stripe",
+   "event": "charge.dispute.created",
+   "ref": "pi_67tFABtxPfMjsT7mTgOIduhj",
+   "booking": "AG-4838",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633272.316,
+   "due": 1794633272.3162816,
+   "attempts": [
+    {
+     "at": 1794633272.317,
+     "status": 200,
+     "ms": 16.6,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633272,v1=4073bab5de97baa4d2007f3eaeaf9712693f43e6396326fde52403c2a5070110"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_vH8yG5uQzESjINtFphZed5C6",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633272,
+    "data": {
+     "object": {
+      "id": "dp_vGgpZoxjdSuiPqnFvG2Mx2Qd",
+      "object": "dispute",
+      "amount": 7000,
+      "charge": "ch_p1TIS6LhznKDsVgChnGQfSLx",
+      "currency": "brl",
+      "payment_intent": "pi_67tFABtxPfMjsT7mTgOIduhj",
+      "reason": "fraudulent",
+      "status": "needs_response",
+      "created": 1794633272,
+      "evidence_details": {
+       "due_by": 1795238072
+      }
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "charge.dispute.created"
+   }
+  },
+  {
+   "id": 22,
+   "gateway": "stripe",
+   "event": "payment_intent.succeeded",
+   "ref": "pi_qIAsb46sQNvlRr872HXph334",
+   "booking": "AG-4840",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.889,
+   "due": 1794633269.889234,
+   "attempts": [
+    {
+     "at": 1794633269.889,
+     "status": 200,
+     "ms": 27.6,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=48eba0b1982f8ea882ad345eddb90cfbb1f00e3c2a68e04ab8137443a7cf16f9"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "wrong",
+   "copy_of": 21,
+   "note": "teste: assinatura errada",
+   "check": "signature",
+   "payload": {
+    "id": "evt_Yjo4kAe8sildxn93bUnRy22k",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_qIAsb46sQNvlRr872HXph334",
+      "object": "payment_intent",
+      "amount": 3500,
+      "amount_capturable": 0,
+      "amount_received": 3500,
+      "capture_method": "automatic",
+      "client_secret": "pi_qIAsb46sQNvlRr872HXph334_secret_hl0c4WjLpWoDhDnzqLEhWeti",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4840",
+      "last_payment_error": null,
+      "latest_charge": "ch_a0zRjIMVvniJsqQanXVuPGRn",
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4840"
+      },
+      "next_action": null,
+      "payment_method": "pm_card_visa",
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "succeeded",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.succeeded"
+   }
+  },
+  {
+   "id": 21,
+   "gateway": "stripe",
+   "event": "payment_intent.succeeded",
+   "ref": "pi_qIAsb46sQNvlRr872HXph334",
+   "booking": "AG-4840",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.787,
+   "due": 1794633269.7872074,
+   "attempts": [
+    {
+     "at": 1794633269.788,
+     "status": 400,
+     "ms": 30.3,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=48eba0b1982f8ea882ad345eddb90cfbb1f00e3c2a68e04ab8137443a7cf16f9"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "wrong",
+   "copy_of": 20,
+   "note": "teste: assinatura errada",
+   "check": "signature",
+   "payload": {
+    "id": "evt_Yjo4kAe8sildxn93bUnRy22k",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_qIAsb46sQNvlRr872HXph334",
+      "object": "payment_intent",
+      "amount": 3500,
+      "amount_capturable": 0,
+      "amount_received": 3500,
+      "capture_method": "automatic",
+      "client_secret": "pi_qIAsb46sQNvlRr872HXph334_secret_hl0c4WjLpWoDhDnzqLEhWeti",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4840",
+      "last_payment_error": null,
+      "latest_charge": "ch_a0zRjIMVvniJsqQanXVuPGRn",
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4840"
+      },
+      "next_action": null,
+      "payment_method": "pm_card_visa",
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "succeeded",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.succeeded"
+   }
+  },
+  {
+   "id": 20,
+   "gateway": "stripe",
+   "event": "payment_intent.succeeded",
+   "ref": "pi_qIAsb46sQNvlRr872HXph334",
+   "booking": "AG-4840",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.375,
+   "due": 1794633274.376,
+   "attempts": [
+    {
+     "at": 1794633269.376,
+     "status": 500,
+     "ms": 36.7,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=8cea6ca822ee14201026f7574e8b327923e20f1eed41058a7185c7378ad20c5b"
+     }
+    }
+   ],
+   "state": "pending",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_Yjo4kAe8sildxn93bUnRy22k",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_qIAsb46sQNvlRr872HXph334",
+      "object": "payment_intent",
+      "amount": 3500,
+      "amount_capturable": 0,
+      "amount_received": 3500,
+      "capture_method": "automatic",
+      "client_secret": "pi_qIAsb46sQNvlRr872HXph334_secret_hl0c4WjLpWoDhDnzqLEhWeti",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4840",
+      "last_payment_error": null,
+      "latest_charge": "ch_a0zRjIMVvniJsqQanXVuPGRn",
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4840"
+      },
+      "next_action": null,
+      "payment_method": "pm_card_visa",
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "succeeded",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.succeeded"
+   }
+  },
+  {
+   "id": 19,
+   "gateway": "stripe",
+   "event": "payment_intent.created",
+   "ref": "pi_qIAsb46sQNvlRr872HXph334",
+   "booking": "AG-4840",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.375,
+   "due": 1794633274.375,
+   "attempts": [
+    {
+     "at": 1794633269.375,
+     "status": 500,
+     "ms": 37.7,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=7263b403f0fe0ad07e6324916bd88e0057e9f13f3e07f78d5a8186ebe7a9d64e"
+     }
+    }
+   ],
+   "state": "pending",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_VBUEaMSV3R6oPzoce5dxpJ5k",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_qIAsb46sQNvlRr872HXph334",
+      "object": "payment_intent",
+      "amount": 3500,
+      "amount_capturable": 0,
+      "amount_received": 0,
+      "capture_method": "automatic",
+      "client_secret": "pi_qIAsb46sQNvlRr872HXph334_secret_hl0c4WjLpWoDhDnzqLEhWeti",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4840",
+      "last_payment_error": null,
+      "latest_charge": null,
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4840"
+      },
+      "next_action": null,
+      "payment_method": null,
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "requires_payment_method",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.created"
+   }
+  },
+  {
+   "id": 18,
+   "gateway": "stripe",
+   "event": "payment_intent.created",
+   "ref": "pi_pAB6dU0oxqnQ5tf638EZRdXN",
+   "booking": "AG-4839",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.289,
+   "due": 1794633274.348,
+   "attempts": [
+    {
+     "at": 1794633269.348,
+     "status": 500,
+     "ms": 64.0,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=a3e1fa99fc49f8a3d482a74a806d282d49a4f0cd2faf85de727900fb6e67b9e2"
+     }
+    }
+   ],
+   "state": "pending",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_usDlSlwZpFhrb5TvuvRwdDnB",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_pAB6dU0oxqnQ5tf638EZRdXN",
+      "object": "payment_intent",
+      "amount": 4500,
+      "amount_capturable": 0,
+      "amount_received": 0,
+      "capture_method": "automatic",
+      "client_secret": "pi_pAB6dU0oxqnQ5tf638EZRdXN_secret_O0YbUSZzTY9ght2WuwzTKzOV",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4839",
+      "last_payment_error": null,
+      "latest_charge": null,
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4839"
+      },
+      "next_action": null,
+      "payment_method": null,
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "requires_payment_method",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.created"
+   }
+  },
+  {
+   "id": 17,
+   "gateway": "stripe",
+   "event": "payment_intent.created",
+   "ref": "pi_C18KiX8v5nsrZcJXXDpo1v6K",
+   "booking": "AG-4839",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.288,
+   "due": 1794633274.335,
+   "attempts": [
+    {
+     "at": 1794633269.335,
+     "status": 500,
+     "ms": 76.7,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=3ce233b6298fb3d9b8c03467c443557edd95919ac9164779d949666a7e1fddd6"
+     }
+    }
+   ],
+   "state": "pending",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_CFvScem3vdFduJOyBl95zeSN",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_C18KiX8v5nsrZcJXXDpo1v6K",
+      "object": "payment_intent",
+      "amount": 4500,
+      "amount_capturable": 0,
+      "amount_received": 0,
+      "capture_method": "automatic",
+      "client_secret": "pi_C18KiX8v5nsrZcJXXDpo1v6K_secret_TM4ZkPcsqvKK8qMoWFMck46l",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4839",
+      "last_payment_error": null,
+      "latest_charge": null,
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4839"
+      },
+      "next_action": null,
+      "payment_method": null,
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "requires_payment_method",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.created"
+   }
+  },
+  {
+   "id": 16,
+   "gateway": "stripe",
+   "event": "payment_intent.succeeded",
+   "ref": "pi_67tFABtxPfMjsT7mTgOIduhj",
+   "booking": "AG-4838",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.286,
+   "due": 1794633274.292,
+   "attempts": [
+    {
+     "at": 1794633269.292,
+     "status": 500,
+     "ms": 118.3,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=73ea7bbe32f4deca4b560f45f3b0a0841ecfbc61fb222a67598bd39b99155c0d"
+     }
+    }
+   ],
+   "state": "pending",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_f70ism94klTNETIw4E9lkiFT",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_67tFABtxPfMjsT7mTgOIduhj",
+      "object": "payment_intent",
+      "amount": 7000,
+      "amount_capturable": 0,
+      "amount_received": 7000,
+      "capture_method": "automatic",
+      "client_secret": "pi_67tFABtxPfMjsT7mTgOIduhj_secret_4uTCUnr2PXR4iaYjJFx3NmH3",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4838",
+      "last_payment_error": null,
+      "latest_charge": "ch_p1TIS6LhznKDsVgChnGQfSLx",
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4838"
+      },
+      "next_action": null,
+      "payment_method": "pm_card_createDispute",
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "succeeded",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.succeeded"
+   }
+  },
+  {
+   "id": 15,
+   "gateway": "stripe",
+   "event": "payment_intent.created",
+   "ref": "pi_67tFABtxPfMjsT7mTgOIduhj",
+   "booking": "AG-4838",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.286,
+   "due": 1794633274.291,
+   "attempts": [
+    {
+     "at": 1794633269.291,
+     "status": 500,
+     "ms": 119.7,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=cf9a3e84717d2ceaa177aa3612e6e764d4d6f291fe7d49f5846b91dafe89011f"
+     }
+    }
+   ],
+   "state": "pending",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_kru9mAcyjaJS0Y7ZOQGkSQSz",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_67tFABtxPfMjsT7mTgOIduhj",
+      "object": "payment_intent",
+      "amount": 7000,
+      "amount_capturable": 0,
+      "amount_received": 0,
+      "capture_method": "automatic",
+      "client_secret": "pi_67tFABtxPfMjsT7mTgOIduhj_secret_4uTCUnr2PXR4iaYjJFx3NmH3",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4838",
+      "last_payment_error": null,
+      "latest_charge": null,
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4838"
+      },
+      "next_action": null,
+      "payment_method": null,
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "requires_payment_method",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.created"
+   }
+  },
+  {
+   "id": 14,
+   "gateway": "stripe",
+   "event": "charge.refunded",
+   "ref": "pi_Lwh48IvjJpR0Pic6fQp0AwK8",
+   "booking": "AG-4837",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.283,
+   "due": 1794633274.291,
+   "attempts": [
+    {
+     "at": 1794633269.291,
+     "status": 500,
+     "ms": 85.1,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=0bb785f92117b66a5ecce8fa80ddf49d7b3b4aa9ce8542b96a41d0389f51ed66"
+     }
+    }
+   ],
+   "state": "pending",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_Kcix8VhEgeMOnG22F4SqtDYn",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "object": "charge",
+      "id": "ch_P23xx72Lp9sNrYKgNlyKqies",
+      "amount": 4500,
+      "amount_refunded": 4500,
+      "refunded": true,
+      "payment_intent": "pi_Lwh48IvjJpR0Pic6fQp0AwK8",
+      "metadata": {
+       "booking": "AG-4837"
+      }
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "charge.refunded"
+   }
+  },
+  {
+   "id": 13,
+   "gateway": "stripe",
+   "event": "payment_intent.succeeded",
+   "ref": "pi_Lwh48IvjJpR0Pic6fQp0AwK8",
+   "booking": "AG-4837",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.242,
+   "due": 1794633269.242212,
+   "attempts": [
+    {
+     "at": 1794633269.251,
+     "status": 200,
+     "ms": 35.4,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=181758d662265d00576d8f8033e8c6b6a3c5b67d0823040921fe56f6b78592f5"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_BidoAUFeYKxiayrRTWA2JD4w",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_Lwh48IvjJpR0Pic6fQp0AwK8",
+      "object": "payment_intent",
+      "amount": 4500,
+      "amount_capturable": 0,
+      "amount_received": 4500,
+      "capture_method": "automatic",
+      "client_secret": "pi_Lwh48IvjJpR0Pic6fQp0AwK8_secret_ni2SuWQWrF9g9ZuI9CGn81pT",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4837",
+      "last_payment_error": null,
+      "latest_charge": "ch_P23xx72Lp9sNrYKgNlyKqies",
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4837"
+      },
+      "next_action": null,
+      "payment_method": "pm_card_mastercard",
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "succeeded",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.succeeded"
+   }
+  },
+  {
+   "id": 12,
+   "gateway": "stripe",
+   "event": "payment_intent.created",
+   "ref": "pi_Lwh48IvjJpR0Pic6fQp0AwK8",
+   "booking": "AG-4837",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.242,
+   "due": 1794633269.2421243,
+   "attempts": [
+    {
+     "at": 1794633269.243,
+     "status": 200,
+     "ms": 42.6,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=036c185fd0075736a672f885f143d979dc439e5f09183ef3cb92c5ad672f64d7"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_7Oj7d2w9tASFbodZkhcSdUhj",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_Lwh48IvjJpR0Pic6fQp0AwK8",
+      "object": "payment_intent",
+      "amount": 4500,
+      "amount_capturable": 0,
+      "amount_received": 0,
+      "capture_method": "automatic",
+      "client_secret": "pi_Lwh48IvjJpR0Pic6fQp0AwK8_secret_ni2SuWQWrF9g9ZuI9CGn81pT",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4837",
+      "last_payment_error": null,
+      "latest_charge": null,
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4837"
+      },
+      "next_action": null,
+      "payment_method": null,
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "requires_payment_method",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.created"
+   }
+  },
+  {
+   "id": 11,
+   "gateway": "stripe",
+   "event": "payment_intent.requires_action",
+   "ref": "pi_pZe39lHCZEmtUhKkHhvXDTzf",
+   "booking": "AG-4836",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.207,
+   "due": 1794633269.2065668,
+   "attempts": [
+    {
+     "at": 1794633269.22,
+     "status": 200,
+     "ms": 64.8,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=251ca29b017d99172f876d4a44d4706d7e2c69e191bc293ed0025cd3253c8df1"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_tUDWpopx7dpZulL7EeG6jXXh",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_pZe39lHCZEmtUhKkHhvXDTzf",
+      "object": "payment_intent",
+      "amount": 3500,
+      "amount_capturable": 0,
+      "amount_received": 0,
+      "capture_method": "automatic",
+      "client_secret": "pi_pZe39lHCZEmtUhKkHhvXDTzf_secret_Vx4sRMOhid2its9z1ilkrdc9",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4836",
+      "last_payment_error": null,
+      "latest_charge": null,
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4836"
+      },
+      "next_action": {
+       "type": "use_stripe_sdk",
+       "use_stripe_sdk": {
+        "type": "three_d_secure_redirect"
+       }
+      },
+      "payment_method": "pm_card_authenticationRequired",
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "requires_action",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.requires_action"
+   }
+  },
+  {
+   "id": 10,
+   "gateway": "stripe",
+   "event": "payment_intent.created",
+   "ref": "pi_pZe39lHCZEmtUhKkHhvXDTzf",
+   "booking": "AG-4836",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.207,
+   "due": 1794633269.2065034,
+   "attempts": [
+    {
+     "at": 1794633269.207,
+     "status": 200,
+     "ms": 77.1,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=ae675aaf315ebcdf17818e68eee10047cbf6cdba188184bc5cdec6b632e6689d"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_OPhQ8r9EfPtKMX0TvyjOUMt0",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_pZe39lHCZEmtUhKkHhvXDTzf",
+      "object": "payment_intent",
+      "amount": 3500,
+      "amount_capturable": 0,
+      "amount_received": 0,
+      "capture_method": "automatic",
+      "client_secret": "pi_pZe39lHCZEmtUhKkHhvXDTzf_secret_Vx4sRMOhid2its9z1ilkrdc9",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4836",
+      "last_payment_error": null,
+      "latest_charge": null,
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4836"
+      },
+      "next_action": null,
+      "payment_method": null,
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "requires_payment_method",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.created"
+   }
+  },
+  {
+   "id": 9,
+   "gateway": "stripe",
+   "event": "payment_intent.payment_failed",
+   "ref": "pi_lrInEkGhVFZZYetHsVRalzwp",
+   "booking": "AG-4835",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.17,
+   "due": 1794633269.1704266,
+   "attempts": [
+    {
+     "at": 1794633269.187,
+     "status": 200,
+     "ms": 20.0,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=e543dd71180673ef78e18f503962c0c5389592852bd1dccf0291e9d379ecb32f"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_BbhZOtkMGbg3wC6woSaF7deR",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_lrInEkGhVFZZYetHsVRalzwp",
+      "object": "payment_intent",
+      "amount": 4500,
+      "amount_capturable": 0,
+      "amount_received": 0,
+      "capture_method": "automatic",
+      "client_secret": "pi_lrInEkGhVFZZYetHsVRalzwp_secret_6ITFuZIw1Vnnk55myhjeMrZA",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4835",
+      "last_payment_error": {
+       "type": "card_error",
+       "code": "card_declined",
+       "decline_code": "insufficient_funds",
+       "message": "Your card has insufficient funds.",
+       "charge": "ch_RJNTZqD4KrLiCvLFRLTtziCX",
+       "payment_method": {
+        "id": "pm_card_chargeDeclinedInsufficientFunds",
+        "object": "payment_method",
+        "type": "card",
+        "created": 1794633269,
+        "livemode": false,
+        "card": {
+         "brand": "visa",
+         "last4": "9995",
+         "exp_month": 12,
+         "exp_year": 2030,
+         "funding": "credit",
+         "country": "US"
+        },
+        "billing_details": {}
+       }
+      },
+      "latest_charge": "ch_RJNTZqD4KrLiCvLFRLTtziCX",
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4835"
+      },
+      "next_action": null,
+      "payment_method": "pm_card_chargeDeclinedInsufficientFunds",
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "requires_payment_method",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.payment_failed"
+   }
+  },
+  {
+   "id": 8,
+   "gateway": "stripe",
+   "event": "payment_intent.created",
+   "ref": "pi_lrInEkGhVFZZYetHsVRalzwp",
+   "booking": "AG-4835",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.17,
+   "due": 1794633269.170325,
+   "attempts": [
+    {
+     "at": 1794633269.171,
+     "status": 200,
+     "ms": 36.5,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=603b62999813730b4d4b717692965986fbeffa59fdcaea4c32528fcdbf3b3d80"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_U4DYsGvek5dM3UMrFDBqKPcg",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_lrInEkGhVFZZYetHsVRalzwp",
+      "object": "payment_intent",
+      "amount": 4500,
+      "amount_capturable": 0,
+      "amount_received": 0,
+      "capture_method": "automatic",
+      "client_secret": "pi_lrInEkGhVFZZYetHsVRalzwp_secret_6ITFuZIw1Vnnk55myhjeMrZA",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4835",
+      "last_payment_error": null,
+      "latest_charge": null,
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4835"
+      },
+      "next_action": null,
+      "payment_method": null,
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "requires_payment_method",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.created"
+   }
+  },
+  {
+   "id": 7,
+   "gateway": "stripe",
+   "event": "payment_intent.succeeded",
+   "ref": "pi_kfti06ID6RCCKOpxgCBlR05w",
+   "booking": "AG-4834",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.135,
+   "due": 1794633269.134561,
+   "attempts": [
+    {
+     "at": 1794633269.136,
+     "status": 200,
+     "ms": 69.4,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=8de91e0074591f827b98ddd7b8947fa8e11f9ef1356ab6287ba6c165540e5d85"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_7OAbUMOZV3BLh0TaUOpnnuDw",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_kfti06ID6RCCKOpxgCBlR05w",
+      "object": "payment_intent",
+      "amount": 7000,
+      "amount_capturable": 0,
+      "amount_received": 7000,
+      "capture_method": "automatic",
+      "client_secret": "pi_kfti06ID6RCCKOpxgCBlR05w_secret_g4hA8mulRvji1SIIudMyX31R",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4834",
+      "last_payment_error": null,
+      "latest_charge": "ch_ABi1XQsdIiS5ZxsJFb8W8uCT",
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4834"
+      },
+      "next_action": null,
+      "payment_method": "pm_card_visa",
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "succeeded",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.succeeded"
+   }
+  },
+  {
+   "id": 6,
+   "gateway": "stripe",
+   "event": "payment_intent.created",
+   "ref": "pi_kfti06ID6RCCKOpxgCBlR05w",
+   "booking": "AG-4834",
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "created": 1794633269.134,
+   "due": 1794633269.134471,
+   "attempts": [
+    {
+     "at": 1794633269.135,
+     "status": 200,
+     "ms": 69.7,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (stripe webhook emulator)",
+      "Stripe-Signature": "t=1794633269,v1=5e56241d2f2eab88fc3bd8c6022fc15a57bba0a1888df7e4efe276ee941d5f2e"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "id": "evt_51NcGuckdanhygxMkQd2NcSQ",
+    "object": "event",
+    "api_version": "2024-06-20",
+    "created": 1794633269,
+    "data": {
+     "object": {
+      "id": "pi_kfti06ID6RCCKOpxgCBlR05w",
+      "object": "payment_intent",
+      "amount": 7000,
+      "amount_capturable": 0,
+      "amount_received": 0,
+      "capture_method": "automatic",
+      "client_secret": "pi_kfti06ID6RCCKOpxgCBlR05w_secret_g4hA8mulRvji1SIIudMyX31R",
+      "confirmation_method": "automatic",
+      "created": 1794633269,
+      "currency": "brl",
+      "description": "Barbearia do Zé · AG-4834",
+      "last_payment_error": null,
+      "latest_charge": null,
+      "livemode": false,
+      "metadata": {
+       "booking": "AG-4834"
+      },
+      "next_action": null,
+      "payment_method": null,
+      "payment_method_types": [
+       "card"
+      ],
+      "receipt_email": null,
+      "status": "requires_payment_method",
+      "canceled_at": null,
+      "cancellation_reason": null
+     }
+    },
+    "livemode": false,
+    "pending_webhooks": 1,
+    "request": {
+     "id": null,
+     "idempotency_key": null
+    },
+    "type": "payment_intent.created"
+   }
+  },
+  {
+   "id": 5,
+   "gateway": "mercadopago",
+   "event": "payment.created",
+   "ref": "1325000002",
+   "booking": "AG-4832",
+   "url": "http://127.0.0.1:55124/webhooks/mp?data.id=1325000002&type=payment",
+   "created": 1794633269.113,
+   "due": 1794633269.1134915,
+   "attempts": [
+    {
+     "at": 1794633269.114,
+     "status": 200,
+     "ms": 19.8,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (mercadopago webhook emulator)",
+      "x-signature": "ts=1794633269,v1=a0679e8fccfeef99f4e1a6cff9bc0fe5f45d762477738d5e13277bd6d7622079",
+      "x-request-id": "7b14ca6a-0809-4188-83e7-8aa8d7f500f8"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "action": "payment.created",
+    "api_version": "v1",
+    "data": {
+     "id": "1325000002"
+    },
+    "date_created": "2026-11-14T05:14:29.113Z",
+    "id": 4633269113,
+    "live_mode": false,
+    "type": "payment",
+    "user_id": "1234567890"
+   }
+  },
+  {
+   "id": 4,
+   "gateway": "mercadopago",
+   "event": "payment.created",
+   "ref": "1325000001",
+   "booking": "AG-4831",
+   "url": "http://127.0.0.1:55124/webhooks/mp?data.id=1325000001&type=payment",
+   "created": 1794633269.093,
+   "due": 1794633269.0933962,
+   "attempts": [
+    {
+     "at": 1794633269.094,
+     "status": 200,
+     "ms": 20.6,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (mercadopago webhook emulator)",
+      "x-signature": "ts=1794633269,v1=3756f6b5ff3aca2bdf986a89f83c1e9649dbcf645ebf67b2cdde071af53bbed5",
+      "x-request-id": "0b3bb359-f925-4855-9c75-121b2bb17633"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "action": "payment.created",
+    "api_version": "v1",
+    "data": {
+     "id": "1325000001"
+    },
+    "date_created": "2026-11-14T05:14:29.093Z",
+    "id": 4633269093,
+    "live_mode": false,
+    "type": "payment",
+    "user_id": "1234567890"
+   }
+  },
+  {
+   "id": 3,
+   "gateway": "pix",
+   "event": "pix",
+   "ref": "AG4827corteebarba000000000",
+   "booking": "AG-4827",
+   "url": "http://127.0.0.1:55124/webhooks/pix",
+   "created": 1794633267.586,
+   "due": 1794633268.5855944,
+   "attempts": [
+    {
+     "at": 1794633268.658,
+     "status": 200,
+     "ms": 22.9,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (pix webhook emulator)"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": 2,
+   "note": "enviado 2 vezes pelo cenário",
+   "check": null,
+   "payload": {
+    "pix": [
+     {
+      "endToEndId": "E18236120202611140514jln8st3q0nt",
+      "txid": "AG4827corteebarba000000000",
+      "valor": "70.00",
+      "chave": "3b8c2f71-5a4e-4d19-9c07-e2a6b15f8d43",
+      "horario": "2026-11-14T05:14:27.585Z",
+      "infoPagador": "",
+      "pagador": {
+       "cpf": "12345678909",
+       "nome": "Marina Lopes"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 2,
+   "gateway": "pix",
+   "event": "pix",
+   "ref": "AG4827corteebarba000000000",
+   "booking": "AG-4827",
+   "url": "http://127.0.0.1:55124/webhooks/pix",
+   "created": 1794633267.586,
+   "due": 1794633267.5855873,
+   "attempts": [
+    {
+     "at": 1794633267.589,
+     "status": 200,
+     "ms": 36.1,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (pix webhook emulator)"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": "enviado 2 vezes pelo cenário",
+   "check": null,
+   "payload": {
+    "pix": [
+     {
+      "endToEndId": "E18236120202611140514jln8st3q0nt",
+      "txid": "AG4827corteebarba000000000",
+      "valor": "70.00",
+      "chave": "3b8c2f71-5a4e-4d19-9c07-e2a6b15f8d43",
+      "horario": "2026-11-14T05:14:27.585Z",
+      "infoPagador": "",
+      "pagador": {
+       "cpf": "12345678909",
+       "nome": "Marina Lopes"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 1,
+   "gateway": "pix",
+   "event": "pix",
+   "ref": "AG4826corte000000000000000",
+   "booking": "AG-4826",
+   "url": "http://127.0.0.1:55124/webhooks/pix",
+   "created": 1794633267.575,
+   "due": 1794633267.5748181,
+   "attempts": [
+    {
+     "at": 1794633267.588,
+     "status": 200,
+     "ms": 36.3,
+     "body": "ok",
+     "error": null,
+     "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "PayStudio/1.0 (pix webhook emulator)"
+     }
+    }
+   ],
+   "state": "delivered",
+   "signature": "valid",
+   "copy_of": null,
+   "note": null,
+   "check": null,
+   "payload": {
+    "pix": [
+     {
+      "endToEndId": "E18236120202611140514bcab9md9lf7",
+      "txid": "AG4826corte000000000000000",
+      "valor": "45.00",
+      "chave": "3b8c2f71-5a4e-4d19-9c07-e2a6b15f8d43",
+      "horario": "2026-11-14T05:14:27.574Z",
+      "infoPagador": "",
+      "pagador": {
+       "cpf": "12345678909",
+       "nome": "Carlos Andrade"
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+{
+	"id": "appstudio",
+	"name": "AppStudio",
+	"description": "Cria apps de celular e tablet pela conversa: o app aparece sendo construído num celular, num dobrável ou num tablet ao lado, com as telas, o mapa das rotas e o teste como se fosse o aparelho.",
+	"version": "1.0.1",
+	"icon": "device-mobile",
+	"studio": {
+		"title": "AppStudio",
+		"description": "Apps de celular",
+		"ui": true
+	},
+	"details": {
+		"about": "O AppStudio monta apps de celular e tablet pela conversa, neste computador. Você pede e o app aparece sendo construído, parte por parte, dentro de um iPhone, um Android, um iPhone ou Android dobrável ou um tablet, com ou sem moldura. O Studio mostra todas as telas como as páginas do WebStudio, o mapa das rotas (o que leva a quê), os estados de cada tela, um modo para usar o app como cliente, problemas como telas sem saída e contraste baixo, e as versões para voltar atrás. O app fica numa pasta do projeto e funciona sozinho no navegador; publicar gera os arquivos para instalar como app (PWA) e, se você quiser, para gerar os apps de Android e iPhone com o Capacitor.",
+		"features": [
+			"O app aparece sendo construído ao vivo, parte por parte, com o que falta em cinza",
+			"iPhone, Android, iPhone dobrável, Android dobrável e tablet, com ou sem moldura, deitado ou em pé",
+			"Todas as telas lado a lado e o mapa das rotas, com telas sem saída e telas que ninguém alcança",
+			"Usar o app como cliente no Studio, com abas, telas que se abrem por cima e o botão de voltar",
+			"Estados de cada tela (carregando, vazio, erro, sem internet) e dados de exemplo para as listas",
+			"Versões para comparar e voltar, e publicação como PWA ou com os arquivos do Capacitor"
+		],
+		"limitations": [
+			"O app é feito em HTML e CSS com navegação declarada; código JavaScript próprio ainda não roda na prévia",
+			"Imagens são desenhadas em SVG ou ficam dentro do app; nada é buscado na internet",
+			"Gerar o APK e o app de iPhone fica com o Capacitor, o Android Studio e o Xcode, fora do JumpCode",
+			"Abrir a prévia no celular de verdade pela rede ainda não está pronto"
+		],
+		"examples": [
+			"Faça um app para a barbearia com agenda de horários",
+			"Crie a tela de perfil com os dados da pessoa e um botão Sair",
+			"Mostra como fica no tablet deitado",
+			"Tem alguma tela sem saída?"
+		],
+		"author": "JumpCode",
+		"updatedAt": "2026-11-14",
+		"execution": "local",
+		"access": {
+			"suppliedText": true,
+			"projectFiles": true,
+			"network": false
+		}
+	},
+	"instructions": "AppStudio builds a phone and tablet app that the Studio shows live inside a phone, a foldable or a tablet. Work in small steps so the user sees the app grow. 1) status says whether the project has an app; start (name: the app's name the user said, optional colours primary, accent, background, text, font, icon letters) creates it. 2) screen declares or changes a screen: screen (id such as inicio), title, kind (tab: in the bottom tabs; stack: opens over the previous screen; modal: a sheet that closes), route (such as /agendar), login (true when it needs the person signed in) and plan (the ids of its parts in order; they show as grey placeholders until written). tabs sets the bottom tabs: items [{screen, label, icon}], icon from inicio, lista, agenda, perfil, busca, favoritos, carrinho, sino, ajustes, mapa, chat, estrela, tesoura, mais, pedidos, camera, grafico. 3) write_part writes one part of a screen (screen, part, html under 4000 characters): one complete element such as <header>, <section> or <nav>, never <html>, <head>, <body>, <script> or on... attributes; draw images with inline SVG. Navigation: data-go=\"screen-id\" on what is tapped opens that screen, data-back goes back, data-close closes a modal, data-tab switches tab. Lists: first call data (collection servicos, rows [{\"nome\": \"Corte\", \"preco\": \"R$ 45\"}]), then data-each=\"servicos\" on the element that repeats, with {{nome}} and {{preco}} (the rows' own keys) inside; the repeating element is the list itself, each row is one child. States: an element with data-state=\"carregando\", \"vazio\", \"erro\" or \"sem-internet\" shows only in that state; parts without data-state show in the normal state; data-state=\"sempre\" shows in every state. write_styles writes one CSS block (name, css under 4000 characters): first base with the app's look using var(--cor-primaria), var(--cor-destaque), var(--cor-fundo), var(--cor-superficie), var(--cor-texto), var(--cor-texto-suave), var(--raio) and var(--fonte), then one block per screen; set the theme colours with theme, not with CSS variables. It must work from 320 px phones to tablets: use @media (min-width: 600px) for two columns on open foldables and tablets, and keep buttons at least 44 px tall. 4) read before changing something (screen and part, or name for styles); remove deletes a screen, a part, a styles block (name), a tab or a data collection; theme changes the colours, font, radius, icon letters or the app's name. check lists the problems; versions lists the versions; restore without version undoes the last change, restore with version goes back to that one. show points the Studio (view: preview, screens, map, structure, test, states, problems, versions, publish, settings; screen; state; device: iphone, android, iphone-fold, android-fold, tablet; frame; fold: open or closed; landscape). publish writes the installable app files (PWA); capacitor true also writes the files to build Android and iPhone apps, only when the user asks for Android, iPhone or the stores. After the last change, answer the user in one short sentence in the user's language saying what changed.",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"action": {
+				"type": "string",
+				"enum": ["status", "start", "screen", "tabs", "write_part", "write_styles", "data", "theme", "read", "remove", "check", "versions", "restore", "show", "publish"],
+				"description": "start, screen, tabs, write_part, write_styles, data and theme build the app; status, read and check look at it; remove deletes; versions and restore go back; show points the Studio; publish writes the files to install it."
+			},
+			"question": {"type": "string", "maxLength": 300, "description": "The user's request in their words."},
+			"name": {"type": "string", "maxLength": 80, "description": "start, theme: the app's name; write_styles, read, remove: the styles block (such as base)."},
+			"folder": {"type": "string", "maxLength": 120, "description": "start: the project folder for the app (default app)."},
+			"screen": {"type": "string", "maxLength": 40, "description": "The screen id, such as inicio or agendar."},
+			"part": {"type": "string", "maxLength": 40, "description": "write_part, read, remove: the part id inside the screen, such as cabecalho."},
+			"title": {"type": "string", "maxLength": 60, "description": "screen: the title the person sees."},
+			"kind": {"type": "string", "enum": ["tab", "stack", "modal"], "description": "screen: tab (bottom tabs), stack (opens over the previous) or modal (a sheet that closes)."},
+			"route": {"type": "string", "maxLength": 80, "description": "screen: the route, such as /agendar."},
+			"login": {"type": "boolean", "description": "screen: true when the screen needs the person signed in."},
+			"plan": {"type": ["array", "string"], "maxItems": 20, "items": {"type": "string", "maxLength": 40}, "description": "screen: the ids of its parts in order."},
+			"first": {"type": "boolean", "description": "screen: true to make it the screen the app opens on."},
+			"items": {"type": "array", "maxItems": 5, "items": {"type": "object", "properties": {"screen": {"type": "string", "maxLength": 40}, "label": {"type": "string", "maxLength": 24}, "icon": {"type": "string", "maxLength": 20}}, "required": ["screen"]}, "description": "tabs: the bottom tabs, up to 5."},
+			"html": {"type": "string", "maxLength": 8000, "description": "write_part: the part's HTML, one complete element."},
+			"css": {"type": "string", "maxLength": 8000, "description": "write_styles: the CSS block."},
+			"collection": {"type": "string", "maxLength": 40, "description": "data, remove: the example data collection, such as servicos."},
+			"rows": {"type": "array", "maxItems": 200, "items": {"type": "object"}, "description": "data: the rows, such as [{\"nome\": \"Corte\", \"preco\": \"R$ 45\"}]."},
+			"primary": {"type": "string", "maxLength": 9, "description": "start, theme: main colour, such as #24563F."},
+			"accent": {"type": "string", "maxLength": 9, "description": "start, theme: highlight colour."},
+			"background": {"type": "string", "maxLength": 9, "description": "start, theme: background colour."},
+			"surface": {"type": "string", "maxLength": 9, "description": "start, theme: cards and bars colour."},
+			"text": {"type": "string", "maxLength": 9, "description": "start, theme: text colour."},
+			"muted": {"type": "string", "maxLength": 9, "description": "start, theme: secondary text colour."},
+			"font": {"type": "string", "maxLength": 80, "description": "start, theme: system, serif, rounded, mono or a font family installed on phones."},
+			"radius": {"type": "integer", "minimum": 0, "maximum": 40, "description": "start, theme: corner radius in px."},
+			"icon": {"type": "string", "maxLength": 3, "description": "start, theme: the letters on the app icon."},
+			"tab": {"type": "string", "maxLength": 40, "description": "remove: the screen whose tab is removed."},
+			"version": {"type": "integer", "minimum": 1, "description": "restore: the version to go back to; leave it out to undo the last change."},
+			"view": {"type": "string", "enum": ["preview", "screens", "map", "structure", "test", "states", "problems", "versions", "publish", "settings"], "description": "show: the Studio view."},
+			"state": {"type": "string", "enum": ["normal", "carregando", "vazio", "erro", "sem-internet"], "description": "show: the screen state."},
+			"device": {"type": "string", "enum": ["iphone", "android", "iphone-fold", "android-fold", "tablet"], "description": "show: the device."},
+			"frame": {"type": "boolean", "description": "show: with the device frame."},
+			"fold": {"type": "string", "enum": ["open", "closed"], "description": "show: foldable open or closed."},
+			"landscape": {"type": "boolean", "description": "show: lying down."},
+			"capacitor": {"type": "boolean", "description": "publish: only when the user asks for Android, iPhone or the stores: also write the Capacitor files."},
+			"app_id": {"type": "string", "maxLength": 80, "description": "publish with capacitor: the app id, such as com.barbearia.app."}
+		},
+		"required": ["action"],
+		"additionalProperties": false
+	}
+}

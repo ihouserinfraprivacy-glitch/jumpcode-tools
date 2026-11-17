@@ -1,0 +1,245 @@
+{
+ "schema": 1,
+ "scanned": true,
+ "sheet": "f0dcf35726",
+ "problems": [
+  {
+   "id": "text-date:data",
+   "kind": "text-date",
+   "title": "Datas escritas como texto",
+   "column": "data",
+   "count": 37,
+   "formats": [
+    [
+     "aaaa-mm-dd",
+     21
+    ],
+    [
+     "dd/mm/aa",
+     16
+    ]
+   ],
+   "examples": [
+    {
+     "row": 7,
+     "before": "2026-01-03",
+     "after": "03/01/2026"
+    },
+    {
+     "row": 8,
+     "before": "2026-01-03",
+     "after": "03/01/2026"
+    },
+    {
+     "row": 9,
+     "before": "2026-01-05",
+     "after": "05/01/2026"
+    },
+    {
+     "row": 10,
+     "before": "2026-01-05",
+     "after": "05/01/2026"
+    },
+    {
+     "row": 11,
+     "before": "2026-01-05",
+     "after": "05/01/2026"
+    },
+    {
+     "row": 12,
+     "before": "2026-01-05",
+     "after": "05/01/2026"
+    }
+   ],
+   "proposal": "ler como dia/mês/ano e gravar como data",
+   "fix": {
+    "kind": "types",
+    "column": "c1",
+    "issue": "text-date"
+   },
+   "applied": "p1"
+  },
+  {
+   "id": "text-number:valor",
+   "kind": "text-number",
+   "title": "Números escritos como texto",
+   "column": "valor",
+   "count": 112,
+   "formats": [
+    [
+     "R$",
+     112
+    ]
+   ],
+   "examples": [
+    {
+     "row": 9,
+     "before": "R$ 45,00",
+     "after": "45,00"
+    },
+    {
+     "row": 52,
+     "before": "R$ 60,00",
+     "after": "60,00"
+    },
+    {
+     "row": 95,
+     "before": "R$ 60,00",
+     "after": "60,00"
+    },
+    {
+     "row": 138,
+     "before": "R$ 60,00",
+     "after": "60,00"
+    },
+    {
+     "row": 181,
+     "before": "R$ 20,00",
+     "after": "20,00"
+    },
+    {
+     "row": 224,
+     "before": "R$ 20,00",
+     "after": "20,00"
+    }
+   ],
+   "proposal": "tirar R$, pontos e espaços e gravar como número",
+   "fix": {
+    "kind": "types",
+    "column": "c6",
+    "issue": "text-number"
+   },
+   "applied": "p2"
+  },
+  {
+   "id": "duplicates",
+   "kind": "duplicates",
+   "title": "Linhas repetidas",
+   "column": null,
+   "count": 10,
+   "examples": [
+    {
+     "row": 3033,
+     "same": 1805
+    },
+    {
+     "row": 4802,
+     "same": 3408
+    },
+    {
+     "row": 4803,
+     "same": 3409
+    },
+    {
+     "row": 4804,
+     "same": 3410
+    },
+    {
+     "row": 4805,
+     "same": 3411
+    },
+    {
+     "row": 4806,
+     "same": 3412
+    }
+   ],
+   "proposal": "remover as 10 cópias e manter a primeira de cada",
+   "fix": {
+    "kind": "dedupe",
+    "rows": [
+     3033,
+     4802,
+     4803,
+     4804,
+     4805,
+     4806,
+     4807,
+     4808,
+     4809,
+     4810
+    ]
+   },
+   "applied": "p3"
+  }
+ ],
+ "fine": [
+  {
+   "column": "cliente",
+   "count": 56,
+   "text": "56 cliente vazios",
+   "by": null,
+   "exact": false
+  },
+  {
+   "column": "pagamento",
+   "count": 492,
+   "text": "492 pagamento vazios são exatamente as linhas com status 286 cancelado e 206 faltou",
+   "by": "status",
+   "exact": true
+  }
+ ],
+ "rows": 4809,
+ "steps": [
+  {
+   "id": "p1",
+   "kind": "types",
+   "text": "Gravar data como data",
+   "rows": 37,
+   "at": 1794645663.118858,
+   "detail": {
+    "issue": "text-date"
+   }
+  },
+  {
+   "id": "p2",
+   "kind": "types",
+   "text": "Gravar valor como R$ moeda",
+   "rows": 112,
+   "at": 1794645663.1191082,
+   "detail": {
+    "issue": "text-number"
+   }
+  },
+  {
+   "id": "p3",
+   "kind": "dedupe",
+   "text": "Remover 10 linhas repetidas",
+   "rows": 10,
+   "at": 1794645663.1192908,
+   "detail": {
+    "rows": [
+     3033,
+     4802,
+     4803,
+     4804,
+     4805,
+     4806,
+     4807,
+     4808,
+     4809,
+     4810
+    ],
+    "count": 10
+   }
+  },
+  {
+   "id": "p4",
+   "kind": "column",
+   "text": "Nova coluna dia da semana",
+   "rows": 4799,
+   "at": 1794645663.1874025,
+   "detail": {
+    "column": "dia da semana",
+    "formula": "dia da semana de data",
+    "type": "category"
+   }
+  }
+ ],
+ "original": {
+  "path": "dados/atendimentos-2026.xlsx",
+  "sha256": "e722d9052748376d8a43c70ae20eee51893c551c094c1b1e211ba7e22194d210",
+  "bytes": 179012,
+  "modified": 1794645662.443516
+ },
+ "updatedAt": 1794645663.2622895
+}

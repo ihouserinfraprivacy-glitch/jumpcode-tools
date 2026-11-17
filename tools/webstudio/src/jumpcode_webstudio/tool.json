@@ -1,0 +1,87 @@
+{
+	"id": "webstudio",
+	"name": "WebStudio",
+	"description": "Cria páginas web e mostra o site sendo montado ao vivo no Studio.",
+	"version": "1.0.1",
+	"icon": "globe",
+	"studio": {
+		"title": "WebStudio",
+		"description": "Cria páginas web"
+	},
+	"details": {
+		"about": "O WebStudio monta sites estáticos, em HTML e CSS, dentro do Studio: a conversa fica à esquerda e o site aparece à direita, parte por parte, enquanto o agente trabalha. Cada página fica disponível na faixa de páginas, embaixo da prévia.",
+		"features": [
+			"Monta o site seção por seção, com prévia ao vivo",
+			"Várias páginas ligadas entre si",
+			"Prévia no tamanho de computador e de celular",
+			"Abre o site pronto no navegador"
+		],
+		"limitations": [
+			"Gera sites estáticos, sem banco de dados nem formulários que enviam dados",
+			"A publicação ainda não está disponível nesta versão",
+			"Imagens são desenhos em SVG ou CSS; fotos da internet não são baixadas"
+		],
+		"examples": [
+			"Crie um site para a minha cafeteria, com cardápio, horário e botão de reserva",
+			"Adicione uma página de contato com endereço e WhatsApp",
+			"Troque as cores do site por tons de verde"
+		],
+		"author": "JumpCode",
+		"updatedAt": "2026-11-13",
+		"execution": "local",
+		"access": {
+			"suppliedText": true,
+			"projectFiles": false,
+			"network": false
+		}
+	},
+	"instructions": "Build and edit the website shown live in the Studio preview. Work in small steps so the user sees the site grow: one call per section, each html or css under 3000 characters. For a new site: first write_styles name 'base' (colors, fonts, spacing, layout), then write_section for page 'index' in reading order (for example header, hero, features, footer), passing the page title on the first section. A section is one complete HTML element such as <header>, <section> or <footer>; never send <html>, <head> or <body>. The stylesheet is linked automatically. Each style block is replaced as a whole: keep 'base' for the global look and put the rules of a new section in a new block named after that section. Link pages with href=\"index.html\" or href=\"<page>.html\". Use read before changing an existing site (page for HTML, page plus section for one section, name for CSS; if the result contains next, call read with those exact arguments until no next remains before replacing the content), write_section with an existing id to replace it, and remove_section or remove_page to delete. Draw images with inline SVG or CSS; do not use external scripts, fonts or images. After the last change, always answer the user in one short sentence saying what changed.",
+	"inputSchema": {
+		"type": "object",
+		"properties": {
+			"action": {
+				"type": "string",
+				"enum": [
+					"write_section",
+					"write_styles",
+					"remove_section",
+					"remove_page",
+					"read"
+				],
+				"description": "write_section creates or replaces one section of a page; write_styles creates or replaces one CSS block; remove_section and remove_page delete; read returns the site outline, one page's sections (page), one section (page and section), or CSS (name). Large results return next arguments to continue the same version without omissions."
+			},
+			"page": {
+				"type": "string",
+				"description": "Page id: 'index' for the home page or a short lowercase name such as 'cardapio' or 'contato'. Defaults to 'index'."
+			},
+			"section": {
+				"type": "string",
+				"description": "Section id for writing, removing, or reading one section of a page; a short lowercase name such as 'header', 'hero', 'menu' or 'footer'."
+			},
+			"cursor": {
+				"type": "string",
+				"description": "Opaque continuation returned in next by read. Reuse next exactly; do not invent or edit the cursor."
+			},
+			"html": {
+				"type": "string",
+				"description": "HTML of the section: one complete element such as <section>...</section>."
+			},
+			"title": {
+				"type": "string",
+				"description": "Optional page title shown in the browser tab."
+			},
+			"name": {
+				"type": "string",
+				"description": "Style block name, such as 'base' or 'menu'. Defaults to 'base' when writing; pass name with read to retrieve its CSS, following next when present."
+			},
+			"css": {
+				"type": "string",
+				"description": "CSS rules for the style block."
+			}
+		},
+		"required": [
+			"action"
+		],
+		"additionalProperties": false
+	}
+}

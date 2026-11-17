@@ -1,0 +1,44 @@
+{
+	"status": "scanning",
+	"phase": "links",
+	"steps": [
+		{
+			"id": "tree",
+			"label": "Estrutura de pastas",
+			"state": "done",
+			"note": "57 pastas"
+		},
+		{
+			"id": "systems",
+			"label": "Sistemas encontrados",
+			"state": "done",
+			"note": "6"
+		},
+		{
+			"id": "read",
+			"label": "Leitura dos arquivos",
+			"state": "done",
+			"note": "143 arquivos"
+		},
+		{
+			"id": "services",
+			"label": "Serviços e arquivos",
+			"state": "done",
+			"note": "61"
+		},
+		{
+			"id": "links",
+			"label": "Ligações entre serviços",
+			"state": "run",
+			"note": "80 de 133 arquivos"
+		},
+		{
+			"id": "deploy",
+			"label": "Implantação",
+			"state": "todo"
+		}
+	],
+	"current": "firmware/rastreador/main/tasks/ota_task.c",
+	"done": 80,
+	"total": 133
+}

@@ -1,0 +1,201 @@
+{
+ "schema": 1,
+ "status": "running",
+ "endpoint": "http://127.0.0.1:55125",
+ "port": 55125,
+ "startedAt": 1794633267.527506,
+ "readyMs": 0,
+ "storage": "memory",
+ "currency": "BRL",
+ "gateways": {
+  "pix": {
+   "charges": 4,
+   "webhooks": 3,
+   "failing": 0,
+   "url": "http://127.0.0.1:55124/webhooks",
+   "base": "http://127.0.0.1:55125/pix"
+  },
+  "mercadopago": {
+   "charges": 2,
+   "webhooks": 2,
+   "failing": 0,
+   "url": "http://127.0.0.1:55124/webhooks/mp",
+   "base": "http://127.0.0.1:55125/mercadopago"
+  },
+  "stripe": {
+   "charges": 8,
+   "webhooks": 18,
+   "failing": 0,
+   "url": "http://127.0.0.1:55124/webhooks/stripe",
+   "base": "http://127.0.0.1:55125/stripe"
+  }
+ },
+ "totals": {
+  "paga": {
+   "count": 5,
+   "amount": 26500
+  },
+  "pendente": {
+   "count": 4,
+   "amount": 19500
+  },
+  "contestada": {
+   "count": 1,
+   "amount": 7000
+  },
+  "estornada": {
+   "count": 1,
+   "amount": 4500
+  },
+  "recusada": {
+   "count": 2,
+   "amount": 11500
+  },
+  "expirada": {
+   "count": 1,
+   "amount": 3500
+  }
+ },
+ "charges": 14,
+ "webhooks": 23,
+ "calls": 19,
+ "rules": [
+  {
+   "id": "r_GX5W4IRl",
+   "gateway": "pix",
+   "kind": "pay_after",
+   "params": {
+    "seconds": 5
+   },
+   "remaining": 1,
+   "label": "Pix pago, webhook 2 min atrasado e duplicado",
+   "used": 0,
+   "text": "próxima cobrança Pix é paga 5 s depois · API Pix"
+  },
+  {
+   "id": "r_V34Vg0e1",
+   "gateway": "pix",
+   "kind": "delay",
+   "params": {
+    "seconds": 120
+   },
+   "remaining": 1,
+   "label": "Pix pago, webhook 2 min atrasado e duplicado",
+   "used": 0,
+   "text": "próximo webhook atrasa 120 s · API Pix"
+  },
+  {
+   "id": "r_JUdI7cJX",
+   "gateway": "pix",
+   "kind": "duplicate",
+   "params": {
+    "copies": 2
+   },
+   "remaining": 1,
+   "label": "Pix pago, webhook 2 min atrasado e duplicado",
+   "used": 0,
+   "text": "próximo webhook chega 2 vezes · API Pix"
+  }
+ ],
+ "failures": [
+  {
+   "id": "f_1OIEdQPw",
+   "gateway": "mercadopago",
+   "mode": "slow",
+   "rate": 100,
+   "latency_ms": 6000,
+   "remaining": 3,
+   "until": null,
+   "created": 1794633270.0093496,
+   "hits": 0,
+   "text": "Mercado Pago demora 6 s · nas próximas 3 chamadas"
+  }
+ ],
+ "checks": [
+  {
+   "at": 1794633269.8179245,
+   "gateway": "stripe",
+   "kind": "signature",
+   "ok": true,
+   "status": 400,
+   "text": "O app recusou a assinatura errada (respondeu 400).",
+   "delivery": 21
+  },
+  {
+   "at": 1794633269.9170072,
+   "gateway": "stripe",
+   "kind": "signature",
+   "ok": false,
+   "status": 200,
+   "text": "O app aceitou um webhook do stripe com assinatura errada (respondeu 200).",
+   "delivery": 22
+  }
+ ],
+ "attention": [
+  {
+   "ref": "pi_pAB6dU0oxqnQ5tf638EZRdXN",
+   "gateway": "stripe",
+   "booking": "AG-4839",
+   "kind": "duplicate",
+   "text": "mesmo valor e mesmo agendamento de pi_C18KiX8v5nsrZcJXXDpo1v6K, sem Idempotency-Key"
+  },
+  {
+   "ref": "AG4828barba000000000000000",
+   "gateway": "pix",
+   "booking": "AG-4828",
+   "kind": "expired",
+   "text": "Pix venceu sem pagamento; confira se o app liberou o horário"
+  },
+  {
+   "ref": "pi_Lwh48IvjJpR0Pic6fQp0AwK8",
+   "gateway": "stripe",
+   "booking": "AG-4837",
+   "kind": "webhook",
+   "text": "app respondeu 500 a 1 webhook do Stripe; o PayStudio tenta de novo"
+  },
+  {
+   "ref": "pi_67tFABtxPfMjsT7mTgOIduhj",
+   "gateway": "stripe",
+   "booking": "AG-4838",
+   "kind": "webhook",
+   "text": "app respondeu 500 a 2 webhooks do Stripe; o PayStudio tenta de novo"
+  },
+  {
+   "ref": "pi_C18KiX8v5nsrZcJXXDpo1v6K",
+   "gateway": "stripe",
+   "booking": "AG-4839",
+   "kind": "webhook",
+   "text": "app respondeu 500 a 2 webhooks do Stripe; o PayStudio tenta de novo"
+  },
+  {
+   "ref": "pi_qIAsb46sQNvlRr872HXph334",
+   "gateway": "stripe",
+   "booking": "AG-4840",
+   "kind": "webhook",
+   "text": "app respondeu 500 a 2 webhooks do Stripe; o PayStudio tenta de novo"
+  },
+  {
+   "ref": null,
+   "gateway": "stripe",
+   "booking": null,
+   "kind": "signature",
+   "text": "O app aceitou um webhook do stripe com assinatura errada (respondeu 200)."
+  }
+ ],
+ "scheduled": [],
+ "presets": {
+  "pix_pago": "Pix pago em 5 s",
+  "pix_atrasado_duplicado": "Pix pago, webhook 2 min atrasado e duplicado",
+  "pix_expira": "Pix vence em 30 s sem pagamento",
+  "webhook_duplicado": "Próximo webhook chega duas vezes",
+  "webhook_atrasado": "Próximo webhook chega 2 min depois",
+  "webhook_fora_de_ordem": "Webhooks da próxima cobrança fora de ordem",
+  "assinatura_errada": "Próximo webhook com assinatura errada",
+  "cartao_recusado": "Próximo cartão recusado",
+  "sem_saldo": "Próximo cartão sem saldo",
+  "gateway_fora_do_ar": "Gateway responde 503 nas próximas 5 chamadas",
+  "gateway_lento": "Gateway leva 8 s nas próximas 5 chamadas"
+ },
+ "merchant": "BARBEARIA DO ZE",
+ "updatedAt": 1794633272.5902567
+}

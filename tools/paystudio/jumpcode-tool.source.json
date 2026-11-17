@@ -1,0 +1,54 @@
+{
+	"format": 1,
+	"id": "paystudio",
+	"publisher": "jumpcode",
+	"version": "1.0.1",
+	"contract": 1,
+	"compatibility": {
+		"python": {
+			"minimum": "3.13"
+		},
+		"platforms": [
+			"win32-x64"
+		]
+	},
+	"entry": {
+		"kind": "python",
+		"root": "code",
+		"module": "jumpcode_paystudio"
+	},
+	"isolation": "process",
+	"capabilities": {
+		"suppliedText": true,
+		"projectFiles": true,
+		"network": false
+	},
+	"tool": "src/jumpcode_paystudio/tool.json",
+	"studio": {
+		"ui": {
+			"scripts": [
+				"code/jumpcode_paystudio/ui/app.js"
+			],
+			"styles": [
+				"code/jumpcode_paystudio/ui/app.css"
+			]
+		},
+		"data": {
+			"format": 1,
+			"reads": [
+				1
+			]
+		}
+	},
+	"assets": {
+		"mark": "code/jumpcode_paystudio/assets/mark.svg",
+		"cover": "code/jumpcode_paystudio/assets/cover.png"
+	},
+	"dependencies": [],
+	"include": [
+		{
+			"from": "src/jumpcode_paystudio",
+			"to": "code/jumpcode_paystudio"
+		}
+	]
+}
